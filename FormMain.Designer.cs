@@ -28,148 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            button7 = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            panelSidebar = new Panel();
+            btnDangXuat = new Button();
+            btnHoaDon = new Button();
+            btnNCC = new Button();
+            btnNV = new Button();
+            btnSP = new Button();
+            btnThongKe = new Button();
             pictureBox1 = new PictureBox();
-            panel1.SuspendLayout();
+            panelMain = new Panel();
+            panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // panelSidebar
             // 
-            panel1.BackColor = Color.LightSteelBlue;
-            panel1.Controls.Add(button7);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(217, 767);
-            panel1.TabIndex = 0;
+            panelSidebar.BackColor = Color.LightSteelBlue;
+            panelSidebar.Controls.Add(btnDangXuat);
+            panelSidebar.Controls.Add(btnHoaDon);
+            panelSidebar.Controls.Add(btnNCC);
+            panelSidebar.Controls.Add(btnNV);
+            panelSidebar.Controls.Add(btnSP);
+            panelSidebar.Controls.Add(btnThongKe);
+            panelSidebar.Controls.Add(pictureBox1);
+            panelSidebar.Dock = DockStyle.Left;
+            panelSidebar.Location = new Point(0, 0);
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Size = new Size(283, 922);
+            panelSidebar.TabIndex = 0;
             // 
-            // button7
+            // btnDangXuat
             // 
-            button7.Dock = DockStyle.Top;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button7.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = SystemColors.ActiveCaptionText;
-            button7.Location = new Point(0, 642);
-            button7.Name = "button7";
-            button7.Size = new Size(217, 77);
-            button7.TabIndex = 7;
-            button7.Text = "Đăng xuất";
-            button7.UseVisualStyleBackColor = true;
+            btnDangXuat.Dock = DockStyle.Top;
+            btnDangXuat.FlatAppearance.BorderSize = 0;
+            btnDangXuat.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatStyle = FlatStyle.Flat;
+            btnDangXuat.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
+            btnDangXuat.Image = Properties.Resources.icons8_login_30;
+            btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDangXuat.Location = new Point(0, 630);
+            btnDangXuat.Name = "btnDangXuat";
+            btnDangXuat.Size = new Size(283, 77);
+            btnDangXuat.TabIndex = 11;
+            btnDangXuat.Text = "Đăng xuất";
+            btnDangXuat.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnHoaDon
             // 
-            button6.Dock = DockStyle.Top;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button6.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = SystemColors.ActiveCaptionText;
-            button6.Location = new Point(0, 565);
-            button6.Name = "button6";
-            button6.Size = new Size(217, 77);
-            button6.TabIndex = 6;
-            button6.Text = "Công nợ";
-            button6.UseVisualStyleBackColor = true;
+            btnHoaDon.Dock = DockStyle.Top;
+            btnHoaDon.FlatAppearance.BorderSize = 0;
+            btnHoaDon.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnHoaDon.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnHoaDon.FlatStyle = FlatStyle.Flat;
+            btnHoaDon.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnHoaDon.ForeColor = SystemColors.ActiveCaptionText;
+            btnHoaDon.Image = Properties.Resources.icons8_shopify_30;
+            btnHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHoaDon.Location = new Point(0, 553);
+            btnHoaDon.Name = "btnHoaDon";
+            btnHoaDon.Size = new Size(283, 77);
+            btnHoaDon.TabIndex = 9;
+            btnHoaDon.Text = "Xuất hàng";
+            btnHoaDon.UseVisualStyleBackColor = true;
+            btnHoaDon.Click += btnHoaDon_Click;
             // 
-            // button5
+            // btnNCC
             // 
-            button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button5.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = SystemColors.ActiveCaptionText;
-            button5.Location = new Point(0, 488);
-            button5.Name = "button5";
-            button5.Size = new Size(217, 77);
-            button5.TabIndex = 5;
-            button5.Text = "Hóa đơn";
-            button5.UseVisualStyleBackColor = true;
+            btnNCC.Dock = DockStyle.Top;
+            btnNCC.FlatAppearance.BorderSize = 0;
+            btnNCC.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnNCC.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnNCC.FlatStyle = FlatStyle.Flat;
+            btnNCC.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnNCC.ForeColor = SystemColors.ActiveCaptionText;
+            btnNCC.Image = Properties.Resources.icons8_delivery_time_30;
+            btnNCC.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNCC.Location = new Point(0, 476);
+            btnNCC.Name = "btnNCC";
+            btnNCC.Size = new Size(283, 77);
+            btnNCC.TabIndex = 4;
+            btnNCC.Text = " Nhập hàng";
+            btnNCC.UseVisualStyleBackColor = true;
+            btnNCC.Click += btnNCC_Click;
             // 
-            // button4
+            // btnNV
             // 
-            button4.Dock = DockStyle.Top;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button4.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = SystemColors.ActiveCaptionText;
-            button4.Location = new Point(0, 411);
-            button4.Name = "button4";
-            button4.Size = new Size(217, 77);
-            button4.TabIndex = 4;
-            button4.Text = "Nhập hàng";
-            button4.UseVisualStyleBackColor = true;
+            btnNV.Dock = DockStyle.Top;
+            btnNV.FlatAppearance.BorderSize = 0;
+            btnNV.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnNV.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnNV.FlatStyle = FlatStyle.Flat;
+            btnNV.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnNV.ForeColor = SystemColors.ActiveCaptionText;
+            btnNV.Image = Properties.Resources.icons8_people_30;
+            btnNV.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNV.Location = new Point(0, 399);
+            btnNV.Name = "btnNV";
+            btnNV.Size = new Size(283, 77);
+            btnNV.TabIndex = 3;
+            btnNV.Text = "Nhân viên";
+            btnNV.UseVisualStyleBackColor = true;
+            btnNV.Click += btnNV_Click;
             // 
-            // button3
+            // btnSP
             // 
-            button3.Dock = DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button3.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(0, 334);
-            button3.Name = "button3";
-            button3.Size = new Size(217, 77);
-            button3.TabIndex = 3;
-            button3.Text = "Nhân viên";
-            button3.UseVisualStyleBackColor = true;
+            btnSP.Dock = DockStyle.Top;
+            btnSP.FlatAppearance.BorderSize = 0;
+            btnSP.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnSP.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnSP.FlatStyle = FlatStyle.Flat;
+            btnSP.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnSP.ForeColor = SystemColors.ActiveCaptionText;
+            btnSP.Image = Properties.Resources.icons8_product_30;
+            btnSP.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSP.Location = new Point(0, 322);
+            btnSP.Name = "btnSP";
+            btnSP.Size = new Size(283, 77);
+            btnSP.TabIndex = 2;
+            btnSP.Text = "Sản phẩm";
+            btnSP.UseVisualStyleBackColor = true;
+            btnSP.Click += btnSP_Click;
             // 
-            // button2
+            // btnThongKe
             // 
-            button2.Dock = DockStyle.Top;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button2.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(0, 257);
-            button2.Name = "button2";
-            button2.Size = new Size(217, 77);
-            button2.TabIndex = 2;
-            button2.Text = "Sản phẩm";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button1.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(0, 180);
-            button1.Name = "button1";
-            button1.Size = new Size(217, 77);
-            button1.TabIndex = 1;
-            button1.Text = "Trang chủ";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnThongKe.Dock = DockStyle.Top;
+            btnThongKe.FlatAppearance.BorderSize = 0;
+            btnThongKe.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnThongKe.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnThongKe.FlatStyle = FlatStyle.Flat;
+            btnThongKe.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnThongKe.ForeColor = SystemColors.ActiveCaptionText;
+            btnThongKe.Image = Properties.Resources.icons8_analytics_301;
+            btnThongKe.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThongKe.Location = new Point(0, 245);
+            btnThongKe.Name = "btnThongKe";
+            btnThongKe.Size = new Size(283, 77);
+            btnThongKe.TabIndex = 1;
+            btnThongKe.Text = "Thống kê";
+            btnThongKe.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -178,38 +176,49 @@
             pictureBox1.Image = Properties.Resources.Screenshot_2025_07_08_195922_removebg_preview1;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(217, 180);
+            pictureBox1.Size = new Size(283, 245);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // panelMain
+            // 
+            panelMain.BorderStyle = BorderStyle.FixedSingle;
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(283, 0);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(928, 922);
+            panelMain.TabIndex = 1;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1211, 767);
-            Controls.Add(panel1);
+            ClientSize = new Size(1211, 922);
+            Controls.Add(panelMain);
+            Controls.Add(panelSidebar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "FormMain";
             WindowState = FormWindowState.Maximized;
-            panel1.ResumeLayout(false);
+            panelSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private Button button1;
+        private Panel panelSidebar;
+        private Button btnThongKe;
         private PictureBox pictureBox1;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
+        private Button btnNCC;
+        private Button btnNV;
+        private Button btnSP;
+        private Button btnDangXuat;
+        private Button btnHoaDon;
+        private Panel panelMain;
+        
     }
 }

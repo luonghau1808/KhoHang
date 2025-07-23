@@ -109,7 +109,6 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(textBox2);
             panel3.Controls.Add(pictureBox3);
             panel3.Location = new Point(424, 143);
             panel3.Name = "panel3";
@@ -118,7 +117,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(48, 3);
+            textBox2.Location = new Point(475, 149);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(286, 31);
@@ -174,6 +173,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
             ClientSize = new Size(800, 431);
+            Controls.Add(textBox2);
             Controls.Add(checkBox1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -191,7 +191,6 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
