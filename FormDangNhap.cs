@@ -17,6 +17,21 @@ namespace DuAn1_Nhom4
             InitializeComponent();
         }
 
-    
+        private void lbQuenMatKhau_MouseEnter(object sender, EventArgs e)
+        {
+
+            lbQuenMatKhau.BackColor = Color.LightBlue;
+        }
+
+        private void lbQuenMatKhau_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void lbQuenMatKhau_MouseLeave(object sender, EventArgs e)
+        {
+            lbQuenMatKhau.BackColor = Color.Transparent;
+        }
     }
 }

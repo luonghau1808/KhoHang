@@ -323,6 +323,7 @@
             // 
             // txtTim
             // 
+            txtTim.BorderStyle = BorderStyle.FixedSingle;
             txtTim.Font = new Font("Segoe UI", 12F);
             txtTim.Location = new Point(813, 40);
             txtTim.Name = "txtTim";

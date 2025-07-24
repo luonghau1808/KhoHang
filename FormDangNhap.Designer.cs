@@ -32,14 +32,15 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel2 = new Panel();
-            textBox1 = new TextBox();
+            txtPass = new TextBox();
             pictureBox2 = new PictureBox();
             panel3 = new Panel();
             pictureBox3 = new PictureBox();
-            textBox2 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
+            txtUser = new TextBox();
+            btnDangNhap = new Button();
+            btnThoat = new Button();
             checkBox1 = new CheckBox();
+            lbQuenMatKhau = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -54,7 +55,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(371, 431);
+            panel1.Size = new Size(371, 455);
             panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -64,7 +65,7 @@
             pictureBox1.Image = Properties.Resources.Screenshot_2025_07_08_195922_removebg_preview1;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(371, 431);
+            pictureBox1.Size = new Size(371, 455);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -81,21 +82,21 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtPass);
             panel2.Controls.Add(pictureBox2);
             panel2.Location = new Point(424, 222);
             panel2.Name = "panel2";
             panel2.Size = new Size(337, 37);
             panel2.TabIndex = 3;
             // 
-            // textBox1
+            // txtPass
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(48, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(286, 31);
-            textBox1.TabIndex = 4;
+            txtPass.BorderStyle = BorderStyle.FixedSingle;
+            txtPass.Location = new Point(48, 3);
+            txtPass.Multiline = true;
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(286, 31);
+            txtPass.TabIndex = 4;
             // 
             // pictureBox2
             // 
@@ -111,6 +112,7 @@
             // panel3
             // 
             panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(txtUser);
             panel3.Location = new Point(424, 143);
             panel3.Name = "panel3";
             panel3.Size = new Size(337, 37);
@@ -127,36 +129,36 @@
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 
-            // textBox2
+            // txtUser
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(475, 149);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(286, 31);
-            textBox2.TabIndex = 4;
+            txtUser.BorderStyle = BorderStyle.FixedSingle;
+            txtUser.Location = new Point(51, 3);
+            txtUser.Multiline = true;
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(286, 31);
+            txtUser.TabIndex = 4;
             // 
-            // button1
+            // btnDangNhap
             // 
-            button1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DodgerBlue;
-            button1.Location = new Point(483, 327);
-            button1.Name = "button1";
-            button1.Size = new Size(113, 41);
-            button1.TabIndex = 6;
-            button1.Text = "Đăng nhập";
-            button1.UseVisualStyleBackColor = true;
+            btnDangNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDangNhap.ForeColor = Color.DodgerBlue;
+            btnDangNhap.Location = new Point(483, 327);
+            btnDangNhap.Name = "btnDangNhap";
+            btnDangNhap.Size = new Size(113, 41);
+            btnDangNhap.TabIndex = 6;
+            btnDangNhap.Text = "Đăng nhập";
+            btnDangNhap.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnThoat
             // 
-            button2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Red;
-            button2.Location = new Point(645, 327);
-            button2.Name = "button2";
-            button2.Size = new Size(113, 41);
-            button2.TabIndex = 7;
-            button2.Text = "Thoát";
-            button2.UseVisualStyleBackColor = true;
+            btnThoat.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThoat.ForeColor = Color.Red;
+            btnThoat.Location = new Point(645, 327);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(113, 41);
+            btnThoat.TabIndex = 7;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -169,16 +171,30 @@
             checkBox1.Text = "Hiển thị mật khẩu";
             checkBox1.UseVisualStyleBackColor = true;
             // 
+            // lbQuenMatKhau
+            // 
+            lbQuenMatKhau.AutoSize = true;
+            lbQuenMatKhau.BackColor = Color.Transparent;
+            lbQuenMatKhau.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbQuenMatKhau.Location = new Point(696, 412);
+            lbQuenMatKhau.Name = "lbQuenMatKhau";
+            lbQuenMatKhau.Size = new Size(137, 23);
+            lbQuenMatKhau.TabIndex = 9;
+            lbQuenMatKhau.Text = "Quên mật khẩu?";
+            lbQuenMatKhau.Click += lbQuenMatKhau_Click;
+            lbQuenMatKhau.MouseEnter += lbQuenMatKhau_MouseEnter;
+            lbQuenMatKhau.MouseLeave += lbQuenMatKhau_MouseLeave;
+            // 
             // FormDangNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(800, 431);
-            Controls.Add(textBox2);
+            ClientSize = new Size(854, 455);
+            Controls.Add(lbQuenMatKhau);
             Controls.Add(checkBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnThoat);
+            Controls.Add(btnDangNhap);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(label1);
@@ -193,6 +209,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -205,12 +222,13 @@
         private Label label1;
         private Panel panel2;
         private PictureBox pictureBox2;
-        private TextBox textBox1;
+        private TextBox txtPass;
         private Panel panel3;
-        private TextBox textBox2;
+        private TextBox txtUser;
         private PictureBox pictureBox3;
-        private Button button1;
-        private Button button2;
+        private Button btnDangNhap;
+        private Button btnThoat;
         private CheckBox checkBox1;
+        private Label lbQuenMatKhau;
     }
 }

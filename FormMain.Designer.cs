@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panelSidebar = new Panel();
-            btnDangXuat = new Button();
+            btnTaiKhoan = new Button();
             btnHoaDon = new Button();
             btnNCC = new Button();
             btnNV = new Button();
@@ -37,6 +37,7 @@
             btnThongKe = new Button();
             pictureBox1 = new PictureBox();
             panelMain = new Panel();
+            btnDangXuat = new Button();
             panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             panelSidebar.BackColor = Color.LightSteelBlue;
             panelSidebar.Controls.Add(btnDangXuat);
+            panelSidebar.Controls.Add(btnTaiKhoan);
             panelSidebar.Controls.Add(btnHoaDon);
             panelSidebar.Controls.Add(btnNCC);
             panelSidebar.Controls.Add(btnNV);
@@ -57,23 +59,23 @@
             panelSidebar.Size = new Size(283, 922);
             panelSidebar.TabIndex = 0;
             // 
-            // btnDangXuat
+            // btnTaiKhoan
             // 
-            btnDangXuat.Dock = DockStyle.Top;
-            btnDangXuat.FlatAppearance.BorderSize = 0;
-            btnDangXuat.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            btnDangXuat.FlatStyle = FlatStyle.Flat;
-            btnDangXuat.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
-            btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
-            btnDangXuat.Image = Properties.Resources.icons8_login_30;
-            btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDangXuat.Location = new Point(0, 630);
-            btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Size = new Size(283, 77);
-            btnDangXuat.TabIndex = 11;
-            btnDangXuat.Text = "Đăng xuất";
-            btnDangXuat.UseVisualStyleBackColor = true;
+            btnTaiKhoan.Dock = DockStyle.Top;
+            btnTaiKhoan.FlatAppearance.BorderSize = 0;
+            btnTaiKhoan.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnTaiKhoan.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnTaiKhoan.FlatStyle = FlatStyle.Flat;
+            btnTaiKhoan.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnTaiKhoan.ForeColor = SystemColors.ActiveCaptionText;
+            btnTaiKhoan.Image = Properties.Resources.icons8_login_30;
+            btnTaiKhoan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTaiKhoan.Location = new Point(0, 630);
+            btnTaiKhoan.Name = "btnTaiKhoan";
+            btnTaiKhoan.Size = new Size(283, 77);
+            btnTaiKhoan.TabIndex = 11;
+            btnTaiKhoan.Text = "Tài khoản";
+            btnTaiKhoan.UseVisualStyleBackColor = true;
             // 
             // btnHoaDon
             // 
@@ -190,6 +192,24 @@
             panelMain.Size = new Size(928, 922);
             panelMain.TabIndex = 1;
             // 
+            // btnDangXuat
+            // 
+            btnDangXuat.Dock = DockStyle.Top;
+            btnDangXuat.FlatAppearance.BorderSize = 0;
+            btnDangXuat.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatStyle = FlatStyle.Flat;
+            btnDangXuat.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
+            btnDangXuat.Image = Properties.Resources.icons8_shopify_30;
+            btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDangXuat.Location = new Point(0, 707);
+            btnDangXuat.Name = "btnDangXuat";
+            btnDangXuat.Size = new Size(283, 77);
+            btnDangXuat.TabIndex = 12;
+            btnDangXuat.Text = "Đăng xuất";
+            btnDangXuat.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -216,9 +236,9 @@
         private Button btnNCC;
         private Button btnNV;
         private Button btnSP;
-        private Button btnDangXuat;
+        private Button btnTaiKhoan;
         private Button btnHoaDon;
         private Panel panelMain;
-        
+        private Button btnDangXuat;
     }
 }

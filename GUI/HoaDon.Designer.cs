@@ -41,6 +41,7 @@
             groupBox1 = new GroupBox();
             dtgDanhSachHD = new DataGridView();
             backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            btnXoa = new Button();
             groupBox5.SuspendLayout();
             tabControl1.SuspendLayout();
             panel1.SuspendLayout();
@@ -110,6 +111,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnXoa);
             groupBox3.Controls.Add(dtgGioHang);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -174,6 +176,19 @@
             dtgDanhSachHD.Size = new Size(1279, 231);
             dtgDanhSachHD.TabIndex = 0;
             // 
+            // btnXoa
+            // 
+            btnXoa.Font = new Font("Segoe UI", 10.2F);
+            btnXoa.Image = Properties.Resources.icons8_delete_30;
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.Location = new Point(38, 355);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(254, 48);
+            btnXoa.TabIndex = 24;
+            btnXoa.Text = "Xóa sản phẩm";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
+            // 
             // HoaDon
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -209,5 +224,6 @@
         private TabControl tabControl1;
         private TabPage tabHoaDon;
         private TabPage tabDatHang;
+        private Button btnXoa;
     }
 }

@@ -47,5 +47,10 @@ namespace DuAn1_Nhom4.GUI
 
             }
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
