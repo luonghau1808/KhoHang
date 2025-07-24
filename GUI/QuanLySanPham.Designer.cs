@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
+            tabThongTin = new TabPage();
+            tabThuocTinh = new TabPage();
             tabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabThongTin);
+            tabControl1.Controls.Add(tabThuocTinh);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(0, 0);
@@ -47,27 +47,27 @@
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
-            // tabPage1
+            // tabThongTin
             // 
-            tabPage1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabPage1.Location = new Point(4, 37);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(792, 409);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Thông tin sản phẩm";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabThongTin.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabThongTin.Location = new Point(4, 37);
+            tabThongTin.Name = "tabThongTin";
+            tabThongTin.Padding = new Padding(3);
+            tabThongTin.Size = new Size(792, 409);
+            tabThongTin.TabIndex = 0;
+            tabThongTin.Text = "Thông tin sản phẩm";
+            tabThongTin.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabThuocTinh
             // 
-            tabPage2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabPage2.Location = new Point(4, 37);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(792, 409);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Thuộc tính sản phẩm ";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabThuocTinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tabThuocTinh.Location = new Point(4, 37);
+            tabThuocTinh.Name = "tabThuocTinh";
+            tabThuocTinh.Padding = new Padding(3);
+            tabThuocTinh.Size = new Size(792, 409);
+            tabThuocTinh.TabIndex = 1;
+            tabThuocTinh.Text = "Thuộc tính sản phẩm ";
+            tabThuocTinh.UseVisualStyleBackColor = true;
             // 
             // QuanLySanPham
             // 
@@ -84,7 +84,7 @@
         #endregion
 
         private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage tabThongTin;
+        private TabPage tabThuocTinh;
     }
 }

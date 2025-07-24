@@ -15,7 +15,7 @@ namespace DuAn1_Nhom4.GUI
         public HoaDon()
         {
             InitializeComponent();
-            LoadFormInTab(new TaoHoaDon(), tabPage1);
+            LoadFormInTab(new TaoHoaDon(), tabHoaDon);
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -39,10 +39,10 @@ namespace DuAn1_Nhom4.GUI
             {
 
                 case 0:
-                    LoadFormInTab(new TaoHoaDon(), tabPage1);
+                    LoadFormInTab(new TaoHoaDon(), tabHoaDon);
                     break;
                 case 1:
-                    LoadFormInTab(new DonDatHang(), tabPage2);
+                    LoadFormInTab(new DonDatHang(), tabDatHang);
                     break;
 
             }

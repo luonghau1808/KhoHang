@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
-            button3 = new Button();
-            button2 = new Button();
-            button4 = new Button();
+            btnHuy = new Button();
+            btnTao = new Button();
+            btnThanhToan = new Button();
             panel2 = new Panel();
-            comboBox1 = new ComboBox();
-            textBox3 = new TextBox();
+            cbHTTT = new ComboBox();
+            txtTien = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             panel1 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtSDT = new TextBox();
+            txtTen = new TextBox();
             label2 = new Label();
             label1 = new Label();
             panel3.SuspendLayout();
@@ -52,50 +52,50 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(button3);
-            panel3.Controls.Add(button2);
-            panel3.Controls.Add(button4);
+            panel3.Controls.Add(btnHuy);
+            panel3.Controls.Add(btnTao);
+            panel3.Controls.Add(btnThanhToan);
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 564);
             panel3.Name = "panel3";
             panel3.Size = new Size(1757, 342);
             panel3.TabIndex = 8;
             // 
-            // button3
+            // btnHuy
             // 
-            button3.Location = new Point(283, 129);
-            button3.Name = "button3";
-            button3.Size = new Size(167, 63);
-            button3.TabIndex = 2;
-            button3.Text = "Hủy";
-            button3.UseVisualStyleBackColor = true;
+            btnHuy.Location = new Point(283, 129);
+            btnHuy.Name = "btnHuy";
+            btnHuy.Size = new Size(167, 63);
+            btnHuy.TabIndex = 2;
+            btnHuy.Text = "Hủy";
+            btnHuy.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnTao
             // 
-            button2.Image = Properties.Resources.icons8_add_301;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(41, 129);
-            button2.Name = "button2";
-            button2.Size = new Size(173, 63);
-            button2.TabIndex = 1;
-            button2.Text = "Tạo hóa đơn";
-            button2.UseVisualStyleBackColor = true;
+            btnTao.Image = Properties.Resources.icons8_add_301;
+            btnTao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTao.Location = new Point(41, 129);
+            btnTao.Name = "btnTao";
+            btnTao.Size = new Size(173, 63);
+            btnTao.TabIndex = 1;
+            btnTao.Text = "Tạo hóa đơn";
+            btnTao.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnThanhToan
             // 
-            button4.Image = Properties.Resources.icons8_dollar_bag_30;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(41, 27);
-            button4.Name = "button4";
-            button4.Size = new Size(409, 61);
-            button4.TabIndex = 0;
-            button4.Text = "Thanh toán ";
-            button4.UseVisualStyleBackColor = true;
+            btnThanhToan.Image = Properties.Resources.icons8_dollar_bag_30;
+            btnThanhToan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThanhToan.Location = new Point(41, 27);
+            btnThanhToan.Name = "btnThanhToan";
+            btnThanhToan.Size = new Size(409, 61);
+            btnThanhToan.TabIndex = 0;
+            btnThanhToan.Text = "Thanh toán ";
+            btnThanhToan.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(cbHTTT);
+            panel2.Controls.Add(txtTien);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -107,20 +107,21 @@
             panel2.Size = new Size(1757, 750);
             panel2.TabIndex = 7;
             // 
-            // comboBox1
+            // cbHTTT
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(278, 148);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(172, 28);
-            comboBox1.TabIndex = 5;
+            cbHTTT.FormattingEnabled = true;
+            cbHTTT.Location = new Point(278, 148);
+            cbHTTT.Name = "cbHTTT";
+            cbHTTT.Size = new Size(172, 28);
+            cbHTTT.TabIndex = 5;
             // 
-            // textBox3
+            // txtTien
             // 
-            textBox3.Location = new Point(278, 215);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(172, 27);
-            textBox3.TabIndex = 4;
+            txtTien.BorderStyle = BorderStyle.FixedSingle;
+            txtTien.Location = new Point(278, 215);
+            txtTien.Name = "txtTien";
+            txtTien.Size = new Size(172, 27);
+            txtTien.TabIndex = 4;
             // 
             // label7
             // 
@@ -174,8 +175,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtSDT);
+            panel1.Controls.Add(txtTen);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
@@ -184,19 +185,21 @@
             panel1.Size = new Size(1757, 156);
             panel1.TabIndex = 6;
             // 
-            // textBox2
+            // txtSDT
             // 
-            textBox2.Location = new Point(213, 102);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(172, 27);
-            textBox2.TabIndex = 3;
+            txtSDT.BorderStyle = BorderStyle.FixedSingle;
+            txtSDT.Location = new Point(213, 102);
+            txtSDT.Name = "txtSDT";
+            txtSDT.Size = new Size(172, 27);
+            txtSDT.TabIndex = 3;
             // 
-            // textBox1
+            // txtTen
             // 
-            textBox1.Location = new Point(213, 38);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(172, 27);
-            textBox1.TabIndex = 2;
+            txtTen.BorderStyle = BorderStyle.FixedSingle;
+            txtTen.Location = new Point(213, 38);
+            txtTen.Name = "txtTen";
+            txtTen.Size = new Size(172, 27);
+            txtTen.TabIndex = 2;
             // 
             // label2
             // 
@@ -239,20 +242,20 @@
         #endregion
 
         private Panel panel3;
-        private Button button3;
-        private Button button2;
-        private Button button4;
+        private Button btnHuy;
+        private Button btnTao;
+        private Button btnThanhToan;
         private Panel panel2;
-        private ComboBox comboBox1;
-        private TextBox textBox3;
+        private ComboBox cbHTTT;
+        private TextBox txtTien;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
         private Panel panel1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtSDT;
+        private TextBox txtTen;
         private Label label2;
         private Label label1;
     }

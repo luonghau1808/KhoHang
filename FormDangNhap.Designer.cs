@@ -35,8 +35,8 @@
             textBox1 = new TextBox();
             pictureBox2 = new PictureBox();
             panel3 = new Panel();
-            textBox2 = new TextBox();
             pictureBox3 = new PictureBox();
+            textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
             checkBox1 = new CheckBox();
@@ -90,6 +90,7 @@
             // 
             // textBox1
             // 
+            textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(48, 3);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
@@ -115,14 +116,6 @@
             panel3.Size = new Size(337, 37);
             panel3.TabIndex = 5;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(475, 149);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(286, 31);
-            textBox2.TabIndex = 4;
-            // 
             // pictureBox3
             // 
             pictureBox3.Dock = DockStyle.Left;
@@ -133,6 +126,15 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
+            // 
+            // textBox2
+            // 
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Location = new Point(475, 149);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(286, 31);
+            textBox2.TabIndex = 4;
             // 
             // button1
             // 

@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtSDT = new TextBox();
+            txtTenKH = new TextBox();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            button1 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button4 = new Button();
+            btnHoanTra = new Button();
+            btnTrangThai = new Button();
+            btnGiaoHang = new Button();
+            btnTaoHoaDon = new Button();
             label8 = new Label();
             label9 = new Label();
             richTextBox1 = new RichTextBox();
-            comboBox1 = new ComboBox();
-            textBox3 = new TextBox();
+            cbHTTT = new ComboBox();
+            txtTien = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -56,8 +56,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtSDT);
+            panel1.Controls.Add(txtTenKH);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
@@ -66,21 +66,23 @@
             panel1.Size = new Size(1295, 119);
             panel1.TabIndex = 7;
             // 
-            // textBox2
+            // txtSDT
             // 
-            textBox2.Font = new Font("Segoe UI", 10.2F);
-            textBox2.Location = new Point(213, 87);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(172, 30);
-            textBox2.TabIndex = 3;
+            txtSDT.BorderStyle = BorderStyle.FixedSingle;
+            txtSDT.Font = new Font("Segoe UI", 10.2F);
+            txtSDT.Location = new Point(213, 87);
+            txtSDT.Name = "txtSDT";
+            txtSDT.Size = new Size(172, 30);
+            txtSDT.TabIndex = 3;
             // 
-            // textBox1
+            // txtTenKH
             // 
-            textBox1.Font = new Font("Segoe UI", 10.2F);
-            textBox1.Location = new Point(213, 23);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(172, 30);
-            textBox1.TabIndex = 2;
+            txtTenKH.BorderStyle = BorderStyle.FixedSingle;
+            txtTenKH.Font = new Font("Segoe UI", 10.2F);
+            txtTenKH.Location = new Point(213, 23);
+            txtTenKH.Name = "txtTenKH";
+            txtTenKH.Size = new Size(172, 30);
+            txtTenKH.TabIndex = 2;
             // 
             // label2
             // 
@@ -108,8 +110,8 @@
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(richTextBox1);
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(cbHTTT);
+            panel2.Controls.Add(txtTien);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -123,59 +125,59 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(button1);
-            panel3.Controls.Add(button3);
-            panel3.Controls.Add(button2);
-            panel3.Controls.Add(button4);
+            panel3.Controls.Add(btnHoanTra);
+            panel3.Controls.Add(btnTrangThai);
+            panel3.Controls.Add(btnGiaoHang);
+            panel3.Controls.Add(btnTaoHoaDon);
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 506);
             panel3.Name = "panel3";
             panel3.Size = new Size(1295, 283);
             panel3.TabIndex = 11;
             // 
-            // button1
+            // btnHoanTra
             // 
-            button1.Image = Properties.Resources.icons8_delete_301;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(56, 191);
-            button1.Name = "button1";
-            button1.Size = new Size(389, 61);
-            button1.TabIndex = 3;
-            button1.Text = "Hoàn trả";
-            button1.UseVisualStyleBackColor = true;
+            btnHoanTra.Image = Properties.Resources.icons8_delete_301;
+            btnHoanTra.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHoanTra.Location = new Point(56, 191);
+            btnHoanTra.Name = "btnHoanTra";
+            btnHoanTra.Size = new Size(389, 61);
+            btnHoanTra.TabIndex = 3;
+            btnHoanTra.Text = "Hoàn trả";
+            btnHoanTra.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnTrangThai
             // 
-            button3.Image = Properties.Resources.icons8_shopify_301;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(278, 117);
-            button3.Name = "button3";
-            button3.Size = new Size(167, 52);
-            button3.TabIndex = 2;
-            button3.Text = "Đã giao";
-            button3.UseVisualStyleBackColor = true;
+            btnTrangThai.Image = Properties.Resources.icons8_shopify_301;
+            btnTrangThai.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTrangThai.Location = new Point(278, 117);
+            btnTrangThai.Name = "btnTrangThai";
+            btnTrangThai.Size = new Size(167, 52);
+            btnTrangThai.TabIndex = 2;
+            btnTrangThai.Text = "Đã giao";
+            btnTrangThai.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnGiaoHang
             // 
-            button2.Image = Properties.Resources.icons8_delivery_time_301;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(56, 117);
-            button2.Name = "button2";
-            button2.Size = new Size(178, 52);
-            button2.TabIndex = 1;
-            button2.Text = "Giao hàng";
-            button2.UseVisualStyleBackColor = true;
+            btnGiaoHang.Image = Properties.Resources.icons8_delivery_time_301;
+            btnGiaoHang.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGiaoHang.Location = new Point(56, 117);
+            btnGiaoHang.Name = "btnGiaoHang";
+            btnGiaoHang.Size = new Size(178, 52);
+            btnGiaoHang.TabIndex = 1;
+            btnGiaoHang.Text = "Giao hàng";
+            btnGiaoHang.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnTaoHoaDon
             // 
-            button4.Image = Properties.Resources.icons8_dollar_bag_30;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(54, 27);
-            button4.Name = "button4";
-            button4.Size = new Size(396, 61);
-            button4.TabIndex = 0;
-            button4.Text = "Tạo hóa đơn";
-            button4.UseVisualStyleBackColor = true;
+            btnTaoHoaDon.Image = Properties.Resources.icons8_dollar_bag_30;
+            btnTaoHoaDon.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTaoHoaDon.Location = new Point(54, 27);
+            btnTaoHoaDon.Name = "btnTaoHoaDon";
+            btnTaoHoaDon.Size = new Size(396, 61);
+            btnTaoHoaDon.TabIndex = 0;
+            btnTaoHoaDon.Text = "Tạo hóa đơn";
+            btnTaoHoaDon.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -207,20 +209,21 @@
             richTextBox1.TabIndex = 8;
             richTextBox1.Text = "";
             // 
-            // comboBox1
+            // cbHTTT
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(278, 196);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(172, 28);
-            comboBox1.TabIndex = 5;
+            cbHTTT.FormattingEnabled = true;
+            cbHTTT.Location = new Point(278, 196);
+            cbHTTT.Name = "cbHTTT";
+            cbHTTT.Size = new Size(172, 28);
+            cbHTTT.TabIndex = 5;
             // 
-            // textBox3
+            // txtTien
             // 
-            textBox3.Location = new Point(278, 266);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(172, 27);
-            textBox3.TabIndex = 4;
+            txtTien.BorderStyle = BorderStyle.FixedSingle;
+            txtTien.Location = new Point(278, 266);
+            txtTien.Name = "txtTien";
+            txtTien.Size = new Size(172, 27);
+            txtTien.TabIndex = 4;
             // 
             // label7
             // 
@@ -292,25 +295,25 @@
         #endregion
 
         private Panel panel1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtSDT;
+        private TextBox txtTenKH;
         private Label label2;
         private Label label1;
         private Panel panel2;
         private Label label8;
         private Label label9;
         private RichTextBox richTextBox1;
-        private ComboBox comboBox1;
-        private TextBox textBox3;
+        private ComboBox cbHTTT;
+        private TextBox txtTien;
         private Label label7;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
         private Panel panel3;
-        private Button button1;
-        private Button button3;
-        private Button button2;
-        private Button button4;
+        private Button btnHoanTra;
+        private Button btnTrangThai;
+        private Button btnGiaoHang;
+        private Button btnTaoHoaDon;
     }
 }

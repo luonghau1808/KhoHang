@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            btnLamMoi = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            btnThem = new Button();
+            rbMauSac = new RadioButton();
+            rbKichThuoc = new RadioButton();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtTenThuocTinh = new TextBox();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dtgThongTin = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgThongTin).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
+            groupBox1.Controls.Add(btnLamMoi);
+            groupBox1.Controls.Add(btnXoa);
+            groupBox1.Controls.Add(btnSua);
+            groupBox1.Controls.Add(btnThem);
+            groupBox1.Controls.Add(rbMauSac);
+            groupBox1.Controls.Add(rbKichThuoc);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtTenThuocTinh);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Font = new Font("Segoe UI", 10F);
             groupBox1.Location = new Point(0, 0);
@@ -63,77 +63,77 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thuộc tính sản phẩm ";
             // 
-            // button4
+            // btnLamMoi
             // 
-            button4.Font = new Font("Segoe UI", 10.2F);
-            button4.Image = Properties.Resources.icons8_clean_30;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(996, 206);
-            button4.Name = "button4";
-            button4.Size = new Size(240, 48);
-            button4.TabIndex = 32;
-            button4.Text = "Làm mới ";
-            button4.UseVisualStyleBackColor = true;
+            btnLamMoi.Font = new Font("Segoe UI", 10.2F);
+            btnLamMoi.Image = Properties.Resources.icons8_clean_30;
+            btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLamMoi.Location = new Point(996, 206);
+            btnLamMoi.Name = "btnLamMoi";
+            btnLamMoi.Size = new Size(240, 48);
+            btnLamMoi.TabIndex = 32;
+            btnLamMoi.Text = "Làm mới ";
+            btnLamMoi.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnXoa
             // 
-            button3.Font = new Font("Segoe UI", 10.2F);
-            button3.Image = Properties.Resources.icons8_delete_30;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(678, 206);
-            button3.Name = "button3";
-            button3.Size = new Size(240, 48);
-            button3.TabIndex = 31;
-            button3.Text = "Xóa thuộc tính";
-            button3.UseVisualStyleBackColor = true;
+            btnXoa.Font = new Font("Segoe UI", 10.2F);
+            btnXoa.Image = Properties.Resources.icons8_delete_30;
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.Location = new Point(678, 206);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(240, 48);
+            btnXoa.TabIndex = 31;
+            btnXoa.Text = "Xóa thuộc tính";
+            btnXoa.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSua
             // 
-            button2.Font = new Font("Segoe UI", 10.2F);
-            button2.Image = Properties.Resources.icons8_change_24;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(361, 206);
-            button2.Name = "button2";
-            button2.Size = new Size(240, 48);
-            button2.TabIndex = 30;
-            button2.Text = "Sửa thuộc tính";
-            button2.UseVisualStyleBackColor = true;
+            btnSua.Font = new Font("Segoe UI", 10.2F);
+            btnSua.Image = Properties.Resources.icons8_change_24;
+            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSua.Location = new Point(361, 206);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(240, 48);
+            btnSua.TabIndex = 30;
+            btnSua.Text = "Sửa thuộc tính";
+            btnSua.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnThem
             // 
-            button1.Font = new Font("Segoe UI", 10.2F);
-            button1.Image = Properties.Resources.icons8_add_30;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(37, 206);
-            button1.Name = "button1";
-            button1.Size = new Size(240, 48);
-            button1.TabIndex = 29;
-            button1.Text = "Thêm thuộc tính ";
-            button1.UseVisualStyleBackColor = true;
+            btnThem.Font = new Font("Segoe UI", 10.2F);
+            btnThem.Image = Properties.Resources.icons8_add_30;
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.Location = new Point(37, 206);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(240, 48);
+            btnThem.TabIndex = 29;
+            btnThem.Text = "Thêm thuộc tính ";
+            btnThem.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbMauSac
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI", 10.2F);
-            radioButton2.Location = new Point(974, 97);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(99, 27);
-            radioButton2.TabIndex = 3;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Màu sắc ";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbMauSac.AutoSize = true;
+            rbMauSac.Font = new Font("Segoe UI", 10.2F);
+            rbMauSac.Location = new Point(974, 97);
+            rbMauSac.Name = "rbMauSac";
+            rbMauSac.Size = new Size(99, 27);
+            rbMauSac.TabIndex = 3;
+            rbMauSac.TabStop = true;
+            rbMauSac.Text = "Màu sắc ";
+            rbMauSac.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbKichThuoc
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI", 10.2F);
-            radioButton1.Location = new Point(711, 98);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(117, 27);
-            radioButton1.TabIndex = 2;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Kích thước ";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbKichThuoc.AutoSize = true;
+            rbKichThuoc.Font = new Font("Segoe UI", 10.2F);
+            rbKichThuoc.Location = new Point(711, 98);
+            rbKichThuoc.Name = "rbKichThuoc";
+            rbKichThuoc.Size = new Size(117, 27);
+            rbKichThuoc.TabIndex = 2;
+            rbKichThuoc.TabStop = true;
+            rbKichThuoc.Text = "Kích thước ";
+            rbKichThuoc.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -145,17 +145,18 @@
             label1.TabIndex = 1;
             label1.Text = "Tên thuộc tính";
             // 
-            // textBox1
+            // txtTenThuocTinh
             // 
-            textBox1.Font = new Font("Segoe UI", 10.2F);
-            textBox1.Location = new Point(210, 99);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(349, 30);
-            textBox1.TabIndex = 0;
+            txtTenThuocTinh.BorderStyle = BorderStyle.FixedSingle;
+            txtTenThuocTinh.Font = new Font("Segoe UI", 10.2F);
+            txtTenThuocTinh.Location = new Point(210, 99);
+            txtTenThuocTinh.Name = "txtTenThuocTinh";
+            txtTenThuocTinh.Size = new Size(349, 30);
+            txtTenThuocTinh.TabIndex = 0;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(dtgThongTin);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 328);
@@ -165,15 +166,15 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin thuộc tính ";
             // 
-            // dataGridView1
+            // dtgThongTin
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 69);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1305, 306);
-            dataGridView1.TabIndex = 0;
+            dtgThongTin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgThongTin.Dock = DockStyle.Bottom;
+            dtgThongTin.Location = new Point(3, 69);
+            dtgThongTin.Name = "dtgThongTin";
+            dtgThongTin.RowHeadersWidth = 51;
+            dtgThongTin.Size = new Size(1305, 306);
+            dtgThongTin.TabIndex = 0;
             // 
             // ThuocTinh
             // 
@@ -187,7 +188,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgThongTin).EndInit();
             ResumeLayout(false);
         }
 
@@ -195,14 +196,14 @@
 
         private GroupBox groupBox1;
         private Label label1;
-        private TextBox textBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private TextBox txtTenThuocTinh;
+        private RadioButton rbMauSac;
+        private RadioButton rbKichThuoc;
         private GroupBox groupBox2;
-        private DataGridView dataGridView1;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private DataGridView dtgThongTin;
+        private Button btnLamMoi;
+        private Button btnXoa;
+        private Button btnSua;
+        private Button btnThem;
     }
 }

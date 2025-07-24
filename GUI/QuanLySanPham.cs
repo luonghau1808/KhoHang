@@ -17,7 +17,7 @@ namespace DuAn1_Nhom4
         public QuanLySanPham()
         {
             InitializeComponent();
-            LoadFormInTab(new ThongTinSanPham(), tabPage1);
+            LoadFormInTab(new ThongTinSanPham(), tabThongTin);
         }
 
    
@@ -38,10 +38,10 @@ namespace DuAn1_Nhom4
             {
 
                 case 0:
-                    LoadFormInTab(new ThongTinSanPham(), tabPage1);
+                    LoadFormInTab(new ThongTinSanPham(), tabThongTin);
                     break;
                 case 1:
-                    LoadFormInTab(new ThuocTinh(), tabPage2);
+                    LoadFormInTab(new ThuocTinh(), tabThuocTinh);
                     break;
 
             }
