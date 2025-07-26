@@ -9,6 +9,7 @@ CREATE TABLE ChucVu(
     MaChucVu INT PRIMARY KEY IDENTITY,
     TenChucVu NVARCHAR(50) NOT NULL
 );
+GO
 
 CREATE TABLE NhanVien (
     Id INT PRIMARY KEY IDENTITY,
@@ -18,6 +19,8 @@ CREATE TABLE NhanVien (
     MaChucVu INT,
     FOREIGN KEY (MaChucVu) REFERENCES ChucVu(MaChucVu)
 );
+GO
+
 
 CREATE TABLE TaiKhoanNhanVien (
     Id INT PRIMARY KEY IDENTITY,
@@ -27,6 +30,7 @@ CREATE TABLE TaiKhoanNhanVien (
     TrangThai NVARCHAR(50) NOT NULL DEFAULT N'Hoạt động',
     FOREIGN KEY (NhanVienId) REFERENCES NhanVien(Id)
 );
+GO
 
 CREATE TABLE KhachHang (
     MaKH INT PRIMARY KEY IDENTITY,
@@ -35,11 +39,13 @@ CREATE TABLE KhachHang (
     DiaChi NVARCHAR(255),
     Email NVARCHAR(100)
 );
+GO
 
 CREATE TABLE ThuongHieu (
     MaThuongHieu INT PRIMARY KEY IDENTITY,
     TenThuongHieu NVARCHAR(100) NOT NULL UNIQUE
 );
+GO
 
 CREATE TABLE NhaCungCap (
     MaNCC INT PRIMARY KEY IDENTITY,
@@ -48,6 +54,7 @@ CREATE TABLE NhaCungCap (
     Email NVARCHAR(100) NOT NULL UNIQUE,
     SoDienThoai VARCHAR(15) NOT NULL
 );
+GO
 
 CREATE TABLE SanPham (
     MaSP INT PRIMARY KEY IDENTITY,
@@ -55,20 +62,23 @@ CREATE TABLE SanPham (
     TenSP NVARCHAR(100) NOT NULL,
     MoTa NVARCHAR(MAX),
     MaThuongHieu INT,
-    TrangThai BIT NOT NULL DEFAULT 1,
+    TrangThai NVARCHAR(50) NOT NULL,
     FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu),
     FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC)
 );
+GO
 
 CREATE TABLE MauSac (
     MaMau INT PRIMARY KEY IDENTITY,
     TenMau NVARCHAR(50) NOT NULL UNIQUE
 );
+GO
 
 CREATE TABLE KichThuoc (
     MaKichThuoc INT PRIMARY KEY IDENTITY,
     TenKichThuoc NVARCHAR(50) NOT NULL UNIQUE
 );
+GO
 
 CREATE TABLE ChiTietSanPham (
     MaCTSP INT PRIMARY KEY IDENTITY,
@@ -83,17 +93,18 @@ CREATE TABLE ChiTietSanPham (
     FOREIGN KEY (MaMau) REFERENCES MauSac(MaMau),
     FOREIGN KEY (MaKichThuoc) REFERENCES KichThuoc(MaKichThuoc)
 );
+GO
 
 CREATE TABLE PhieuNhap (
     MaPhieuNhap INT PRIMARY KEY IDENTITY,
-
     MaNV INT NOT NULL,
     NgayNhap DATE NOT NULL DEFAULT GETDATE(),
     GhiChu NVARCHAR(255),
-    TrangThaiThanhToan BIT NOT NULL DEFAULT 0,
+    TrangThaiThanhToan NVARCHAR(50) NOT NULL,
     NgayThanhToan DATE,
     FOREIGN KEY (MaNV) REFERENCES NhanVien(Id)
 );
+GO
 
 CREATE TABLE ChiTietPhieuNhap (
     MaPhieuCT INT PRIMARY KEY IDENTITY,
@@ -104,17 +115,20 @@ CREATE TABLE ChiTietPhieuNhap (
     FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhap(MaPhieuNhap),
     FOREIGN KEY (MaCTSP) REFERENCES ChiTietSanPham(MaCTSP)
 );
+GO
 
 CREATE TABLE PhieuXuat (
     MaPhieuXuat INT PRIMARY KEY IDENTITY,
     MaKH INT NOT NULL,
     MaNV INT NOT NULL,
     NgayXuat DATE NOT NULL DEFAULT GETDATE(),
-    TrangThaiThanhToan BIT NOT NULL DEFAULT 0,
+    TrangThaiThanhToan NVARCHAR(50) NOT NULL,
     MoTa NVARCHAR(MAX),
     FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
     FOREIGN KEY (MaNV) REFERENCES NhanVien(Id)
 );
+GO
+
 
 CREATE TABLE PhieuXuatChiTiet (
     MaCT INT PRIMARY KEY IDENTITY,
@@ -125,11 +139,13 @@ CREATE TABLE PhieuXuatChiTiet (
     FOREIGN KEY (MaPhieuXuat) REFERENCES PhieuXuat(MaPhieuXuat),
     FOREIGN KEY (MaCTSP) REFERENCES ChiTietSanPham(MaCTSP)
 );
-
+GO
 
 INSERT INTO ChucVu (TenChucVu) VALUES
 (N'Quản lý'),
 (N'Nhân viên');
+GO
+
 INSERT INTO NhanVien (HoTen, SoDienThoai, Email, MaChucVu) VALUES
 (N'Nguyễn Thị Mai',     '0912345678', 'mainguyen@gmail.com', 1),
 (N'Lê Văn Hùng',        '0934567890', 'hunghlv@gmail.com', 2),
@@ -141,6 +157,7 @@ INSERT INTO NhanVien (HoTen, SoDienThoai, Email, MaChucVu) VALUES
 (N'Bùi Văn Quang',      '0966332211', 'quangbui@gmail.com', 2),
 (N'Ngô Thị Thảo',       '0955778899', 'thaongo@gmail.com', 2),
 (N'Huỳnh Quốc Khánh',   '0933888899', 'khanhhuynh@gmail.com', 2);
+GO
 
 INSERT INTO TaiKhoanNhanVien (NhanVienId, TenDangNhap, MatKhau) VALUES
 (1, 'mainguyen', '123456'),
@@ -153,6 +170,7 @@ INSERT INTO TaiKhoanNhanVien (NhanVienId, TenDangNhap, MatKhau) VALUES
 (8, 'quangbui', '123456'),
 (9, 'thaongo', '123456'),
 (10, 'khanhhuynh', '123456');
+GO
 
 INSERT INTO KhachHang (Ten, SDT, DiaChi, Email) VALUES
 (N'Nguyễn Thị Thanh', '0905123456', N'123 Lý Thường Kiệt, Hà Nội', 'thanhnguyen@gmail.com'),
@@ -165,6 +183,8 @@ INSERT INTO KhachHang (Ten, SDT, DiaChi, Email) VALUES
 (N'Ngô Thị Kim Yến', '0955998877', N'99 Nguyễn Huệ, Đà Nẵng', 'yenngo.kim@gmail.com'),
 (N'Huỳnh Văn Hậu', '0933112233', N'5 Lê Duẩn, Hải Phòng', 'hauhuynh@gmail.com'),
 (N'Bùi Thị Thu Trang', '0922446688', N'34 Trần Phú, Nha Trang', 'trangbui@gmail.com');
+GO
+
 INSERT INTO ThuongHieu (TenThuongHieu) VALUES
 (N'Adidas'),
 (N'Nike'),
@@ -176,6 +196,8 @@ INSERT INTO ThuongHieu (TenThuongHieu) VALUES
 (N'H&M'),
 (N'Lacoste'),
 (N'Mango');
+GO
+
 INSERT INTO NhaCungCap (TenNCC, DiaChi, Email, SoDienThoai) VALUES
 (N'Công ty TNHH Vạn Thành', N'123 Nguyễn Trãi, Hà Nội', 'vanthanh@gmail.com', '0909000011'),
 (N'Công ty May Kim Liên', N'45 Lý Tự Trọng, TP.HCM', 'kimlien@gmail.com', '0911000022'),
@@ -187,97 +209,100 @@ INSERT INTO NhaCungCap (TenNCC, DiaChi, Email, SoDienThoai) VALUES
 (N'Nhà phân phối Mango', N'99 Lê Duẩn, Đà Nẵng', 'mango@gmail.com', '0977000088'),
 (N'Tổng kho Adidas', N'5 Điện Biên Phủ, Hải Phòng', 'adidas@gmail.com', '0988000099'),
 (N'Công ty TNHH Louis Vuitton', N'34 Lê Lợi, Nha Trang', 'lv@gmail.com', '0999000010');
-
+GO
 
 INSERT INTO SanPham (MaNCC, TenSP, MoTa, MaThuongHieu, TrangThai) VALUES
-(1, N'Áo thun nam thể thao', N'Chất liệu cotton thấm hút mồ hôi tốt', 1, 1),
-(2, N'Quần jean nữ dáng skinny', N'Co giãn tốt, màu xanh đậm', 2, 1),
-(3, N'Áo sơ mi công sở nam', N'Form rộng, dễ phối đồ', 3, 1),
-(4, N'Váy dài họa tiết hoa', N'Chất vải mát, nhẹ', 4, 1),
-(5, N'Áo khoác bomber nữ', N'Dày dặn, giữ ấm tốt', 5, 1),
-(6, N'Quần short nam thể thao', N'Phong cách năng động', 6, 1),
-(7, N'Váy xòe dáng công chúa', N'Phù hợp dự tiệc, lễ hội', 7, 1),
-(8, N'Áo len cổ lọ', N'Phù hợp mùa đông, giữ nhiệt tốt', 8, 1),
-(9, N'Áo hoodie oversize', N'Phong cách streetwear', 9, 1),
-(10, N'Quần tây nữ công sở', N'Lịch sự, sang trọng', 10, 1);
+(1, N'Áo Thun Nam Adidas', N'Áo thun nam chính hãng, thấm hút tốt.', 1, N'Còn hàng'),
+(2, N'Quần Jean Nữ Nike', N'Quần jean nữ co giãn, phù hợp mặc đi làm hoặc đi chơi.', 2, N'Còn hàng'),
+(3, N'Áo Khoác Puma', N'Áo khoác thể thao, giữ ấm tốt.', 3, N'Ngừng kinh doanh'),
+(4, N'Váy Zara', N'Váy thời trang nữ cao cấp.', 4, N'Còn hàng'),
+(5, N'Áo Sơ Mi Uniqlo', N'Sản phẩm vải mát, dễ mặc, phù hợp công sở.', 5, N'Còn hàng'),
+(6, N'Quần Tây Gucci', N'Quần tây cao cấp cho nam.', 6, N'Còn hàng'),
+(7, N'Túi Xách Louis Vuitton', N'Túi xách hàng hiệu chính hãng.', 7, N'Còn hàng'),
+(8, N'Áo Khoác H&M', N'Áo khoác thời trang trẻ trung.', 8, N'Còn hàng'),
+(9, N'Áo Polo Lacoste', N'Áo polo nam nữ năng động.', 9, N'Còn hàng'),
+(10, N'Chân Váy Mango', N'Chân váy nữ tính, phong cách.', 10, N'Còn hàng');
+GO
+
 INSERT INTO MauSac (TenMau) VALUES
 (N'Đen'),
 (N'Trắng'),
 (N'Xám'),
 (N'Xanh dương'),
+(N'Xanh lá'),
 (N'Đỏ'),
 (N'Vàng'),
-(N'Nâu'),
 (N'Hồng'),
-(N'Tím'),
-(N'Xanh lá');
+(N'Nâu'),
+(N'Tím');
+go
 INSERT INTO KichThuoc (TenKichThuoc) VALUES
+(N'XS'),
 (N'S'),
 (N'M'),
 (N'L'),
-(N'XL'),
-(N'XXL'),
-(N'28'),
-(N'30'),
-(N'32'),
-(N'34'),
-(N'36');
+(N'XL');
+Go
 INSERT INTO ChiTietSanPham (MaSP, MaMau, MaKichThuoc, DonGiaNhap, DonGiaXuat, SoLuong, GhiChu) VALUES
-(11, 1, 1, 80000, 120000, 50, N'Bán chạy'),
-(2, 2, 2, 120000, 180000, 40, N'Hàng mới'),
-(3, 3, 3, 100000, 150000, 30, N'Ưa chuộng'),
-(4, 4, 10, 150000, 220000, 20, N'Hot trend'),
-(5, 5, 8, 180000, 250000, 25, N'Limited'),
-(6, 6, 6, 70000, 110000, 60, N'Giảm giá'),
-(7, 7, 7, 200000, 280000, 15, N'Mẫu độc quyền'),
-(8, 8, 8, 130000, 190000, 35, N'Mùa đông'),
-(9, 9, 9, 110000, 160000, 45, N'Hàng tồn'),
-(10, 10, 10, 140000, 210000, 55, N'Best seller');
+(1, 1, 1, 120000, 180000, 50, N'Hàng mới về'),
+(2, 2, 2, 150000, 220000, 40, N'Bán chạy'),
+(3, 3, 3, 200000, 280000, 30, NULL),
+(4, 4, 4, 180000, 250000, 60, N'Hàng giảm giá'),
+(5, 5, 5, 130000, 200000, 35, NULL),
+(6, 1, 2, 170000, 240000, 45, NULL),
+(7, 2, 3, 300000, 450000, 20, N'Hàng cao cấp'),
+(8, 3, 4, 110000, 160000, 55, NULL),
+(9, 4, 5, 160000, 230000, 25, NULL),
+(10, 5, 1, 190000, 260000, 40, N'Size nhỏ');
+go
 INSERT INTO PhieuNhap (MaNV, NgayNhap, GhiChu, TrangThaiThanhToan, NgayThanhToan) VALUES
-(1, '2025-07-01', N'Nhập hàng đầu tháng', 1, '2025-07-02'),
-(2, '2025-07-02', N'Nhập bổ sung áo thun', 1, '2025-07-03'),
-(3, '2025-07-03', N'Nhập thêm hàng mùa hè', 0, NULL),
-(1, '2025-07-04', N'Nhập hàng từ NCC Vạn Thành', 1, '2025-07-04'),
-(4, '2025-07-05', N'Đặt hàng khẩn cấp', 0, NULL),
-(5, '2025-07-06', N'Nhập hàng định kỳ', 1, '2025-07-06'),
-(2, '2025-07-07', N'Nhập quần jeans mới', 0, NULL),
-(3, '2025-07-08', N'Nhập hàng đồng phục', 1, '2025-07-09'),
-(4, '2025-07-09', N'Nhập hàng khuyến mãi', 0, NULL),
-(1, '2025-07-10', N'Nhập lô hàng lớn', 1, '2025-07-10');
+(1, '2025-07-01', N'Nhập hàng Adidas đợt 1', N'Đã thanh toán', '2025-07-02'),
+(2, '2025-07-02', N'Nhập hàng Nike', N'Chưa thanh toán', NULL),
+(3, '2025-07-03', N'Nhập thêm áo Puma', N'Đã thanh toán', '2025-07-04'),
+(4, '2025-07-04', N'Nhập kho Zara', N'Đã thanh toán', '2025-07-05'),
+(5, '2025-07-05', N'Nhập hàng tồn kho Uniqlo', N'Chưa thanh toán', NULL),
+(6, '2025-07-06', N'Nhập quần Gucci', N'Đã thanh toán', '2025-07-06'),
+(7, '2025-07-07', N'Nhập phụ kiện LV', N'Chưa thanh toán', NULL),
+(8, '2025-07-08', N'Hàng H&M đợt 2', N'Đã thanh toán', '2025-07-09'),
+(9, '2025-07-09', N'Nhập mẫu thử Lacoste', N'Chưa thanh toán', NULL),
+(10, '2025-07-10', N'Nhập hàng Mango', N'Đã thanh toán', '2025-07-10');
+go
 INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaCTSP, SoLuong, DonGia) VALUES
-(21, 12, 100, 120000),
-(21, 12, 50, 150000),
-(22, 11, 70, 110000),
-(23, 10, 60, 95000),
-(24, 5, 80, 99000),
-(25, 6, 100, 105000),
-(26, 7, 120, 140000),
-(27, 8, 75, 130000),
-(28, 9, 90, 100000),
-(29, 10, 110, 115000),
-(30, 10, 110, 115000);
+(1, 1, 20, 120000),
+(2, 2, 15, 150000),
+(3, 3, 10, 200000),
+(4, 4, 25, 180000),
+(5, 5, 30, 130000),
+(6, 6, 18, 170000),
+(7, 7, 12, 300000),
+(8, 8, 22, 110000),
+(9, 9, 14, 160000),
+(10, 10, 16, 190000);
+go
 INSERT INTO PhieuXuat (MaKH, MaNV, NgayXuat, TrangThaiThanhToan, MoTa) VALUES
-(1, 1, '2025-07-10', 1, N'Khách mua đơn hàng thời trang nam'),
-(2, 2, '2025-07-11', 0, N'Đơn hàng chưa thanh toán'),
-(3, 3, '2025-07-11', 1, N'Mua áo thun mùa hè'),
-(4, 1, '2025-07-12', 1, N'Đơn hàng giao gấp'),
-(5, 4, '2025-07-12', 0, N'Khách lấy áo sơ mi và quần tây'),
-(6, 2, '2025-07-13', 1, N'Khách VIP, thanh toán tại chỗ'),
-(7, 5, '2025-07-14', 0, N'Chờ xác nhận thanh toán'),
-(8, 3, '2025-07-14', 1, N'Đơn hàng giảm giá 20%'),
-(9, 1, '2025-07-15', 0, N'Khách mua quần short và áo thun'),
-(10, 2, '2025-07-15', 1, N'Đơn hàng xuất kho cuối ngày');
+(1, 1, '2025-07-11', N'Đã thanh toán', N'Xuất đơn hàng cho khách Thanh'),
+(2, 2, '2025-07-12', N'Chưa thanh toán', N'Đơn hàng khách Long chưa thanh toán'),
+(3, 3, '2025-07-13', N'Đã thanh toán', N'Khách Ngọc đặt hàng áo khoác'),
+(4, 4, '2025-07-14', N'Đã thanh toán', N'Đơn hàng giao cho anh Nam'),
+(5, 5, '2025-07-15', N'Chưa thanh toán', N'Khách Châu sẽ chuyển khoản sau'),
+(6, 6, '2025-07-16', N'Đã thanh toán', N'Giao hàng tận nơi cho chị Hà'),
+(7, 7, '2025-07-17', N'Chưa thanh toán', N'Đơn của anh Bảo đang xử lý'),
+(8, 8, '2025-07-18', N'Đã thanh toán', N'Đơn hàng xuất đi cho Yến'),
+(9, 9, '2025-07-19', N'Chưa thanh toán', N'Khách Hậu thanh toán sau'),
+(10, 10, '2025-07-20', N'Đã thanh toán', N'Xuất hóa đơn cho chị Trang');
+go
 INSERT INTO PhieuXuatChiTiet (MaPhieuXuat, MaCTSP, SoLuong, GiaBan) VALUES
-(21, 11, 2, 180000),
-(22, 12, 1, 220000),
-(23, 13, 3, 150000),
-(24, 14, 2, 175000),
-(25, 5, 1, 190000),
-(26, 6, 4, 165000),
-(27, 7, 2, 210000),
-(28, 8, 1, 160000),
-(29, 9, 3, 185000),
-(30, 10, 2, 200000);
+(1, 1, 2, 180000),
+(2, 2, 1, 220000),
+(3, 3, 3, 280000),
+(4, 4, 2, 250000),
+(5, 5, 1, 200000),
+(6, 6, 2, 240000),
+(7, 7, 1, 450000),
+(8, 8, 4, 160000),
+(9, 9, 2, 230000),
+(10, 10, 3, 260000);
+go
 
 SELECT * FROM ChucVu;
 SELECT * FROM NhanVien;
