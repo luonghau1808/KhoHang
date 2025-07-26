@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using DuAn1_Nhom4.DAL;
-using DuAn1_Nhom4.Data;
+using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4.BLL
 {
