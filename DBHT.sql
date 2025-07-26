@@ -176,6 +176,18 @@ INSERT INTO ThuongHieu (TenThuongHieu) VALUES
 (N'H&M'),
 (N'Lacoste'),
 (N'Mango');
+INSERT INTO NhaCungCap (TenNCC, DiaChi, Email, SoDienThoai) VALUES
+(N'Công ty TNHH Vạn Thành', N'123 Nguyễn Trãi, Hà Nội', 'vanthanh@gmail.com', '0909000011'),
+(N'Công ty May Kim Liên', N'45 Lý Tự Trọng, TP.HCM', 'kimlien@gmail.com', '0911000022'),
+(N'Cửa hàng Thời Trang ABC', N'88 Trần Hưng Đạo, Đà Nẵng', 'abcfashion@gmail.com', '0922000033'),
+(N'Xưởng Sản Xuất Áo Quần Quang Minh', N'12 Trần Phú, Cần Thơ', 'quangminh@gmail.com', '0933000044'),
+(N'Nhà cung cấp Zara Việt Nam', N'76 Nguyễn Văn Cừ, Huế', 'zara.vn@gmail.com', '0944000055'),
+(N'Xưởng Uniqlo Việt Nam', N'22 Hai Bà Trưng, Hà Nội', 'uniqlo.vn@gmail.com', '0955000066'),
+(N'Công ty TNHH Gucci', N'18 Nguyễn Huệ, TP.HCM', 'gucci.vn@gmail.com', '0966000077'),
+(N'Nhà phân phối Mango', N'99 Lê Duẩn, Đà Nẵng', 'mango@gmail.com', '0977000088'),
+(N'Tổng kho Adidas', N'5 Điện Biên Phủ, Hải Phòng', 'adidas@gmail.com', '0988000099'),
+(N'Công ty TNHH Louis Vuitton', N'34 Lê Lợi, Nha Trang', 'lv@gmail.com', '0999000010');
+
 
 INSERT INTO SanPham (MaNCC, TenSP, MoTa, MaThuongHieu, TrangThai) VALUES
 (1, N'Áo thun nam thể thao', N'Chất liệu cotton thấm hút mồ hôi tốt', 1, 1),
@@ -211,11 +223,11 @@ INSERT INTO KichThuoc (TenKichThuoc) VALUES
 (N'34'),
 (N'36');
 INSERT INTO ChiTietSanPham (MaSP, MaMau, MaKichThuoc, DonGiaNhap, DonGiaXuat, SoLuong, GhiChu) VALUES
-(1, 1, 1, 80000, 120000, 50, N'Bán chạy'),
+(11, 1, 1, 80000, 120000, 50, N'Bán chạy'),
 (2, 2, 2, 120000, 180000, 40, N'Hàng mới'),
 (3, 3, 3, 100000, 150000, 30, N'Ưa chuộng'),
-(4, 4, 4, 150000, 220000, 20, N'Hot trend'),
-(5, 5, 5, 180000, 250000, 25, N'Limited'),
+(4, 4, 10, 150000, 220000, 20, N'Hot trend'),
+(5, 5, 8, 180000, 250000, 25, N'Limited'),
 (6, 6, 6, 70000, 110000, 60, N'Giảm giá'),
 (7, 7, 7, 200000, 280000, 15, N'Mẫu độc quyền'),
 (8, 8, 8, 130000, 190000, 35, N'Mùa đông'),
@@ -233,16 +245,17 @@ INSERT INTO PhieuNhap (MaNV, NgayNhap, GhiChu, TrangThaiThanhToan, NgayThanhToan
 (4, '2025-07-09', N'Nhập hàng khuyến mãi', 0, NULL),
 (1, '2025-07-10', N'Nhập lô hàng lớn', 1, '2025-07-10');
 INSERT INTO ChiTietPhieuNhap (MaPhieuNhap, MaCTSP, SoLuong, DonGia) VALUES
-(1, 1, 100, 120000),
-(1, 2, 50, 150000),
-(2, 3, 70, 110000),
-(3, 4, 60, 95000),
-(4, 5, 80, 99000),
-(5, 6, 100, 105000),
-(6, 7, 120, 140000),
-(7, 8, 75, 130000),
-(8, 9, 90, 100000),
-(9, 10, 110, 115000);
+(21, 12, 100, 120000),
+(21, 12, 50, 150000),
+(22, 11, 70, 110000),
+(23, 10, 60, 95000),
+(24, 5, 80, 99000),
+(25, 6, 100, 105000),
+(26, 7, 120, 140000),
+(27, 8, 75, 130000),
+(28, 9, 90, 100000),
+(29, 10, 110, 115000),
+(30, 10, 110, 115000);
 INSERT INTO PhieuXuat (MaKH, MaNV, NgayXuat, TrangThaiThanhToan, MoTa) VALUES
 (1, 1, '2025-07-10', 1, N'Khách mua đơn hàng thời trang nam'),
 (2, 2, '2025-07-11', 0, N'Đơn hàng chưa thanh toán'),
@@ -255,16 +268,31 @@ INSERT INTO PhieuXuat (MaKH, MaNV, NgayXuat, TrangThaiThanhToan, MoTa) VALUES
 (9, 1, '2025-07-15', 0, N'Khách mua quần short và áo thun'),
 (10, 2, '2025-07-15', 1, N'Đơn hàng xuất kho cuối ngày');
 INSERT INTO PhieuXuatChiTiet (MaPhieuXuat, MaCTSP, SoLuong, GiaBan) VALUES
-(1, 1, 2, 180000),
-(2, 2, 1, 220000),
-(3, 3, 3, 150000),
-(4, 4, 2, 175000),
-(5, 5, 1, 190000),
-(6, 6, 4, 165000),
-(7, 7, 2, 210000),
-(8, 8, 1, 160000),
-(9, 9, 3, 185000),
-(10, 10, 2, 200000);
+(21, 11, 2, 180000),
+(22, 12, 1, 220000),
+(23, 13, 3, 150000),
+(24, 14, 2, 175000),
+(25, 5, 1, 190000),
+(26, 6, 4, 165000),
+(27, 7, 2, 210000),
+(28, 8, 1, 160000),
+(29, 9, 3, 185000),
+(30, 10, 2, 200000);
+
+SELECT * FROM ChucVu;
+SELECT * FROM NhanVien;
+SELECT * FROM TaiKhoanNhanVien;
+SELECT * FROM KhachHang;
+SELECT * FROM ThuongHieu;
+SELECT * FROM NhaCungCap;
+SELECT * FROM SanPham;
+SELECT * FROM MauSac;
+SELECT * FROM KichThuoc;
+SELECT * FROM ChiTietSanPham;
+SELECT * FROM PhieuNhap;
+SELECT * FROM ChiTietPhieuNhap;
+SELECT * FROM PhieuXuat;
+SELECT * FROM PhieuXuatChiTiet;
 
 
 
