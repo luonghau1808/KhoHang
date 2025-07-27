@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panelSidebar = new Panel();
+            btnDangXuat = new Button();
             btnTaiKhoan = new Button();
             btnHoaDon = new Button();
             btnNCC = new Button();
@@ -37,7 +38,6 @@
             btnThongKe = new Button();
             pictureBox1 = new PictureBox();
             panelMain = new Panel();
-            btnDangXuat = new Button();
             panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,6 +58,24 @@
             panelSidebar.Name = "panelSidebar";
             panelSidebar.Size = new Size(283, 922);
             panelSidebar.TabIndex = 0;
+            // 
+            // btnDangXuat
+            // 
+            btnDangXuat.Dock = DockStyle.Top;
+            btnDangXuat.FlatAppearance.BorderSize = 0;
+            btnDangXuat.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnDangXuat.FlatStyle = FlatStyle.Flat;
+            btnDangXuat.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
+            btnDangXuat.Image = Properties.Resources.icons8_shopify_30;
+            btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDangXuat.Location = new Point(0, 707);
+            btnDangXuat.Name = "btnDangXuat";
+            btnDangXuat.Size = new Size(283, 77);
+            btnDangXuat.TabIndex = 12;
+            btnDangXuat.Text = "Đăng xuất";
+            btnDangXuat.UseVisualStyleBackColor = true;
             // 
             // btnTaiKhoan
             // 
@@ -192,24 +210,6 @@
             panelMain.Size = new Size(928, 922);
             panelMain.TabIndex = 1;
             // 
-            // btnDangXuat
-            // 
-            btnDangXuat.Dock = DockStyle.Top;
-            btnDangXuat.FlatAppearance.BorderSize = 0;
-            btnDangXuat.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            btnDangXuat.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            btnDangXuat.FlatStyle = FlatStyle.Flat;
-            btnDangXuat.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
-            btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
-            btnDangXuat.Image = Properties.Resources.icons8_shopify_30;
-            btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDangXuat.Location = new Point(0, 707);
-            btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Size = new Size(283, 77);
-            btnDangXuat.TabIndex = 12;
-            btnDangXuat.Text = "Đăng xuất";
-            btnDangXuat.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -223,6 +223,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormMain";
             WindowState = FormWindowState.Maximized;
+            Load += FormMain_Load;
             panelSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

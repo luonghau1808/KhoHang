@@ -39,7 +39,7 @@
             txtUser = new TextBox();
             btnDangNhap = new Button();
             btnThoat = new Button();
-            checkBox1 = new CheckBox();
+            HienThiMk = new CheckBox();
             lbQuenMatKhau = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -95,6 +95,7 @@
             txtPass.Location = new Point(48, 3);
             txtPass.Multiline = true;
             txtPass.Name = "txtPass";
+            txtPass.PasswordChar = '*';
             txtPass.Size = new Size(286, 31);
             txtPass.TabIndex = 4;
             // 
@@ -148,6 +149,7 @@
             btnDangNhap.TabIndex = 6;
             btnDangNhap.Text = "Đăng nhập";
             btnDangNhap.UseVisualStyleBackColor = true;
+            btnDangNhap.Click += btnDangNhap_Click;
             // 
             // btnThoat
             // 
@@ -159,17 +161,19 @@
             btnThoat.TabIndex = 7;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
-            // checkBox1
+            // HienThiMk
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(472, 274);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(140, 21);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "Hiển thị mật khẩu";
-            checkBox1.UseVisualStyleBackColor = true;
+            HienThiMk.AutoSize = true;
+            HienThiMk.Font = new Font("Segoe UI Semibold", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HienThiMk.Location = new Point(472, 274);
+            HienThiMk.Name = "HienThiMk";
+            HienThiMk.Size = new Size(140, 21);
+            HienThiMk.TabIndex = 8;
+            HienThiMk.Text = "Hiển thị mật khẩu";
+            HienThiMk.UseVisualStyleBackColor = true;
+            HienThiMk.CheckedChanged += HienThiMk_CheckedChanged;
             // 
             // lbQuenMatKhau
             // 
@@ -187,12 +191,13 @@
             // 
             // FormDangNhap
             // 
+            AcceptButton = btnDangNhap;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
             ClientSize = new Size(854, 455);
             Controls.Add(lbQuenMatKhau);
-            Controls.Add(checkBox1);
+            Controls.Add(HienThiMk);
             Controls.Add(btnThoat);
             Controls.Add(btnDangNhap);
             Controls.Add(panel3);
@@ -228,7 +233,7 @@
         private PictureBox pictureBox3;
         private Button btnDangNhap;
         private Button btnThoat;
-        private CheckBox checkBox1;
+        private CheckBox HienThiMk;
         private Label lbQuenMatKhau;
     }
 }
