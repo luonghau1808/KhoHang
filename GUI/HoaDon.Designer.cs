@@ -35,13 +35,13 @@
             tabDatHang = new TabPage();
             panel1 = new Panel();
             groupBox3 = new GroupBox();
+            btnXoa = new Button();
             dtgGioHang = new DataGridView();
             groupBox2 = new GroupBox();
             dtgDanhSachSP = new DataGridView();
             groupBox1 = new GroupBox();
             dtgDanhSachHD = new DataGridView();
             backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            btnXoa = new Button();
             groupBox5.SuspendLayout();
             tabControl1.SuspendLayout();
             panel1.SuspendLayout();
@@ -121,6 +121,20 @@
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Giỏ hàng ";
+            groupBox3.Enter += groupBox3_Enter;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Font = new Font("Segoe UI", 10.2F);
+            btnXoa.Image = Properties.Resources.icons8_delete_30;
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.Location = new Point(38, 355);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(254, 48);
+            btnXoa.TabIndex = 24;
+            btnXoa.Text = "Xóa sản phẩm";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // dtgGioHang
             // 
@@ -175,19 +189,6 @@
             dtgDanhSachHD.RowHeadersWidth = 51;
             dtgDanhSachHD.Size = new Size(1279, 231);
             dtgDanhSachHD.TabIndex = 0;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Font = new Font("Segoe UI", 10.2F);
-            btnXoa.Image = Properties.Resources.icons8_delete_30;
-            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(38, 355);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(254, 48);
-            btnXoa.TabIndex = 24;
-            btnXoa.Text = "Xóa sản phẩm";
-            btnXoa.UseVisualStyleBackColor = true;
-            btnXoa.Click += btnXoa_Click;
             // 
             // HoaDon
             // 

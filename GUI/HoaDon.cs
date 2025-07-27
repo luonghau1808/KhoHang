@@ -1,21 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
+using DuAn1_Nhom4.BLL;
+using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4.GUI
 {
     public partial class HoaDon : Form
     {
+        private GenericBLL<ChiTietSanPham> ctSanphamBLL = new GenericBLL<ChiTietSanPham>();
         public HoaDon()
         {
             InitializeComponent();
             LoadFormInTab(new TaoHoaDon(), tabHoaDon);
+        }
+
+        private void LoadSanPham()
+        {
+            var list = ctSanphamBLL.GetAll(x => x.MaSpNavigation, x => x.MaMauNavigation, x => x.MaKichThuocNavigation);
+            dtgDanhSachSP.DataSource = list.Select((sp, index) => new
+            {
+                STT = index + 1,
+                MaSP = sp.MaSp,
+                TenSP = sp.MaSpNavigation.TenSp,
+                MauSac = sp.MaMauNavigation.TenMau,
+                KichThuoc = sp.MaKichThuocNavigation.TenKichThuoc,
+                SoLuong = sp.SoLuong,
+                DonGiaNhap = sp.DonGiaNhap,
+                DonGiaXuat = sp.DonGiaXuat
+
+            }).ToList();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -51,6 +63,11 @@ namespace DuAn1_Nhom4.GUI
         private void btnXoa_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+            LoadSanPham();
         }
     }
 }
