@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DuAn1_Nhom4.GUI
+namespace DuAn1_Nhom4.GUI.Hóa_đơn
 {
-    public partial class ThongTinSanPham : Form
+    public partial class KhachHangF : Form
     {
-        public ThongTinSanPham()
+        public KhachHangF()
         {
             InitializeComponent();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

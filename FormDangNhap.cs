@@ -35,17 +35,18 @@ namespace DuAn1_Nhom4
             lbQuenMatKhau.Cursor = Cursors.Default;
         }
         private void btnDangNhap_Click(object sender, EventArgs e)
-        {         
+        {
             if (string.IsNullOrWhiteSpace(txtUser.Text) || string.IsNullOrWhiteSpace(txtPass.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             try
-            {   string tenTk = txtUser.Text;
-                string matKhau = txtPass.Text;            
+            {
+                string tenTk = txtUser.Text;
+                string matKhau = txtPass.Text;
                 var taiKhoan = taiKhoanBLL.GetAll(tk => tk.NhanVien, tk => tk.NhanVien.MaChucVuNavigation)
-                               .FirstOrDefault(tk => tk.TenDangNhap == tenTk );
+                               .FirstOrDefault(tk => tk.TenDangNhap == tenTk);
 
                 if (taiKhoan != null)
                 {
@@ -65,11 +66,11 @@ namespace DuAn1_Nhom4
                     else
                     {
                         MessageBox.Show("Mật khẩu không chính xác. Vui lòng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }                          
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản không tồn tại!","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tài khoản không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -77,7 +78,7 @@ namespace DuAn1_Nhom4
                 MessageBox.Show(ex.Message, "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -93,6 +94,11 @@ namespace DuAn1_Nhom4
         }
         private void lbQuenMatKhau_Click(object sender, EventArgs e)
         {
+        }
+
+        private void FormDangNhap_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = txtUser; // Đặt focus vào ô nhập tài khoản khi form được tải
         }
     }
 }

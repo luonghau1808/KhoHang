@@ -43,7 +43,7 @@ namespace DuAn1_Nhom4
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            LoadFormToPanel(new HoaDon());
+            LoadFormToPanel(new GUI.PhieuXuatF());
 
         }
         private void FormMain_Load(object sender, EventArgs e)
