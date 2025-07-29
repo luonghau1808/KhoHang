@@ -293,6 +293,7 @@
             btnThemkh.TabIndex = 3;
             btnThemkh.Text = "Chọn khách hàng";
             btnThemkh.UseVisualStyleBackColor = true;
+            btnThemkh.Click += btnThemkh_Click;
             // 
             // txtTendh
             // 

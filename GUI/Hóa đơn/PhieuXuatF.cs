@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Security.Cryptography;
 using DuAn1_Nhom4.BLL;
+using DuAn1_Nhom4.GUI.Hóa_đơn;
 using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4.GUI
@@ -10,7 +11,6 @@ namespace DuAn1_Nhom4.GUI
         private GenericBLL<ChiTietSanPham> _ctSanphamBLL = new GenericBLL<ChiTietSanPham>();
         private GenericBLL<PhieuXuat> _phieuXuatBLL = new GenericBLL<PhieuXuat>();
         private GenericBLL<PhieuXuatChiTiet> _ctPhieuXuatBLL = new GenericBLL<PhieuXuatChiTiet>();
-        decimal _tongTien = 0;
         public PhieuXuatF()
         {
             InitializeComponent();
@@ -35,7 +35,6 @@ namespace DuAn1_Nhom4.GUI
 
         private void LoadPhieuXuat()
         {
-            _tongTien = TinhTongTien();
             var list = _phieuXuatBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(x => x.TrangThaiThanhToan != "Đã thanh toán");
             dtgDanhSachHD.DataSource = list.Select((px, index) => new
             {
@@ -172,6 +171,12 @@ namespace DuAn1_Nhom4.GUI
                 NgayXuat = DateOnly.FromDateTime(DateTime.Now),
                 TrangThaiThanhToan = "Chưa thanh toán",
             };
+        }
+
+        private void btnThemkh_Click(object sender, EventArgs e)
+        {
+            KhachHangF khachHangForm = new KhachHangF();
+            khachHangForm.ShowDialog();
         }
     }
 }

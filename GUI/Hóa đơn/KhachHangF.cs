@@ -1,20 +1,112 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using DuAn1_Nhom4.BLL;
+using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4.GUI.Hóa_đơn
 {
     public partial class KhachHangF : Form
     {
+        GenericBLL<KhachHang> GenericBLL = new GenericBLL<KhachHang>();
+        public KhachHang Kh { get; set; }
         public KhachHangF()
         {
             InitializeComponent();
+        }
+
+        private bool CheckNull()
+        {
+
+            if (string.IsNullOrEmpty(txtDiachi.Text) ||
+                string.IsNullOrEmpty(txtEmail.Text) ||
+                string.IsNullOrEmpty(txtSdt.Text) ||
+                string.IsNullOrEmpty(txtTen.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            string sdt = txtSdt.Text.Trim();
+            if (!Regex.IsMatch(sdt, @"^\d{10}$"))
+            {
+                MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSdt.Focus();
+                return false;
+            }
+
+            return true; // Hợp lệ
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (CheckNull() == false)
+            {
+                return; // Dừng nếu có trường hợp không hợp lệ
+            }
+            try
+            {
+                var khachHang = new KhachHang()
+                {
+                    Ten = txtTen.Text.Trim(),
+                    DiaChi = txtDiachi.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Sdt = txtSdt.Text.Trim()
+                };
+                GenericBLL.Add(khachHang);
+                MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetForm(); // Reset form sau khi thêm thành công
+                LoadKhachHang(); // Tải lại danh sách khách hàng
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Thêm khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void ResetForm()
+        {
+            txtDiachi.ResetText();
+            txtEmail.ResetText();
+            txtSdt.ResetText();
+            txtTen.ResetText();
+        }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
+
+        private void LoadKhachHang()
+        {
+            dtgKH.DataSource = GenericBLL.GetAll().Select(
+                (kh, index) => new
+                {
+                    STT = index + 1,
+                    MaKH = kh.MaKh,
+                    TenKH = kh.Ten,
+                    Sdt = kh.Sdt,
+                    DiaChi = kh.DiaChi,
+                    Email = kh.Email
+
+                }).ToList();
+        }
+
+        private void KhachHangF_Load(object sender, EventArgs e)
+        {
+            LoadKhachHang();
+        }
+
+        private void txtTk_TextChanged(object sender, EventArgs e)
+        {
+            dtgKH.DataSource = GenericBLL.GetAll().Where(x => x.Sdt.Contains(txtTk.Text)).Select(
+                (kh, index) => new
+                {
+                    STT = index + 1,
+                    MaKH = kh.MaKh,
+                    TenKH = kh.Ten,
+                    Sdt = kh.Sdt,
+                    DiaChi = kh.DiaChi,
+                    Email = kh.Email
+
+                }).ToList();
         }
     }
 }
