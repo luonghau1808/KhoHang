@@ -38,10 +38,9 @@ namespace DuAn1_Nhom4
 
         private void btnNCC_Click(object sender, EventArgs e)
         {
-            LoadFormToPanel(new PhieuNhapF());
+            LoadFormToPanel(new PhieuNhapF(NhanVien));
 
         }
-
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
             LoadFormToPanel(new PhieuXuatF());

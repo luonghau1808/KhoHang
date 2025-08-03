@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cbNhanVien = new ComboBox();
             lbTongTien = new Label();
             btnThanhToan = new Button();
             label1 = new Label();
             groupBox2 = new GroupBox();
+            txtTenNV = new TextBox();
             cbTrangThai = new ComboBox();
             label2 = new Label();
             btnThemPhieuNhap = new Button();
@@ -47,15 +47,6 @@
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGioHang).BeginInit();
             SuspendLayout();
-            // 
-            // cbNhanVien
-            // 
-            cbNhanVien.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cbNhanVien.FormattingEnabled = true;
-            cbNhanVien.Location = new Point(844, 50);
-            cbNhanVien.Name = "cbNhanVien";
-            cbNhanVien.Size = new Size(276, 31);
-            cbNhanVien.TabIndex = 6;
             // 
             // lbTongTien
             // 
@@ -85,7 +76,7 @@
             // 
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(708, 53);
+            label1.Location = new Point(717, 58);
             label1.Name = "label1";
             label1.Size = new Size(117, 23);
             label1.TabIndex = 0;
@@ -93,9 +84,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txtTenNV);
             groupBox2.Controls.Add(cbTrangThai);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(cbNhanVien);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(btnThemPhieuNhap);
             groupBox2.Controls.Add(dgvDanhSachPhieuNhap);
@@ -107,6 +98,14 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách phiếu nhập";
+            // 
+            // txtTenNV
+            // 
+            txtTenNV.Location = new Point(877, 53);
+            txtTenNV.Name = "txtTenNV";
+            txtTenNV.ReadOnly = true;
+            txtTenNV.Size = new Size(229, 30);
+            txtTenNV.TabIndex = 37;
             // 
             // cbTrangThai
             // 
@@ -153,6 +152,7 @@
             dgvDanhSachPhieuNhap.Size = new Size(1496, 342);
             dgvDanhSachPhieuNhap.TabIndex = 0;
             dgvDanhSachPhieuNhap.CellClick += dgvDanhSachPhieuNhap_CellClick;
+            dgvDanhSachPhieuNhap.CellContentClick += dgvDanhSachPhieuNhap_CellContentClick;
             // 
             // groupBox3
             // 
@@ -234,12 +234,12 @@
         private Button btnThem;
         private Label label1;
         private Button btnThanhToan;
-        private ComboBox cbNhanVien;
         private Label lbTongTien;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand2;
         private Button btnThemPhieuNhap;
         private ComboBox cbTrangThai;
         private Label label2;
+        private TextBox txtTenNV;
     }
 }

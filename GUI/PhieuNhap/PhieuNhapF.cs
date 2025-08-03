@@ -6,20 +6,19 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 {
     public partial class PhieuNhapF : Form
     {
-        GenericBLL<NhanVien> nhanVienBAL;
+        
         private GenericBLL<ChiTietPhieuNhap> phieuNhapCtBLL;
         private GenericBLL<PhieuNhap> phieuNhapBLL;
         decimal _tongTien = 0;
         private int maPN = 0;
         private string trangThaiThanhToan = "Chưa thanh toán";
-
-        public PhieuNhapF()
+        private NhanVien _nhanVien;
+        public PhieuNhapF(NhanVien nhanVien)
         {
             InitializeComponent();
-            nhanVienBAL = new GenericBLL<NhanVien>();
-
             phieuNhapBLL = new GenericBLL<PhieuNhap>();
             phieuNhapCtBLL = new GenericBLL<ChiTietPhieuNhap>();
+            _nhanVien = nhanVien;
         }
 
         private void LoadTrangThaiThanhToan()
@@ -32,23 +31,11 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 
             cbTrangThai.SelectedIndex = 0; // Mặc định là "Tất cả"
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadNV();
             LoadPhieuNhap();
             LoadTrangThaiThanhToan();
-
-        }
-
-        private void LoadNV()
-        {
-            var listNV = nhanVienBAL.GetAll().ToList();
-            cbNhanVien.DataSource = listNV;
-            cbNhanVien.DisplayMember = "HoTen";
-            cbNhanVien.ValueMember = "Id";
-
-        }
+        } 
         private void LoadPhieuNhap()
         {
             var list = phieuNhapBLL.GetAll(x => x.MaNvNavigation).Where(x => x.TrangThaiThanhToan == trangThaiThanhToan);
@@ -98,9 +85,9 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             // Ignore header row
             if (e.RowIndex < 0) return;
             var row = dgvDanhSachPhieuNhap.Rows[e.RowIndex];
-            var ma = row.Cells["MaPhieuNhap"].Value.ToString();
+            var ma = row.Cells["MaPN"].Value.ToString();
             var phieuNhap = phieuNhapBLL.GetById(maPN);
-            
+
             maPN = int.Parse(ma ?? "0");
             LoadCTPN(maPN);
 
@@ -108,10 +95,15 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             string columnName = dgvDanhSachPhieuNhap.Columns[e.ColumnIndex].Name;
             if (columnName == "btnDelete")
             {
+                if (phieuNhap.TrangThaiThanhToan == "Đã thanh toán")
+                {
+                    MessageBox.Show("Phiếu đã thanh toán, không được hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 HuyPhieuNhap(maPN);
             }
-        }
 
+        }
         public void HuyPhieuNhap(int maPN)
         {
             DialogResult result = MessageBox.Show(
@@ -159,14 +151,14 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 MauSac = ct.MaCtspNavigation?.MaMauNavigation?.TenMau ?? "",
                 KichThuoc = ct.MaCtspNavigation?.MaKichThuocNavigation?.TenKichThuoc ?? "",
                 SoLuong = ct.SoLuong,
-                DonGia = ct.MaCtspNavigation?.DonGiaXuat.ToString("N0") + "đ",
+                DonGia = ct.MaCtspNavigation?.DonGiaNhap.ToString("N0") + "đ",
                 ThanhTien = (ct.SoLuong * (ct.MaCtspNavigation?.DonGiaNhap ?? 0)).ToString("N0") + "đ"
             }).ToList();
 
             // 4. Add Edit button
             DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
             editBtn.HeaderText = "Sửa";
-            editBtn.Text =  "Sửa";
+            editBtn.Text = "Sửa";
             editBtn.UseColumnTextForButtonValue = true;
             editBtn.Name = "btnEdit";
             dgvGioHang.Columns.Add(editBtn);
@@ -174,7 +166,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             // 5. Add Delete button
             DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
             deleteBtn.HeaderText = "Xóa";
-            deleteBtn.Text =  "Xóa";
+            deleteBtn.Text = "Xóa";
             deleteBtn.UseColumnTextForButtonValue = true;
             deleteBtn.Name = "btnDelete";
             dgvGioHang.Columns.Add(deleteBtn);
@@ -188,6 +180,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 
         private void EditSoLuong(int maCT)
         {
+
             if (dgvGioHang.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn một dòng để chỉnh sửa số lượng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -228,7 +221,6 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
         {
             SanPhamF formSpham = new SanPhamF(this);
             var result = formSpham.ShowDialog();
-
         }
 
         public void ThemGioHang(int maCtsp, int soLuong, decimal donGia)
@@ -267,16 +259,12 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 
         private void btnThemPhieuNhap_Click(object sender, EventArgs e)
         {
-            if (cbNhanVien.SelectedIndex == -1 || cbNhanVien.SelectedValue == null)
-            {
-                MessageBox.Show("Vui lòng chọn nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
             var phieuMoi = new PhieuNhap
             {
-                MaNv = int.Parse(cbNhanVien.SelectedValue?.ToString() ?? "0"),
                 NgayNhap = DateOnly.FromDateTime(DateTime.Now),
-                TrangThaiThanhToan = "Chưa thanh toán"
+                TrangThaiThanhToan = "Chưa thanh toán",
+                MaNv = _nhanVien.Id
             };
             phieuNhapBLL.Add(phieuMoi);
             MessageBox.Show("Thêm phiếu nhập thành công.");
@@ -303,7 +291,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             dgvDanhSachPhieuNhap.DataSource = list.Select((px, index) => new
             {
                 STT = index + 1,
-                MaPhieuNhap = px.MaPhieuNhap,
+                MaPN = px.MaPhieuNhap,
                 TenNV = px.MaNvNavigation.HoTen,
                 NgayNhap = px.NgayNhap.ToString("dd/MM/yyyy"),
                 TrangThai = px.TrangThaiThanhToan
@@ -314,6 +302,11 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             deleteBtn.UseColumnTextForButtonValue = true;
             deleteBtn.Name = "btnDelete";
             dgvDanhSachPhieuNhap.Columns.Add(deleteBtn);
+        }
+
+        private void dgvDanhSachPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
