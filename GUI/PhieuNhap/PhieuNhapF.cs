@@ -6,8 +6,9 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 {
     public partial class PhieuNhapF : Form
     {
-        
+
         private GenericBLL<ChiTietPhieuNhap> phieuNhapCtBLL;
+        private GenericBLL<ChiTietSanPham> sanPhamBLL;
         private GenericBLL<PhieuNhap> phieuNhapBLL;
         decimal _tongTien = 0;
         private int maPN = 0;
@@ -18,6 +19,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             InitializeComponent();
             phieuNhapBLL = new GenericBLL<PhieuNhap>();
             phieuNhapCtBLL = new GenericBLL<ChiTietPhieuNhap>();
+            sanPhamBLL = new GenericBLL<ChiTietSanPham>();
             _nhanVien = nhanVien;
         }
 
@@ -28,14 +30,15 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             cbTrangThai.Items.Add("Đã thanh toán");
             cbTrangThai.Items.Add("Chưa thanh toán");
             cbTrangThai.Items.Add("Đã hủy");
+            cbTrangThai.Text = trangThaiThanhToan;
 
-            cbTrangThai.SelectedIndex = 0; // Mặc định là "Tất cả"
+            //cbTrangThai.SelectedIndex = 0; // Mặc định là "Tất cả"
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadPhieuNhap();
             LoadTrangThaiThanhToan();
-        } 
+        }
         private void LoadPhieuNhap()
         {
             var list = phieuNhapBLL.GetAll(x => x.MaNvNavigation).Where(x => x.TrangThaiThanhToan == trangThaiThanhToan);
@@ -89,7 +92,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             var phieuNhap = phieuNhapBLL.GetById(maPN);
 
             maPN = int.Parse(ma ?? "0");
-            LoadCTPN(maPN);
+
 
             // Get the name of the clicked column
             string columnName = dgvDanhSachPhieuNhap.Columns[e.ColumnIndex].Name;
@@ -101,8 +104,10 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                     return;
                 }
                 HuyPhieuNhap(maPN);
+                return;
             }
 
+            LoadCTPN(maPN);
         }
         public void HuyPhieuNhap(int maPN)
         {
@@ -124,6 +129,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 LoadPhieuNhap();
 
                 dgvGioHang.DataSource = null;
+                dgvGioHang.Columns.Clear();
             }
 
         }
@@ -155,21 +161,26 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 ThanhTien = (ct.SoLuong * (ct.MaCtspNavigation?.DonGiaNhap ?? 0)).ToString("N0") + "đ"
             }).ToList();
 
-            // 4. Add Edit button
-            DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
-            editBtn.HeaderText = "Sửa";
-            editBtn.Text = "Sửa";
-            editBtn.UseColumnTextForButtonValue = true;
-            editBtn.Name = "btnEdit";
-            dgvGioHang.Columns.Add(editBtn);
 
-            // 5. Add Delete button
-            DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
-            deleteBtn.HeaderText = "Xóa";
-            deleteBtn.Text = "Xóa";
-            deleteBtn.UseColumnTextForButtonValue = true;
-            deleteBtn.Name = "btnDelete";
-            dgvGioHang.Columns.Add(deleteBtn);
+            if (list.Count > 0)
+            {
+
+                // 4. Add Edit button
+                DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
+                editBtn.HeaderText = "Sửa";
+                editBtn.Text = "Sửa";
+                editBtn.UseColumnTextForButtonValue = true;
+                editBtn.Name = "btnEdit";
+                dgvGioHang.Columns.Add(editBtn);
+
+                // 5. Add Delete button
+                DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
+                deleteBtn.HeaderText = "Xóa";
+                deleteBtn.Text = "Xóa";
+                deleteBtn.UseColumnTextForButtonValue = true;
+                deleteBtn.Name = "btnDelete";
+                dgvGioHang.Columns.Add(deleteBtn);
+            }
 
             // 6. Tổng tiền
             _tongTien = list.Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaNhap ?? 1));
@@ -190,6 +201,14 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             var ct = phieuNhapCtBLL.GetById(maCT);
             if (ct == null) return;
 
+            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap); // Giả sử ct có MaPn
+            if (phieuNhap == null || phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
+            {
+                MessageBox.Show("Không thể chỉnh sửa vì phiếu nhập đã thanh toán hoặc đã hủy!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             PhieuNhapSoLuong frm = new PhieuNhapSoLuong(ct.SoLuong);
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -202,6 +221,14 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 
         private void DeletePhieuNhapCT(int maCT)
         {
+            var ct = phieuNhapCtBLL.GetById(maCT);
+            if (ct == null) return;
+            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap);
+            if (phieuNhap == null || phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
+            {
+                MessageBox.Show("Không thể xóa vì phiếu nhập đã thanh toán hoặc đã hủy!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult result = MessageBox.Show(
                 "Bạn có chắc muốn xóa mặt hàng này?",
                 "Xác nhận xóa",
@@ -247,6 +274,16 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             if (result == DialogResult.Yes)
             {
                 var phieuNhap = phieuNhapBLL.GetById(maPN);
+                var chiTiets = phieuNhapCtBLL.GetAll().Where(x => x.MaPhieuNhap == maPN);
+
+                foreach (var chiTiet in chiTiets)
+                {
+                    var chiTietSanPham = sanPhamBLL.GetById(chiTiet.MaCtsp);
+                    if (chiTietSanPham == null) continue;
+
+                    chiTietSanPham.SoLuong += chiTiet.SoLuong;
+                    sanPhamBLL.Update(chiTietSanPham);
+                }
 
                 phieuNhap!.TrangThaiThanhToan = "Đã thanh toán";
                 phieuNhapBLL.Update(phieuNhap);
@@ -278,30 +315,9 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
 
         private void cbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string trangThai = cbTrangThai.SelectedItem.ToString();
-
-            var list = phieuNhapBLL.GetAll(x => x.MaNvNavigation);
-
-            if (trangThai != "Tất cả")
-            {
-                list = list.Where(p => p.TrangThaiThanhToan == trangThai).ToList();
-            }
-
-            dgvDanhSachPhieuNhap.Columns.Clear();
-            dgvDanhSachPhieuNhap.DataSource = list.Select((px, index) => new
-            {
-                STT = index + 1,
-                MaPN = px.MaPhieuNhap,
-                TenNV = px.MaNvNavigation.HoTen,
-                NgayNhap = px.NgayNhap.ToString("dd/MM/yyyy"),
-                TrangThai = px.TrangThaiThanhToan
-            }).ToList();
-            DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
-            deleteBtn.HeaderText = "Hủy phiếu";
-            deleteBtn.Text = "Hủy";
-            deleteBtn.UseColumnTextForButtonValue = true;
-            deleteBtn.Name = "btnDelete";
-            dgvDanhSachPhieuNhap.Columns.Add(deleteBtn);
+            trangThaiThanhToan = cbTrangThai!.SelectedItem!.ToString()!;
+            LoadPhieuNhap();
+            maPN = 0;
         }
 
         private void dgvDanhSachPhieuNhap_CellContentClick(object sender, DataGridViewCellEventArgs e)

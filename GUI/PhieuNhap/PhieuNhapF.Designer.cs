@@ -30,9 +30,7 @@
         {
             lbTongTien = new Label();
             btnThanhToan = new Button();
-            label1 = new Label();
             groupBox2 = new GroupBox();
-            txtTenNV = new TextBox();
             cbTrangThai = new ComboBox();
             label2 = new Label();
             btnThemPhieuNhap = new Button();
@@ -72,22 +70,10 @@
             btnThanhToan.UseVisualStyleBackColor = true;
             btnThanhToan.Click += btnThanhToan_Click;
             // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Location = new Point(717, 58);
-            label1.Name = "label1";
-            label1.Size = new Size(117, 23);
-            label1.TabIndex = 0;
-            label1.Text = "Tên nhân viên";
-            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtTenNV);
             groupBox2.Controls.Add(cbTrangThai);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(btnThemPhieuNhap);
             groupBox2.Controls.Add(dgvDanhSachPhieuNhap);
             groupBox2.Dock = DockStyle.Top;
@@ -98,14 +84,6 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách phiếu nhập";
-            // 
-            // txtTenNV
-            // 
-            txtTenNV.Location = new Point(877, 53);
-            txtTenNV.Name = "txtTenNV";
-            txtTenNV.ReadOnly = true;
-            txtTenNV.Size = new Size(229, 30);
-            txtTenNV.TabIndex = 37;
             // 
             // cbTrangThai
             // 
@@ -232,7 +210,6 @@
         private GroupBox groupBox3;
         private DataGridView dgvGioHang;
         private Button btnThem;
-        private Label label1;
         private Button btnThanhToan;
         private Label lbTongTien;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
@@ -240,6 +217,5 @@
         private Button btnThemPhieuNhap;
         private ComboBox cbTrangThai;
         private Label label2;
-        private TextBox txtTenNV;
     }
 }

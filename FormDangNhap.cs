@@ -100,6 +100,39 @@ namespace DuAn1_Nhom4
         {
             this.ActiveControl = txtUser; // Đặt focus vào ô nhập tài khoản khi form được tải
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string tenTk = "mainguyen";
+            string matKhau = "123456";
+            var taiKhoan = taiKhoanBLL.GetAll(tk => tk.NhanVien, tk => tk.NhanVien.MaChucVuNavigation)
+                           .FirstOrDefault(tk => tk.TenDangNhap == tenTk);
+
+            if (taiKhoan != null)
+            {
+                if (taiKhoan.MatKhau.Equals(matKhau))
+                {
+                    var nhanvien = nhanVienBLL.GetById(taiKhoan.NhanVienId);
+                    string hoTen = taiKhoan.NhanVien.HoTen;
+                    string chucVu = taiKhoan.NhanVien.MaChucVuNavigation?.TenChucVu ?? "Không rõ";
+                    MessageBox.Show($"Xin chào {hoTen} ({chucVu})", "Đăng nhập thành công");
+                    this.Hide();
+
+                    var formMain = new FormMain();
+                    formMain.NhanVien = nhanvien;
+                    formMain.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Mật khẩu không chính xác. Vui lòng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
 
