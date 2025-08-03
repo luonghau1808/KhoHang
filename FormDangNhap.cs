@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
+using DuAn1_Nhom4.DAL;
 using DuAn1_Nhom4.Models;
 
 
@@ -15,7 +16,7 @@ namespace DuAn1_Nhom4
 {
     public partial class FormDangNhap : Form
     {
-        GenericBLL<TaiKhoanNhanVien> taiKhoanBLL = new GenericBLL<TaiKhoanNhanVien>();
+        GenericDAL<TaiKhoanNhanVien> taiKhoanBLL = new GenericDAL<TaiKhoanNhanVien>(new QuanLyKhoHangQuanAoContext());
         GenericBLL<NhanVien> nhanVienBLL = new GenericBLL<NhanVien>();
 
         public FormDangNhap()
@@ -45,7 +46,7 @@ namespace DuAn1_Nhom4
             {
                 string tenTk = txtUser.Text;
                 string matKhau = txtPass.Text;
-                var taiKhoan = taiKhoanBLL.GetAll(tk => tk.NhanVien, tk => tk.NhanVien.MaChucVuNavigation)
+                var taiKhoan = taiKhoanBLL.GetAllAccount(tk => tk.NhanVien, tk => tk.NhanVien.MaChucVuNavigation)
                                .FirstOrDefault(tk => tk.TenDangNhap == tenTk);
 
                 if (taiKhoan != null)
@@ -61,6 +62,10 @@ namespace DuAn1_Nhom4
                         var formMain = new FormMain();
                         formMain.NhanVien = nhanvien;
                         formMain.ShowDialog();
+
+                        // Sau khi đóng FormMain, hiển thị lại FormDangNhap nếu cần
+                        this.txtPass.Clear();
+                       
                         this.Show();
                     }
                     else

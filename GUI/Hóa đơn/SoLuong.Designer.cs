@@ -31,7 +31,6 @@
             txtSoluong = new TextBox();
             label1 = new Label();
             btnSubmit = new Button();
-            button1 = new Button();
             SuspendLayout();
             // 
             // txtSoluong
@@ -53,30 +52,19 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(308, 130);
+            btnSubmit.Location = new Point(389, 130);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(130, 35);
             btnSubmit.TabIndex = 2;
-            btnSubmit.Text = "Xác nhận";
+            btnSubmit.Text = "OK";
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(444, 130);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 35);
-            button1.TabIndex = 3;
-            button1.Text = "Xác nhận";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // SoLuong
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(600, 177);
-            Controls.Add(button1);
             Controls.Add(btnSubmit);
             Controls.Add(label1);
             Controls.Add(txtSoluong);
@@ -94,6 +82,5 @@
         private TextBox txtSoluong;
         private Label label1;
         private Button btnSubmit;
-        private Button button1;
     }
 }

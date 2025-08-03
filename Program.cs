@@ -1,3 +1,5 @@
+using DuAn1_Nhom4.GUI;
+
 namespace DuAn1_Nhom4
 {
     internal static class Program

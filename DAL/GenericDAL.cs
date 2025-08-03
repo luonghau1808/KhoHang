@@ -26,6 +26,18 @@ namespace DuAn1_Nhom4.DAL
             }
             return query.ToList();
         }
+        public IEnumerable<T> GetAllAccount(params Expression<Func<T, object>>[] inclues)
+        {
+            IQueryable<T> query = _dbSet;
+            if (inclues != null && inclues.Length > 0)
+            {
+                foreach (var inclue in inclues)
+                {
+                    query = query.Include(inclue);
+                }
+            }
+            return query.AsNoTracking().ToList();
+        }
         public T? GetById(int id) => _dbSet.Find(id);
         public void Add(T entity)
         {

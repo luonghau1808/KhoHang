@@ -43,16 +43,27 @@ namespace DuAn1_Nhom4
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            LoadFormToPanel(new GUI.PhieuXuatF());
+            LoadFormToPanel(new GUI.PhieuXuatF(NhanVien));
 
         }
         private void FormMain_Load(object sender, EventArgs e)
-        {           
+        {
             if (NhanVien.MaChucVu == 2)
             {
-                btnNV.Visible = false;                    
+                btnNV.Visible = false;
             }
-           
+
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            LoadFormToPanel(new TaiKhoanF(NhanVien));
+        }
+
+        private void btnLichSu_Click(object sender, EventArgs e)
+        {
+            LoadFormToPanel(new FormLichSu());
+
         }
     }
 

@@ -31,6 +31,14 @@ namespace DuAn1_Nhom4.GUI.Hóa_đơn
                 txtSdt.Focus();
                 return false;
             }
+            string email = txtEmail.Text.Trim();
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Email không đúng định dạng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return false;
+            }
+
 
             return true; // Hợp lệ
         }
@@ -54,6 +62,7 @@ namespace DuAn1_Nhom4.GUI.Hóa_đơn
                 ResetForm(); // Reset form sau khi thêm thành công
                 LoadKhachHang(); // Tải lại danh sách khách hàng
             }
+
             catch (Exception)
             {
                 MessageBox.Show("Thêm khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -107,6 +116,27 @@ namespace DuAn1_Nhom4.GUI.Hóa_đơn
                     Email = kh.Email
 
                 }).ToList();
+        }
+
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            var khachHang = dtgKH.CurrentRow.Cells["MaKH"].Value;
+            if (khachHang == null)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Kh = GenericBLL.GetById((int)khachHang);
+            if (Kh != null)
+            {
+                MessageBox.Show($"Đã chọn khách hàng: {Kh.Ten}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK; // Trả về DialogResult OK để xác nhận
+                this.Close(); // Đóng form sau khi xác nhận
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

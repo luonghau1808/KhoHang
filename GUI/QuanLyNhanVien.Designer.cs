@@ -362,11 +362,11 @@
             // 
             tabTK.Controls.Add(groupBox2);
             tabTK.Controls.Add(groupBox1);
-            tabTK.Location = new Point(4, 29);
+            tabTK.Location = new Point(4, 32);
             tabTK.Margin = new Padding(4, 3, 4, 3);
             tabTK.Name = "tabTK";
             tabTK.Padding = new Padding(4, 3, 4, 3);
-            tabTK.Size = new Size(1347, 650);
+            tabTK.Size = new Size(1347, 647);
             tabTK.TabIndex = 1;
             tabTK.Text = "Tài khoản nhân viên ";
             tabTK.UseVisualStyleBackColor = true;
@@ -380,7 +380,7 @@
             groupBox2.Font = new Font("Segoe UI", 10.2000008F);
             groupBox2.Location = new Point(4, 510);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1339, 137);
+            groupBox2.Size = new Size(1339, 134);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách tài khoản";
@@ -408,7 +408,7 @@
             // 
             dtgDanhSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgDanhSach.Dock = DockStyle.Bottom;
-            dtgDanhSach.Location = new Point(3, -199);
+            dtgDanhSach.Location = new Point(3, -202);
             dtgDanhSach.Name = "dtgDanhSach";
             dtgDanhSach.RowHeadersWidth = 51;
             dtgDanhSach.Size = new Size(1333, 333);

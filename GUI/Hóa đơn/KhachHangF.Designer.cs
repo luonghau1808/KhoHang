@@ -30,7 +30,6 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            btnHuy = new Button();
             btnXacNhan = new Button();
             txtTk = new TextBox();
             label2 = new Label();
@@ -66,7 +65,6 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(btnHuy);
             tabPage1.Controls.Add(btnXacNhan);
             tabPage1.Controls.Add(txtTk);
             tabPage1.Controls.Add(label2);
@@ -79,30 +77,22 @@
             tabPage1.Text = "Danh sách khách hàng";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnHuy
-            // 
-            btnHuy.Location = new Point(633, 20);
-            btnHuy.Name = "btnHuy";
-            btnHuy.Size = new Size(94, 29);
-            btnHuy.TabIndex = 9;
-            btnHuy.Text = "Hủy";
-            btnHuy.UseVisualStyleBackColor = true;
-            // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(521, 18);
+            btnXacNhan.Location = new Point(542, 20);
             btnXacNhan.Name = "btnXacNhan";
             btnXacNhan.Size = new Size(94, 29);
             btnXacNhan.TabIndex = 8;
-            btnXacNhan.Text = "Xác nhận";
+            btnXacNhan.Text = "OK";
             btnXacNhan.UseVisualStyleBackColor = true;
+            btnXacNhan.Click += btnXacNhan_Click;
             // 
             // txtTk
             // 
             txtTk.BorderStyle = BorderStyle.FixedSingle;
-            txtTk.Location = new Point(118, 20);
+            txtTk.Location = new Point(145, 20);
             txtTk.Name = "txtTk";
-            txtTk.Size = new Size(298, 27);
+            txtTk.Size = new Size(305, 27);
             txtTk.TabIndex = 7;
             txtTk.TextChanged += txtTk_TextChanged;
             // 
@@ -111,9 +101,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(42, 22);
             label2.Name = "label2";
-            label2.Size = new Size(70, 20);
+            label2.Size = new Size(97, 20);
             label2.TabIndex = 6;
-            label2.Text = "Tìm kiếm";
+            label2.Text = "Số điện thoại";
             // 
             // dtgKH
             // 
@@ -257,6 +247,7 @@
             ClientSize = new Size(762, 403);
             Controls.Add(tabControl1);
             Name = "KhachHangF";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = " ";
             Load += KhachHangF_Load;
             tabControl1.ResumeLayout(false);
@@ -273,7 +264,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private Button btnHuy;
         private Button btnXacNhan;
         private TextBox txtTk;
         private Label label2;
