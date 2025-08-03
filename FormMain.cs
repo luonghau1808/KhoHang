@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using DuAn1_Nhom4.GUI;
+using DuAn1_Nhom4.GUI.Nhập_hàng;
 using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4
@@ -37,13 +38,13 @@ namespace DuAn1_Nhom4
 
         private void btnNCC_Click(object sender, EventArgs e)
         {
-            LoadFormToPanel(new GUI.NhaCungCap());
+            LoadFormToPanel(new PhieuNhapF());
 
         }
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            LoadFormToPanel(new GUI.PhieuXuatF());
+            LoadFormToPanel(new PhieuXuatF());
 
         }
         private void FormMain_Load(object sender, EventArgs e)
