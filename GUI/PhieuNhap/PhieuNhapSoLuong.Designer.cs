@@ -29,14 +29,12 @@
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnXacNhan;
-        private System.Windows.Forms.Button btnHuy;
 
         private void InitializeComponent()
         {
             txtSoLuong = new TextBox();
             lblTitle = new Label();
             btnXacNhan = new Button();
-            btnHuy = new Button();
             SuspendLayout();
             // 
             // txtSoLuong
@@ -59,31 +57,20 @@
             // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(338, 95);
+            btnXacNhan.Location = new Point(419, 103);
             btnXacNhan.Name = "btnXacNhan";
             btnXacNhan.Size = new Size(159, 35);
             btnXacNhan.TabIndex = 2;
             btnXacNhan.Text = "Xác nhận";
             btnXacNhan.Click += btnXacNhan_Click;
             // 
-            // btnHuy
-            // 
-            btnHuy.Location = new Point(503, 95);
-            btnHuy.Name = "btnHuy";
-            btnHuy.Size = new Size(75, 35);
-            btnHuy.TabIndex = 3;
-            btnHuy.Text = "Hủy";
-            btnHuy.Click += btnHuy_Click;
-            // 
             // PhieuNhapSoLuong
             // 
             AcceptButton = btnXacNhan;
-            CancelButton = btnHuy;
             ClientSize = new Size(602, 150);
             Controls.Add(lblTitle);
             Controls.Add(txtSoLuong);
             Controls.Add(btnXacNhan);
-            Controls.Add(btnHuy);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;

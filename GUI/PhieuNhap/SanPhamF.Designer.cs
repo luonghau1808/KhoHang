@@ -64,6 +64,7 @@
             txtSanPham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtSanPham.Location = new Point(380, 64);
             txtSanPham.Name = "txtSanPham";
+            txtSanPham.ReadOnly = true;
             txtSanPham.Size = new Size(420, 30);
             txtSanPham.TabIndex = 22;
             // 
@@ -96,6 +97,7 @@
             dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSP.Dock = DockStyle.Bottom;
             dgvSP.Location = new Point(3, 133);
+            dgvSP.MultiSelect = false;
             dgvSP.Name = "dgvSP";
             dgvSP.ReadOnly = true;
             dgvSP.RowHeadersWidth = 51;

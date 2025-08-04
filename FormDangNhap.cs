@@ -104,7 +104,7 @@ namespace DuAn1_Nhom4
         private void button1_Click(object sender, EventArgs e)
         {
             string tenTk = "mainguyen";
-            string matKhau = "123456";
+            string matKhau = "18";
             var taiKhoan = taiKhoanBLL.GetAll(tk => tk.NhanVien, tk => tk.NhanVien.MaChucVuNavigation)
                            .FirstOrDefault(tk => tk.TenDangNhap == tenTk);
 

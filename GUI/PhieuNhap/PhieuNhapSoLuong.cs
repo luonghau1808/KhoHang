@@ -40,17 +40,18 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 else
                 {
                     MessageBox.Show("Số lượng phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtSoLuong.Clear();
+                    txtSoLuong.Focus();
                 }
             }
             else
             {
                 MessageBox.Show("Vui lòng nhập một số nguyên hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSoLuong.Clear();
+                txtSoLuong.Focus();
             }
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
+        
     }
 }

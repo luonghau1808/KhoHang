@@ -105,7 +105,7 @@
             // 
             // btnThemPhieuNhap
             // 
-            btnThemPhieuNhap.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnThemPhieuNhap.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btnThemPhieuNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThemPhieuNhap.Image = Properties.Resources.icons8_add_30;
             btnThemPhieuNhap.ImageAlign = ContentAlignment.MiddleLeft;
@@ -123,6 +123,7 @@
             dgvDanhSachPhieuNhap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDanhSachPhieuNhap.Dock = DockStyle.Bottom;
             dgvDanhSachPhieuNhap.Location = new Point(3, 113);
+            dgvDanhSachPhieuNhap.MultiSelect = false;
             dgvDanhSachPhieuNhap.Name = "dgvDanhSachPhieuNhap";
             dgvDanhSachPhieuNhap.ReadOnly = true;
             dgvDanhSachPhieuNhap.RowHeadersWidth = 51;
@@ -130,7 +131,6 @@
             dgvDanhSachPhieuNhap.Size = new Size(1496, 342);
             dgvDanhSachPhieuNhap.TabIndex = 0;
             dgvDanhSachPhieuNhap.CellClick += dgvDanhSachPhieuNhap_CellClick;
-            dgvDanhSachPhieuNhap.CellContentClick += dgvDanhSachPhieuNhap_CellContentClick;
             // 
             // groupBox3
             // 
@@ -165,6 +165,7 @@
             dgvGioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGioHang.Dock = DockStyle.Bottom;
             dgvGioHang.Location = new Point(3, 92);
+            dgvGioHang.MultiSelect = false;
             dgvGioHang.Name = "dgvGioHang";
             dgvGioHang.ReadOnly = true;
             dgvGioHang.RowHeadersWidth = 51;
