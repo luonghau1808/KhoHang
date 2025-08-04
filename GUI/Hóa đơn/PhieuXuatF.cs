@@ -50,7 +50,7 @@ namespace DuAn1_Nhom4.GUI
                 TrangThai = px.TrangThaiThanhToan,
             }).ToList();
 
-            dtgDanhSachHD_CellClick(null, new DataGridViewCellEventArgs(0, 0)); // Gọi sự kiện CellClick để cập nhật giỏ hàng và thông tin khách hàng khi load form lần đầu
+            //dtgDanhSachHD_CellClick(null, new DataGridViewCellEventArgs(0, 0)); // Gọi sự kiện CellClick để cập nhật giỏ hàng và thông tin khách hàng khi load form lần đầu
         }
 
 
