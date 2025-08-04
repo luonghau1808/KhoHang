@@ -41,6 +41,7 @@
             btnThoat = new Button();
             HienThiMk = new CheckBox();
             lbQuenMatKhau = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -189,6 +190,18 @@
             lbQuenMatKhau.MouseEnter += lbQuenMatKhau_MouseEnter;
             lbQuenMatKhau.MouseLeave += lbQuenMatKhau_MouseLeave;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DodgerBlue;
+            button1.Location = new Point(386, 394);
+            button1.Name = "button1";
+            button1.Size = new Size(113, 41);
+            button1.TabIndex = 9;
+            button1.Text = "Đăng nhập";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormDangNhap
             // 
             AcceptButton = btnDangNhap;
@@ -196,6 +209,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
             ClientSize = new Size(854, 455);
+            Controls.Add(button1);
             Controls.Add(lbQuenMatKhau);
             Controls.Add(HienThiMk);
             Controls.Add(btnThoat);
@@ -236,5 +250,6 @@
         private Button btnThoat;
         private CheckBox HienThiMk;
         private Label lbQuenMatKhau;
+        private Button button1;
     }
 }

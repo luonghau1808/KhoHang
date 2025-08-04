@@ -36,10 +36,10 @@
             btnNV = new Button();
             btnSP = new Button();
             btnThongKe = new Button();
-            pictureBox1 = new PictureBox();
+            pictureBoxLogo = new PictureBox();
             panelMain = new Panel();
             panelSidebar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // panelSidebar
@@ -52,7 +52,7 @@
             panelSidebar.Controls.Add(btnNV);
             panelSidebar.Controls.Add(btnSP);
             panelSidebar.Controls.Add(btnThongKe);
-            panelSidebar.Controls.Add(pictureBox1);
+            panelSidebar.Controls.Add(pictureBoxLogo);
             panelSidebar.Dock = DockStyle.Left;
             panelSidebar.Location = new Point(0, 0);
             panelSidebar.Name = "panelSidebar";
@@ -189,17 +189,17 @@
             btnThongKe.Text = "Thống kê";
             btnThongKe.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // pictureBoxLogo
             // 
-            pictureBox1.BackColor = Color.LightSteelBlue;
-            pictureBox1.Dock = DockStyle.Top;
-            pictureBox1.Image = Properties.Resources.Screenshot_2025_07_08_195922_removebg_preview1;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(283, 245);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pictureBoxLogo.BackColor = Color.LightSteelBlue;
+            pictureBoxLogo.Dock = DockStyle.Top;
+            pictureBoxLogo.Image = Properties.Resources.Screenshot_2025_07_08_195922_removebg_preview1;
+            pictureBoxLogo.Location = new Point(0, 0);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(283, 245);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
             // 
             // panelMain
             // 
@@ -225,7 +225,7 @@
             WindowState = FormWindowState.Maximized;
             Load += FormMain_Load;
             panelSidebar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -233,7 +233,7 @@
 
         private Panel panelSidebar;
         private Button btnThongKe;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBoxLogo;
         private Button btnNCC;
         private Button btnNV;
         private Button btnSP;
