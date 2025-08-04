@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.DAL;
+using DuAn1_Nhom4.GUI;
 using DuAn1_Nhom4.Models;
 
 
@@ -18,7 +19,6 @@ namespace DuAn1_Nhom4
     {
         GenericDAL<TaiKhoanNhanVien> taiKhoanBLL = new GenericDAL<TaiKhoanNhanVien>(new QuanLyKhoHangQuanAoContext());
         GenericBLL<NhanVien> nhanVienBLL = new GenericBLL<NhanVien>();
-
         public FormDangNhap()
         {
             InitializeComponent();
@@ -99,6 +99,11 @@ namespace DuAn1_Nhom4
         }
         private void lbQuenMatKhau_Click(object sender, EventArgs e)
         {
+            QuenMatKhauF quenMatKhauF = new QuenMatKhauF();
+            this.Hide(); // Ẩn form đăng nhập hiện tại
+            quenMatKhauF.ShowDialog();
+            this.Show(); // Hiển thị lại form đăng nhập sau khi đóng form quên mật khẩu
+
         }
 
         private void FormDangNhap_Load(object sender, EventArgs e)

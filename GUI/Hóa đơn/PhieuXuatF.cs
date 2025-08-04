@@ -279,6 +279,8 @@ namespace DuAn1_Nhom4.GUI
             txtTen.Clear();
             txtTendh.Clear();
             txtTienkhach.Clear();
+            txtsdt.Clear();
+            txtTen.Clear();
 
 
             lbNV.Text = "Nhân viên: ";
