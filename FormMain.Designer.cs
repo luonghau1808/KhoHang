@@ -30,6 +30,7 @@
         {
             panelSidebar = new Panel();
             btnDangXuat = new Button();
+            btnLichSu = new Button();
             btnTaiKhoan = new Button();
             btnHoaDon = new Button();
             btnNCC = new Button();
@@ -46,6 +47,7 @@
             // 
             panelSidebar.BackColor = Color.LightSteelBlue;
             panelSidebar.Controls.Add(btnDangXuat);
+            panelSidebar.Controls.Add(btnLichSu);
             panelSidebar.Controls.Add(btnTaiKhoan);
             panelSidebar.Controls.Add(btnHoaDon);
             panelSidebar.Controls.Add(btnNCC);
@@ -70,12 +72,31 @@
             btnDangXuat.ForeColor = SystemColors.ActiveCaptionText;
             btnDangXuat.Image = Properties.Resources.icons8_shopify_30;
             btnDangXuat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDangXuat.Location = new Point(0, 707);
+            btnDangXuat.Location = new Point(0, 784);
             btnDangXuat.Name = "btnDangXuat";
             btnDangXuat.Size = new Size(283, 77);
-            btnDangXuat.TabIndex = 12;
+            btnDangXuat.TabIndex = 14;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.UseVisualStyleBackColor = true;
+            // 
+            // btnLichSu
+            // 
+            btnLichSu.Dock = DockStyle.Top;
+            btnLichSu.FlatAppearance.BorderSize = 0;
+            btnLichSu.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnLichSu.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnLichSu.FlatStyle = FlatStyle.Flat;
+            btnLichSu.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold);
+            btnLichSu.ForeColor = SystemColors.ActiveCaptionText;
+            btnLichSu.Image = Properties.Resources.z6860265719254_d26a62abf706e90cbbbab99478350798_removebg_preview;
+            btnLichSu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLichSu.Location = new Point(0, 707);
+            btnLichSu.Name = "btnLichSu";
+            btnLichSu.Size = new Size(283, 77);
+            btnLichSu.TabIndex = 12;
+            btnLichSu.Text = "Lịch sử";
+            btnLichSu.UseVisualStyleBackColor = true;
+            btnLichSu.Click += btnLichSu_Click;
             // 
             // btnTaiKhoan
             // 
@@ -94,6 +115,7 @@
             btnTaiKhoan.TabIndex = 11;
             btnTaiKhoan.Text = "Tài khoản";
             btnTaiKhoan.UseVisualStyleBackColor = true;
+            btnTaiKhoan.Click += btnTaiKhoan_Click;
             // 
             // btnHoaDon
             // 
@@ -240,6 +262,7 @@
         private Button btnTaiKhoan;
         private Button btnHoaDon;
         private Panel panelMain;
+        private Button btnLichSu;
         private Button btnDangXuat;
     }
 }

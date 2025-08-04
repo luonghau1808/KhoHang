@@ -329,5 +329,25 @@ namespace DuAn1_Nhom4.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6860265719254_d26a62abf706e90cbbbab99478350798 {
+            get {
+                object obj = ResourceManager.GetObject("z6860265719254_d26a62abf706e90cbbbab99478350798", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6860265719254_d26a62abf706e90cbbbab99478350798_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("z6860265719254_d26a62abf706e90cbbbab99478350798-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
