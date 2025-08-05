@@ -69,7 +69,11 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
+<<<<<<< HEAD
             groupBox1.Size = new Size(1120, 582);
+=======
+            groupBox1.Size = new Size(1026, 582);
+>>>>>>> Minh
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
@@ -78,7 +82,11 @@
             // 
             btnTk.Image = Properties.Resources.icons8_view_30;
             btnTk.ImageAlign = ContentAlignment.MiddleLeft;
+<<<<<<< HEAD
             btnTk.Location = new Point(947, 139);
+=======
+            btnTk.Location = new Point(835, 139);
+>>>>>>> Minh
             btnTk.Name = "btnTk";
             btnTk.Size = new Size(143, 43);
             btnTk.TabIndex = 7;
@@ -100,7 +108,11 @@
             dgvPhieu.ReadOnly = true;
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+<<<<<<< HEAD
             dgvPhieu.Size = new Size(1114, 351);
+=======
+            dgvPhieu.Size = new Size(1020, 351);
+>>>>>>> Minh
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
@@ -163,7 +175,11 @@
             groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
+<<<<<<< HEAD
             groupBox2.Size = new Size(1120, 330);
+=======
+            groupBox2.Size = new Size(1026, 330);
+>>>>>>> Minh
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -181,7 +197,11 @@
             dgvCt.ReadOnly = true;
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+<<<<<<< HEAD
             dgvCt.Size = new Size(1114, 301);
+=======
+            dgvCt.Size = new Size(1020, 301);
+>>>>>>> Minh
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -252,7 +272,11 @@
             panel1.Controls.Add(labelTenNV);
             panel1.Controls.Add(labelMaNV);
             panel1.Dock = DockStyle.Right;
+<<<<<<< HEAD
             panel1.Location = new Point(1120, 0);
+=======
+            panel1.Location = new Point(1026, 0);
+>>>>>>> Minh
             panel1.Name = "panel1";
             panel1.Size = new Size(399, 912);
             panel1.TabIndex = 0;

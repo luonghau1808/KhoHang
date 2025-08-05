@@ -121,20 +121,40 @@ namespace DuAn1_Nhom4.GUI
                 ThanhTien = ctpn.SoLuong * ctpn.DonGia
             }).ToList();
         }
-
+       
         private void dgvPhieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Minh
             if (comboBox1.SelectedIndex == 0)
             {
                 if (e.RowIndex < 0)
+                    return;
+
+                if (comboBox1.SelectedIndex == 0) // Phiếu Nhập
                 {
-                    return; // Không có hàng nào được chọn
+                    int maPN = Convert.ToInt32(dgvPhieu.Rows[e.RowIndex].Cells["MaPN"].Value);
+                    var pn = _pnBLL.GetById(maPN);
+                    if (pn != null)
+                    {
+                        LoadCTPN(maPN);
+
+                        labelMaNV.Text = "Mã nhân viên: " + pn.MaNvNavigation?.Id;
+                        labelTenNV.Text = "Tên nhân viên: " + pn.MaNvNavigation?.HoTen;
+                        labelNgayTao.Text = "Ngày tạo: " + pn.NgayNhap.ToString("dd/MM/yyyy");
+                        labelTrangThai.Text = "Trạng thái: " + pn.TrangThaiThanhToan;
+
+                        var tongTien = _ctpn.GetAll().Where(x => x.MaPhieuNhap == maPN)
+                            .Sum(x => x.SoLuong * x.DonGia);
+                        labelTongTien.Text = "Tổng tiền: " + tongTien.ToString("N0") + " VNĐ";
+                    }
                 }
-                var pn = _pnBLL.GetById(Convert.ToInt32(dgvPhieu.Rows[e.RowIndex].Cells["MaPN"].Value));
-                if (pn != null)
+                else // Phiếu Xuất
                 {
+<<<<<<< HEAD
                     LoadCTPN(pn.MaPhieuNhap);
                     labelMaNV.Text = "Mã nhân viên: " + pn.MaNvNavigation?.Id;
                     labelTenNV.Text = "Tên nhân viên: " + pn.MaNvNavigation?.HoTen;
@@ -165,6 +185,24 @@ namespace DuAn1_Nhom4.GUI
                         .Where(x => x.MaPhieuXuat == px.MaPhieuXuat)
                         .Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaXuat ?? 0));
                     labelTongTien.Text = "Tổng tiền: " + tongtien.ToString("N0") + " VNĐ";
+=======
+                    int maPX = Convert.ToInt32(dgvPhieu.Rows[e.RowIndex].Cells["MaPX"].Value);
+                    var px = _pxBLL.GetById(maPX);
+                    if (px != null)
+                    {
+                        LoadCTPX(maPX);
+
+                        labelMaNV.Text = "Mã khách hàng: " + px.MaKhNavigation?.MaKh;
+                        labelTenNV.Text = "Tên khách hàng: " + px.MaKhNavigation?.Ten;
+                        labelNgayTao.Text = "Ngày xuất: " + px.NgayXuat.ToString("dd/MM/yyyy");
+                        labelTrangThai.Text = "Trạng thái: " + px.TrangThaiThanhToan;
+
+                        var tongTien = _ctpx.GetAll()
+                            .Where(x => x.MaPhieuXuat == maPX)
+                            .Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaXuat ?? 0));
+                        labelTongTien.Text = "Tổng tiền: " + tongTien.ToString("N0") + " VNĐ";
+                    }
+>>>>>>> Minh
                 }
             }
         }
@@ -207,6 +245,10 @@ namespace DuAn1_Nhom4.GUI
             }
         }
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> Minh
     }
 }
