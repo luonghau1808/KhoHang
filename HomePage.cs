@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DuAn1_Nhom4.GUI
+namespace DuAn1_Nhom4
 {
-    public partial class NhaCungCap : Form
+    public partial class HomePage : Form
     {
-        public NhaCungCap()
+        public HomePage()
         {
             InitializeComponent();
         }
