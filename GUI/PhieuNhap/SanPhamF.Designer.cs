@@ -119,9 +119,11 @@
             // 
             btnThemGioHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThemGioHang.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnThemGioHang.Location = new Point(443, 233);
+            btnThemGioHang.Image = Properties.Resources.icons8_add_shopping_cart_30;
+            btnThemGioHang.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThemGioHang.Location = new Point(443, 221);
             btnThemGioHang.Name = "btnThemGioHang";
-            btnThemGioHang.Size = new Size(259, 35);
+            btnThemGioHang.Size = new Size(259, 48);
             btnThemGioHang.TabIndex = 20;
             btnThemGioHang.Text = "Thêm vào giỏ hàng";
             btnThemGioHang.UseVisualStyleBackColor = true;

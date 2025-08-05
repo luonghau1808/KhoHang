@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.DAL;
 using DuAn1_Nhom4.Models;
+using Microsoft.VisualBasic.Logging;
 
 namespace DuAn1_Nhom4.GUI
 {
@@ -32,7 +33,6 @@ namespace DuAn1_Nhom4.GUI
             comboBox1.SelectedIndex = 0; // Mặc định chọn Phiếu nhập
 
         }
-
         private void FormLichSu_Load(object sender, EventArgs e)
         {
             LoadCB();
@@ -54,21 +54,20 @@ namespace DuAn1_Nhom4.GUI
 
         }
 
-            private void LoadPhieuNhap()
+        private void LoadPhieuNhap()
+        {
+            var list = _pnBLL.GetAll(x => x.MaNvNavigation);
+            dgvPhieu.DataSource = list.Select((pn, index) => new
             {
-                var list = _pnBLL.GetAll(x => x.MaNvNavigation);
-                dgvPhieu.DataSource = list.Select((pn, index) => new
-                {
-                    STT = index + 1,
-                    MaPN = pn.MaPhieuNhap,
-                    TenNV = pn.MaNvNavigation.HoTen,
-                    NgayNhap = pn.NgayNhap,
-                    TrangThaiPN = pn.TrangThaiThanhToan,
-                }).ToList();
+                STT = index + 1,
+                MaPN = pn.MaPhieuNhap,
+                TenNV = pn.MaNvNavigation.HoTen,
+                NgayNhap = pn.NgayNhap,
+                TrangThaiPN = pn.TrangThaiThanhToan,
+            }).ToList();
 
 
-            }
-
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
@@ -114,7 +113,6 @@ namespace DuAn1_Nhom4.GUI
 
         }
 
-
         private void LoadCTPN(int maPN)
         {
             var list = _ctpn.GetAll(
@@ -137,6 +135,50 @@ namespace DuAn1_Nhom4.GUI
 
         private void dgvPhieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            //if (comboBox1.SelectedIndex == 0)
+            //{
+            //    if (e.RowIndex < 0)
+            //        return;
+
+            //    if (comboBox1.SelectedIndex == 0) // Phiếu Nhập
+            //    {
+            //        int maPN = Convert.ToInt32(dgvPhieu.Rows[e.RowIndex].Cells["MaPN"].Value);
+            //        var pn = _pnBLL.GetById(maPN);
+            //        if (pn != null)
+            //        {
+            //            LoadCTPN(maPN);
+
+            //            labelMaNV.Text = "Mã nhân viên: " + pn.MaNvNavigation?.Id;
+            //            labelTenNV.Text = "Tên nhân viên: " + pn.MaNvNavigation?.HoTen;
+            //            labelNgayTao.Text = "Ngày tạo: " + pn.NgayNhap.ToString("dd/MM/yyyy");
+            //            labelTrangThai.Text = "Trạng thái: " + pn.TrangThaiThanhToan;
+
+            //            var tongTien = _ctpn.GetAll().Where(x => x.MaPhieuNhap == maPN)
+            //                .Sum(x => x.SoLuong * x.DonGia);
+            //            labelTongTien.Text = "Tổng tiền: " + tongTien.ToString("N0") + " VNĐ";
+            //        }
+            //    }
+            //    else // Phiếu Xuất
+            //    {
+            //        var px = _pxBLL.GetById(Convert.ToInt32(dgvPhieu.Rows[e.RowIndex].Cells["MaPX"].Value));
+
+            //        if (px != null)
+            //        {
+            //            LoadCTPX(px.MaPhieuXuat);
+
+            //            labelMaNV.Text = "Mã khách hàng: " + px.MaKhNavigation?.MaKh;
+            //            labelTenNV.Text = "Tên khách hàng: " + px.MaKhNavigation?.Ten;
+            //            labelNgayTao.Text = "Ngày xuất: " + px.NgayXuat.ToString("dd/MM/yyyy");
+            //            labelTrangThai.Text = "Trạng thái: " + px.TrangThaiThanhToan;
+
+            //            var tongTien = _ctpx.GetAll()
+            //                .Where(x => x.MaPhieuXuat == px.MaPhieuXuat)
+            //                .Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaXuat ?? 0));
+            //            labelTongTien.Text = "Tổng tiền: " + tongTien.ToString("N0") + " VNĐ";
+            //        }
+            //  }
+            // }
             if (comboBox1.SelectedIndex == 0)
             {
                 if (e.RowIndex < 0)
@@ -147,6 +189,14 @@ namespace DuAn1_Nhom4.GUI
                 if (pn != null)
                 {
                     LoadCTPN(pn.MaPhieuNhap);
+                    labelMaNV.Text = "Mã nhân viên: " + pn.MaNvNavigation?.Id;
+                    labelTenNV.Text = "Tên nhân viên: " + pn.MaNvNavigation?.HoTen;
+                    labelNgayTao.Text = "Ngày tạo: " + pn.NgayNhap.ToString("dd/MM/yyyy");
+                    labelTrangThai.Text = "Trạng thái: " + pn.TrangThaiThanhToan;
+
+                    var tongTien = _ctpn.GetAll().Where(x => x.MaPhieuNhap == pn.MaPhieuNhap)
+                        .Sum(x => x.SoLuong * x.DonGia);
+                    labelTongTien.Text = "Tổng tiền: " + tongTien.ToString("N0") + " VNĐ";
                 }
             }
             else
@@ -159,6 +209,15 @@ namespace DuAn1_Nhom4.GUI
                 if (px != null)
                 {
                     LoadCTPX(px.MaPhieuXuat);
+                    labelMaNV.Text = "Mã khách hàng: " + px.MaKhNavigation?.MaKh;
+                    labelTenNV.Text = "Tên khách hàng: " + px.MaKhNavigation?.Ten;
+                    labelNgayTao.Text = "Ngày xuất: " + px.NgayXuat.ToString();
+                    labelTrangThai.Text = "Trạng thái: " + px.TrangThaiThanhToan;
+
+                    var tongtien = _ctpx.GetAll()
+                        .Where(x => x.MaPhieuXuat == px.MaPhieuXuat)
+                        .Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaXuat ?? 0));
+                    labelTongTien.Text = "Tổng tiền: " + tongtien.ToString("n0") + " vnđ";
                 }
             }
         }
@@ -168,7 +227,7 @@ namespace DuAn1_Nhom4.GUI
             DateOnly datetuNgay = DateOnly.FromDateTime(dateTimePicker1.Value.Date);
             DateOnly dateDenngay = DateOnly.FromDateTime(dateTimePicker2.Value.Date);
 
-            if(datetuNgay > dateDenngay)
+            if (datetuNgay > dateDenngay)
             {
                 MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -200,5 +259,7 @@ namespace DuAn1_Nhom4.GUI
                 }).ToList();
             }
         }
+
+
     }
 }

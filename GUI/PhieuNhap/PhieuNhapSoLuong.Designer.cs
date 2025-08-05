@@ -39,8 +39,9 @@
             // 
             // txtSoLuong
             // 
+            txtSoLuong.BorderStyle = BorderStyle.FixedSingle;
             txtSoLuong.Font = new Font("Segoe UI", 10F);
-            txtSoLuong.Location = new Point(15, 45);
+            txtSoLuong.Location = new Point(15, 54);
             txtSoLuong.Name = "txtSoLuong";
             txtSoLuong.Size = new Size(563, 30);
             txtSoLuong.TabIndex = 1;
@@ -48,20 +49,24 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 10F);
+            lblTitle.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(12, 18);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(161, 23);
+            lblTitle.Size = new Size(162, 23);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Nhập số lượng mới:";
             // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(419, 103);
+            btnXacNhan.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXacNhan.Image = Properties.Resources.icons8_tick_302;
+            btnXacNhan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXacNhan.Location = new Point(437, 103);
             btnXacNhan.Name = "btnXacNhan";
-            btnXacNhan.Size = new Size(159, 35);
+            btnXacNhan.Size = new Size(141, 35);
             btnXacNhan.TabIndex = 2;
             btnXacNhan.Text = "Xác nhận";
+            btnXacNhan.TextAlign = ContentAlignment.MiddleRight;
             btnXacNhan.Click += btnXacNhan_Click;
             // 
             // PhieuNhapSoLuong

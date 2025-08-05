@@ -42,6 +42,7 @@
             txtHoTen = new TextBox();
             txtMa = new TextBox();
             groupBox2 = new GroupBox();
+            label11 = new Label();
             lbcapchar = new Label();
             btnLuuMK = new Button();
             txtMaXacNhan = new TextBox();
@@ -52,7 +53,6 @@
             label6 = new Label();
             txtMkCu = new TextBox();
             txtTenDangNhap = new TextBox();
-            label11 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -60,70 +60,70 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F);
+            label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label1.Location = new Point(354, 104);
             label1.Name = "label1";
-            label1.Size = new Size(66, 25);
+            label1.Size = new Size(69, 25);
             label1.TabIndex = 0;
             label1.Text = "Họ tên";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.8F);
+            label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label2.Location = new Point(354, 35);
             label2.Name = "label2";
-            label2.Size = new Size(118, 25);
+            label2.Size = new Size(124, 25);
             label2.TabIndex = 1;
             label2.Text = "Mã nhân viên";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.8F);
+            label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label3.Location = new Point(354, 182);
             label3.Name = "label3";
-            label3.Size = new Size(117, 25);
+            label3.Size = new Size(122, 25);
             label3.TabIndex = 2;
             label3.Text = "Số điện thoại";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.8F);
+            label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label4.Location = new Point(358, 267);
             label4.Name = "label4";
-            label4.Size = new Size(54, 25);
+            label4.Size = new Size(56, 25);
             label4.TabIndex = 5;
             label4.Text = "Email";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.8F);
+            label5.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label5.Location = new Point(358, 354);
             label5.Name = "label5";
-            label5.Size = new Size(76, 25);
+            label5.Size = new Size(77, 25);
             label5.TabIndex = 6;
             label5.Text = "Chức vụ";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.8F);
+            label9.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label9.Location = new Point(354, 53);
             label9.Name = "label9";
-            label9.Size = new Size(129, 25);
+            label9.Size = new Size(134, 25);
             label9.TabIndex = 8;
             label9.Text = "Tên đăng nhập";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 10.8F);
+            label10.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label10.Location = new Point(354, 145);
             label10.Name = "label10";
-            label10.Size = new Size(109, 25);
+            label10.Size = new Size(113, 25);
             label10.TabIndex = 7;
             label10.Text = "Mật khẩu cũ";
             // 
@@ -140,6 +140,7 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label5);
             groupBox1.Dock = DockStyle.Top;
+            groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1373, 432);
@@ -214,6 +215,7 @@
             groupBox2.Controls.Add(txtTenDangNhap);
             groupBox2.Controls.Add(label9);
             groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 432);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(1373, 565);
@@ -221,21 +223,35 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin tài khoản";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(798, 397);
+            label11.Name = "label11";
+            label11.Size = new Size(110, 25);
+            label11.TabIndex = 21;
+            label11.Text = "Mã capchar:";
+            // 
             // lbcapchar
             // 
             lbcapchar.AutoSize = true;
-            lbcapchar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbcapchar.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbcapchar.ForeColor = Color.Red;
             lbcapchar.Location = new Point(917, 393);
             lbcapchar.Name = "lbcapchar";
-            lbcapchar.Size = new Size(88, 31);
+            lbcapchar.Size = new Size(82, 31);
             lbcapchar.TabIndex = 20;
             lbcapchar.Text = "label11";
             // 
             // btnLuuMK
             // 
-            btnLuuMK.Location = new Point(612, 478);
+            btnLuuMK.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            btnLuuMK.Image = Properties.Resources.icons8_download_from_the_cloud_30;
+            btnLuuMK.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuuMK.Location = new Point(606, 478);
             btnLuuMK.Name = "btnLuuMK";
-            btnLuuMK.Size = new Size(282, 35);
+            btnLuuMK.Size = new Size(282, 51);
             btnLuuMK.TabIndex = 19;
             btnLuuMK.Text = "Lưu thay đổi";
             btnLuuMK.UseVisualStyleBackColor = true;
@@ -253,10 +269,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10.8F);
+            label7.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label7.Location = new Point(354, 398);
             label7.Name = "label7";
-            label7.Size = new Size(94, 25);
+            label7.Size = new Size(95, 25);
             label7.TabIndex = 17;
             label7.Text = "Nhập mã: ";
             // 
@@ -272,10 +288,10 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10.8F);
+            label8.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label8.Location = new Point(354, 310);
             label8.Name = "label8";
-            label8.Size = new Size(163, 25);
+            label8.Size = new Size(167, 25);
             label8.TabIndex = 15;
             label8.Text = "Xác nhận mật khẩu";
             // 
@@ -291,10 +307,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.8F);
+            label6.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
             label6.Location = new Point(354, 233);
             label6.Name = "label6";
-            label6.Size = new Size(122, 25);
+            label6.Size = new Size(126, 25);
             label6.TabIndex = 13;
             label6.Text = "Mật khẩu mới";
             // 
@@ -317,16 +333,6 @@
             txtTenDangNhap.Size = new Size(457, 31);
             txtTenDangNhap.TabIndex = 11;
             txtTenDangNhap.TextChanged += textBox6_TextChanged;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(798, 397);
-            label11.Name = "label11";
-            label11.Size = new Size(107, 25);
-            label11.TabIndex = 21;
-            label11.Text = "Mã capchar:";
             // 
             // TaiKhoanF
             // 

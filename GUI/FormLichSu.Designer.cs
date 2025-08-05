@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            richTextBox1 = new RichTextBox();
-            label12 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox1 = new GroupBox();
+            btnTk = new Button();
             dgvPhieu = new DataGridView();
             label3 = new Label();
             label2 = new Label();
@@ -52,129 +42,18 @@
             dgvCt = new DataGridView();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             sqlCommand2 = new Microsoft.Data.SqlClient.SqlCommand();
-            btnTk = new Button();
-            panel1.SuspendLayout();
+            labelMaNV = new Label();
+            labelTenNV = new Label();
+            labelNgayTao = new Label();
+            labelTrangThai = new Label();
+            labelTongTien = new Label();
+            panel1 = new Panel();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhieu).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCt).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(richTextBox1);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1087, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(338, 912);
-            panel1.TabIndex = 0;
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.Location = new Point(51, 576);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(243, 95);
-            richTextBox1.TabIndex = 9;
-            richTextBox1.Text = "";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 10.2F);
-            label12.Location = new Point(51, 515);
-            label12.Name = "label12";
-            label12.Size = new Size(87, 23);
-            label12.TabIndex = 8;
-            label12.Text = "Lý do hủy:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 10.2F);
-            label11.Location = new Point(50, 174);
-            label11.Name = "label11";
-            label11.Size = new Size(134, 23);
-            label11.TabIndex = 7;
-            label11.Text = "Tên khách hàng:";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 10.2F);
-            label10.Location = new Point(50, 398);
-            label10.Name = "label10";
-            label10.Size = new Size(92, 23);
-            label10.TabIndex = 6;
-            label10.Text = "Tổng tiền: ";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.2F);
-            label9.Location = new Point(50, 455);
-            label9.Name = "label9";
-            label9.Size = new Size(91, 23);
-            label9.TabIndex = 5;
-            label9.Text = "Trạng thái:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10.2F);
-            label8.Location = new Point(50, 336);
-            label8.Name = "label8";
-            label8.Size = new Size(84, 23);
-            label8.TabIndex = 4;
-            label8.Text = "Ngày tạo:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10.2F);
-            label7.Location = new Point(50, 281);
-            label7.Name = "label7";
-            label7.Size = new Size(66, 23);
-            label7.TabIndex = 3;
-            label7.Text = "Địa chỉ:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F);
-            label6.Location = new Point(50, 227);
-            label6.Name = "label6";
-            label6.Size = new Size(120, 23);
-            label6.TabIndex = 2;
-            label6.Text = "Số điện thoại: ";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F);
-            label5.Location = new Point(50, 121);
-            label5.Name = "label5";
-            label5.Size = new Size(120, 23);
-            label5.TabIndex = 1;
-            label5.Text = "Tên nhân viên:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F);
-            label4.Location = new Point(50, 64);
-            label4.Name = "label4";
-            label4.Size = new Size(118, 23);
-            label4.TabIndex = 0;
-            label4.Text = "Mã nhân viên:";
             // 
             // groupBox1
             // 
@@ -187,12 +66,26 @@
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(comboBox1);
             groupBox1.Dock = DockStyle.Top;
+            groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1087, 551);
+            groupBox1.Size = new Size(1026, 582);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
+            // 
+            // btnTk
+            // 
+            btnTk.Image = Properties.Resources.icons8_view_30;
+            btnTk.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTk.Location = new Point(883, 139);
+            btnTk.Name = "btnTk";
+            btnTk.Size = new Size(143, 43);
+            btnTk.TabIndex = 7;
+            btnTk.Text = "Tìm kiếm";
+            btnTk.TextAlign = ContentAlignment.MiddleRight;
+            btnTk.UseVisualStyleBackColor = true;
+            btnTk.Click += btnTk_Click;
             // 
             // dgvPhieu
             // 
@@ -201,22 +94,22 @@
             dgvPhieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPhieu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPhieu.Dock = DockStyle.Bottom;
-            dgvPhieu.Location = new Point(3, 183);
+            dgvPhieu.Location = new Point(3, 228);
             dgvPhieu.MultiSelect = false;
             dgvPhieu.Name = "dgvPhieu";
             dgvPhieu.ReadOnly = true;
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPhieu.Size = new Size(1081, 365);
+            dgvPhieu.Size = new Size(1020, 351);
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(698, 75);
+            label3.Location = new Point(746, 78);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(84, 23);
             label3.TabIndex = 5;
             label3.Text = "Đến ngày";
             // 
@@ -225,7 +118,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(409, 75);
             label2.Name = "label2";
-            label2.Size = new Size(62, 20);
+            label2.Size = new Size(73, 23);
             label2.TabIndex = 4;
             label2.Text = "Từ ngày";
             // 
@@ -234,16 +127,16 @@
             label1.AutoSize = true;
             label1.Location = new Point(35, 78);
             label1.Name = "label1";
-            label1.Size = new Size(78, 20);
+            label1.Size = new Size(89, 23);
             label1.TabIndex = 3;
             label1.Text = "Loại phiếu";
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(798, 75);
+            dateTimePicker2.Location = new Point(846, 78);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(180, 27);
+            dateTimePicker2.Size = new Size(180, 30);
             dateTimePicker2.TabIndex = 2;
             // 
             // dateTimePicker1
@@ -251,7 +144,7 @@
             dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(494, 74);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(180, 27);
+            dateTimePicker1.Size = new Size(180, 30);
             dateTimePicker1.TabIndex = 1;
             // 
             // comboBox1
@@ -259,7 +152,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(131, 76);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(180, 28);
+            comboBox1.Size = new Size(180, 31);
             comboBox1.TabIndex = 0;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -267,9 +160,10 @@
             // 
             groupBox2.Controls.Add(dgvCt);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(0, 551);
+            groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1087, 361);
+            groupBox2.Size = new Size(1026, 330);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -281,13 +175,13 @@
             dgvCt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCt.Dock = DockStyle.Fill;
-            dgvCt.Location = new Point(3, 23);
+            dgvCt.Location = new Point(3, 26);
             dgvCt.MultiSelect = false;
             dgvCt.Name = "dgvCt";
             dgvCt.ReadOnly = true;
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCt.Size = new Size(1081, 335);
+            dgvCt.Size = new Size(1020, 301);
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -300,15 +194,68 @@
             sqlCommand2.CommandTimeout = 30;
             sqlCommand2.EnableOptimizedParameterBinding = false;
             // 
-            // btnTk
+            // labelMaNV
             // 
-            btnTk.Location = new Point(884, 121);
-            btnTk.Name = "btnTk";
-            btnTk.Size = new Size(111, 40);
-            btnTk.TabIndex = 7;
-            btnTk.Text = "Tìm kiếm";
-            btnTk.UseVisualStyleBackColor = true;
-            btnTk.Click += btnTk_Click;
+            labelMaNV.AutoSize = true;
+            labelMaNV.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            labelMaNV.Location = new Point(38, 71);
+            labelMaNV.Name = "labelMaNV";
+            labelMaNV.Size = new Size(146, 30);
+            labelMaNV.TabIndex = 0;
+            labelMaNV.Text = "Mã nhân viên:";
+            // 
+            // labelTenNV
+            // 
+            labelTenNV.AutoSize = true;
+            labelTenNV.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            labelTenNV.Location = new Point(38, 144);
+            labelTenNV.Name = "labelTenNV";
+            labelTenNV.Size = new Size(149, 30);
+            labelTenNV.TabIndex = 1;
+            labelTenNV.Text = "Tên nhân viên:";
+            // 
+            // labelNgayTao
+            // 
+            labelNgayTao.AutoSize = true;
+            labelNgayTao.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            labelNgayTao.Location = new Point(38, 228);
+            labelNgayTao.Name = "labelNgayTao";
+            labelNgayTao.Size = new Size(107, 30);
+            labelNgayTao.TabIndex = 4;
+            labelNgayTao.Text = "Ngày tạo:";
+            // 
+            // labelTrangThai
+            // 
+            labelTrangThai.AutoSize = true;
+            labelTrangThai.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            labelTrangThai.Location = new Point(40, 397);
+            labelTrangThai.Name = "labelTrangThai";
+            labelTrangThai.Size = new Size(114, 30);
+            labelTrangThai.TabIndex = 5;
+            labelTrangThai.Text = "Trạng thái:";
+            // 
+            // labelTongTien
+            // 
+            labelTongTien.AutoSize = true;
+            labelTongTien.Font = new Font("Segoe UI Semibold", 12.2F, FontStyle.Bold);
+            labelTongTien.Location = new Point(38, 310);
+            labelTongTien.Name = "labelTongTien";
+            labelTongTien.Size = new Size(116, 30);
+            labelTongTien.TabIndex = 6;
+            labelTongTien.Text = "Tổng tiền: ";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(labelTongTien);
+            panel1.Controls.Add(labelTrangThai);
+            panel1.Controls.Add(labelNgayTao);
+            panel1.Controls.Add(labelTenNV);
+            panel1.Controls.Add(labelMaNV);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(1026, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(399, 912);
+            panel1.TabIndex = 0;
             // 
             // FormLichSu
             // 
@@ -321,19 +268,17 @@
             Name = "FormLichSu";
             Text = "FormLichSu";
             Load += FormLichSu_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhieu).EndInit();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCt).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
@@ -347,16 +292,12 @@
         private DataGridView dgvCt;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand2;
-        private Label label10;
-        private Label label9;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private RichTextBox richTextBox1;
-        private Label label12;
-        private Label label11;
         private Button btnTk;
+        private Label labelMaNV;
+        private Label labelTenNV;
+        private Label labelNgayTao;
+        private Label labelTrangThai;
+        private Label labelTongTien;
+        private Panel panel1;
     }
 }

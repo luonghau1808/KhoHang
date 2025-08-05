@@ -57,10 +57,11 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(762, 403);
+            tabControl1.Size = new Size(809, 441);
             tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -69,19 +70,22 @@
             tabPage1.Controls.Add(txtTk);
             tabPage1.Controls.Add(label2);
             tabPage1.Controls.Add(dtgKH);
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 32);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(754, 370);
+            tabPage1.Size = new Size(801, 405);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Danh sách khách hàng";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnXacNhan
             // 
-            btnXacNhan.Location = new Point(542, 20);
+            btnXacNhan.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXacNhan.Image = Properties.Resources.icons8_tick_30;
+            btnXacNhan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXacNhan.Location = new Point(542, 40);
             btnXacNhan.Name = "btnXacNhan";
-            btnXacNhan.Size = new Size(94, 29);
+            btnXacNhan.Size = new Size(135, 36);
             btnXacNhan.TabIndex = 8;
             btnXacNhan.Text = "OK";
             btnXacNhan.UseVisualStyleBackColor = true;
@@ -90,18 +94,20 @@
             // txtTk
             // 
             txtTk.BorderStyle = BorderStyle.FixedSingle;
-            txtTk.Location = new Point(145, 20);
+            txtTk.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            txtTk.Location = new Point(187, 40);
             txtTk.Name = "txtTk";
-            txtTk.Size = new Size(305, 27);
+            txtTk.Size = new Size(305, 30);
             txtTk.TabIndex = 7;
             txtTk.TextChanged += txtTk_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(42, 22);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label2.Location = new Point(42, 42);
             label2.Name = "label2";
-            label2.Size = new Size(97, 20);
+            label2.Size = new Size(111, 23);
             label2.TabIndex = 6;
             label2.Text = "Số điện thoại";
             // 
@@ -112,13 +118,13 @@
             dtgKH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgKH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgKH.Dock = DockStyle.Bottom;
-            dtgKH.Location = new Point(3, 100);
+            dtgKH.Location = new Point(3, 135);
             dtgKH.MultiSelect = false;
             dtgKH.Name = "dtgKH";
             dtgKH.ReadOnly = true;
             dtgKH.RowHeadersWidth = 51;
             dtgKH.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgKH.Size = new Size(748, 267);
+            dtgKH.Size = new Size(795, 267);
             dtgKH.TabIndex = 5;
             // 
             // tabPage2
@@ -134,19 +140,22 @@
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(txtTen);
             tabPage2.Controls.Add(label1);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 32);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(754, 370);
+            tabPage2.Size = new Size(801, 405);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Thêm khách hàng";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnLamMoi
             // 
-            btnLamMoi.Location = new Point(602, 305);
+            btnLamMoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnLamMoi.Image = Properties.Resources.icons8_replace_30;
+            btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLamMoi.Location = new Point(446, 305);
             btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(94, 29);
+            btnLamMoi.Size = new Size(196, 39);
             btnLamMoi.TabIndex = 10;
             btnLamMoi.Text = "Làm mới";
             btnLamMoi.UseVisualStyleBackColor = true;
@@ -154,9 +163,12 @@
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(481, 305);
+            btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnThem.Image = Properties.Resources.icons8_add_user_male_30;
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.Location = new Point(180, 305);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(94, 29);
+            btnThem.Size = new Size(196, 39);
             btnThem.TabIndex = 9;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
@@ -165,78 +177,82 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(237, 35);
             label6.Name = "label6";
-            label6.Size = new Size(294, 31);
+            label6.Size = new Size(297, 31);
             label6.TabIndex = 8;
             label6.Text = "Nhập thông tin khách hàng";
             // 
             // txtDiachi
             // 
             txtDiachi.BorderStyle = BorderStyle.FixedSingle;
-            txtDiachi.Location = new Point(507, 219);
+            txtDiachi.Location = new Point(534, 221);
             txtDiachi.Name = "txtDiachi";
-            txtDiachi.Size = new Size(223, 27);
+            txtDiachi.Size = new Size(223, 30);
             txtDiachi.TabIndex = 7;
             // 
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label5.Location = new Point(446, 221);
             label5.Name = "label5";
-            label5.Size = new Size(55, 20);
+            label5.Size = new Size(62, 23);
             label5.TabIndex = 6;
             label5.Text = "Địa chỉ";
             // 
             // txtEmail
             // 
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.Location = new Point(133, 214);
+            txtEmail.Location = new Point(153, 216);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(223, 27);
+            txtEmail.Size = new Size(223, 30);
             txtEmail.TabIndex = 5;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label4.Location = new Point(67, 221);
             label4.Name = "label4";
-            label4.Size = new Size(46, 20);
+            label4.Size = new Size(51, 23);
             label4.TabIndex = 4;
             label4.Text = "Email";
             // 
             // txtSdt
             // 
             txtSdt.BorderStyle = BorderStyle.FixedSingle;
-            txtSdt.Location = new Point(507, 128);
+            txtSdt.Location = new Point(534, 130);
             txtSdt.Name = "txtSdt";
-            txtSdt.Size = new Size(223, 27);
+            txtSdt.Size = new Size(223, 30);
             txtSdt.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label3.Location = new Point(404, 130);
             label3.Name = "label3";
-            label3.Size = new Size(97, 20);
+            label3.Size = new Size(111, 23);
             label3.TabIndex = 2;
             label3.Text = "Số điện thoại";
             // 
             // txtTen
             // 
             txtTen.BorderStyle = BorderStyle.FixedSingle;
-            txtTen.Location = new Point(133, 123);
+            txtTen.Location = new Point(153, 125);
             txtTen.Name = "txtTen";
-            txtTen.Size = new Size(223, 27);
+            txtTen.Size = new Size(223, 30);
             txtTen.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label1.Location = new Point(16, 125);
             label1.Name = "label1";
-            label1.Size = new Size(111, 20);
+            label1.Size = new Size(131, 23);
             label1.TabIndex = 0;
             label1.Text = "Tên khách hàng";
             // 
@@ -244,7 +260,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(762, 403);
+            ClientSize = new Size(809, 441);
             Controls.Add(tabControl1);
             Name = "KhachHangF";
             StartPosition = FormStartPosition.CenterScreen;
