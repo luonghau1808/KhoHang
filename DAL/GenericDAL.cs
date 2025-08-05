@@ -59,6 +59,10 @@ namespace DuAn1_Nhom4.DAL
                 _context.SaveChanges();
             }
         }
+        public bool Exists(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.Any(predicate);
+        }
     }
 }
 

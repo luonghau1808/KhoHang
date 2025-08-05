@@ -22,5 +22,7 @@ namespace DuAn1_Nhom4.BLL
         public void Add(T entity) => dAL.Add(entity);
         public void Update(T entity) => dAL.Update(entity);
         public void Delete(int id) => dAL.Delete(id);
+        public bool Exists(Expression<Func<T, bool>> predicate) => dAL.Exists(predicate);
+
     }
 }

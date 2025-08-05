@@ -49,7 +49,11 @@ namespace DuAn1_Nhom4
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
          
+=======
+            LoadFormToPanel(new HomePage());
+>>>>>>> df98eea2ede7052e6db885e564dba862f98a44f2
             if (NhanVien.MaChucVu == 2)
             {
                 btnNV.Visible = false;
