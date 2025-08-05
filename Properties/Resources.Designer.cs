@@ -63,6 +63,26 @@ namespace DuAn1_Nhom4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_off {
+            get {
+                object obj = ResourceManager.GetObject("eye_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_add_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-30", resourceCulture);
@@ -76,6 +96,26 @@ namespace DuAn1_Nhom4.Properties {
         internal static System.Drawing.Bitmap icons8_add_301 {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-301", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_302 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-302", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_303 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-303", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,6 +193,16 @@ namespace DuAn1_Nhom4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_analytics_302 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-analytics-302", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_change_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-change-24", resourceCulture);
@@ -223,6 +273,16 @@ namespace DuAn1_Nhom4.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_303 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-303", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_delete_document_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-delete-document-30", resourceCulture);
@@ -276,6 +336,36 @@ namespace DuAn1_Nhom4.Properties {
         internal static System.Drawing.Bitmap icons8_edit_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-edit-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_301 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-301", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_302 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-edit-302", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_fast_cart_60 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-fast-cart-60", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

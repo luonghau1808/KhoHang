@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Lưu ý khi đổi mật khẩu:
+
+Mật khẩu mới phải có ít nhất 6 ký tự
+
+Mật khẩu nên có chữ hoa, chữ thường, số và ký tự đặc biệt (!@#$...)
+
+Không được trùng với mật khẩu cũ
+
+Hãy ghi nhớ mật khẩu mới để tránh mất quyền truy cập</value>
+  </data>
 </root>

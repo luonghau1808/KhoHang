@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaiKhoanF));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -42,6 +43,9 @@
             txtHoTen = new TextBox();
             txtMa = new TextBox();
             groupBox2 = new GroupBox();
+            picEyeConfirm = new PictureBox();
+            picEyeNew = new PictureBox();
+            label13 = new Label();
             label11 = new Label();
             lbcapchar = new Label();
             btnLuuMK = new Button();
@@ -55,6 +59,8 @@
             txtTenDangNhap = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picEyeConfirm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picEyeNew).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -147,7 +153,6 @@
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin cá nhân";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // txtChucVu
             // 
@@ -201,6 +206,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(picEyeConfirm);
+            groupBox2.Controls.Add(picEyeNew);
+            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(lbcapchar);
             groupBox2.Controls.Add(btnLuuMK);
@@ -222,6 +230,38 @@
             groupBox2.TabIndex = 11;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin tài khoản";
+            // 
+            // picEyeConfirm
+            // 
+            picEyeConfirm.Cursor = Cursors.Hand;
+            picEyeConfirm.Location = new Point(1011, 304);
+            picEyeConfirm.Name = "picEyeConfirm";
+            picEyeConfirm.Size = new Size(33, 31);
+            picEyeConfirm.SizeMode = PictureBoxSizeMode.Zoom;
+            picEyeConfirm.TabIndex = 24;
+            picEyeConfirm.TabStop = false;
+            picEyeConfirm.Click += picEyeConfirm_Click;
+            // 
+            // picEyeNew
+            // 
+            picEyeNew.Cursor = Cursors.Hand;
+            picEyeNew.Location = new Point(1011, 227);
+            picEyeNew.Name = "picEyeNew";
+            picEyeNew.Size = new Size(33, 31);
+            picEyeNew.SizeMode = PictureBoxSizeMode.Zoom;
+            picEyeNew.TabIndex = 23;
+            picEyeNew.TabStop = false;
+            picEyeNew.Click += picEyeNew_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI Semibold", 9.2F, FontStyle.Bold);
+            label13.Location = new Point(1067, 36);
+            label13.Name = "label13";
+            label13.Size = new Size(497, 189);
+            label13.TabIndex = 22;
+            label13.Text = resources.GetString("label13.Text");
             // 
             // label11
             // 
@@ -332,7 +372,6 @@
             txtTenDangNhap.ReadOnly = true;
             txtTenDangNhap.Size = new Size(457, 31);
             txtTenDangNhap.TabIndex = 11;
-            txtTenDangNhap.TextChanged += textBox6_TextChanged;
             // 
             // TaiKhoanF
             // 
@@ -348,6 +387,8 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picEyeConfirm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picEyeNew).EndInit();
             ResumeLayout(false);
         }
 
@@ -378,5 +419,8 @@
         private Label label6;
         private Label lbcapchar;
         private Label label11;
+        private Label label13;
+        private PictureBox picEyeNew;
+        private PictureBox picEyeConfirm;
     }
 }

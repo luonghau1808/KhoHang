@@ -121,7 +121,7 @@
             btnThemGioHang.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnThemGioHang.Image = Properties.Resources.icons8_add_shopping_cart_30;
             btnThemGioHang.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThemGioHang.Location = new Point(443, 221);
+            btnThemGioHang.Location = new Point(460, 220);
             btnThemGioHang.Name = "btnThemGioHang";
             btnThemGioHang.Size = new Size(259, 48);
             btnThemGioHang.TabIndex = 20;

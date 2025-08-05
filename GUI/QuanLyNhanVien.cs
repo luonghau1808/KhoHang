@@ -301,7 +301,7 @@ namespace DuAn1_Nhom4.GUI
             tk.MatKhau = txbMk.Text;
             tk.TrangThai = rbHD.Checked ? "Đang Hoạt Động" : "Ngừng Hoạt Động";
 
-            if(tkBll.Exists(x => x.NhanVienId.ToString() == txbTenNv.Text.ToLower()))
+            if (tkBll.Exists(x => x.NhanVienId.ToString() == txbTenNv.Text.ToLower()))
             {
                 MessageBox.Show($"Nhân viên đã có tài khoản");
                 return;
@@ -472,6 +472,11 @@ namespace DuAn1_Nhom4.GUI
         private void txbTimTk_TextChanged(object sender, EventArgs e)
         {
             findTk();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

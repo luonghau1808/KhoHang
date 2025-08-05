@@ -143,7 +143,7 @@
             // btnXoa
             // 
             btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnXoa.Image = Properties.Resources.icons8_delete_30;
+            btnXoa.Image = Properties.Resources.icons8_delete_303;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
             btnXoa.Location = new Point(915, 407);
             btnXoa.Name = "btnXoa";
@@ -156,7 +156,7 @@
             // btnSua
             // 
             btnSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnSua.Image = Properties.Resources.icons8_change_24;
+            btnSua.Image = Properties.Resources.icons8_edit_302;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
             btnSua.Location = new Point(524, 407);
             btnSua.Name = "btnSua";

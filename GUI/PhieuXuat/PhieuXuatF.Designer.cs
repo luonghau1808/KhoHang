@@ -271,10 +271,10 @@
             // lbTongtienhd
             // 
             lbTongtienhd.AutoSize = true;
-            lbTongtienhd.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbTongtienhd.Location = new Point(64, 46);
+            lbTongtienhd.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTongtienhd.Location = new Point(56, 43);
             lbTongtienhd.Name = "lbTongtienhd";
-            lbTongtienhd.Size = new Size(184, 41);
+            lbTongtienhd.Size = new Size(190, 41);
             lbTongtienhd.TabIndex = 0;
             lbTongtienhd.Text = "Tổng tiền: 0 ";
             // 
