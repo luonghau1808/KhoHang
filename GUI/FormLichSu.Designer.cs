@@ -69,7 +69,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1026, 582);
+            groupBox1.Size = new Size(1120, 582);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
@@ -78,7 +78,7 @@
             // 
             btnTk.Image = Properties.Resources.icons8_view_30;
             btnTk.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTk.Location = new Point(883, 139);
+            btnTk.Location = new Point(947, 139);
             btnTk.Name = "btnTk";
             btnTk.Size = new Size(143, 43);
             btnTk.TabIndex = 7;
@@ -100,14 +100,14 @@
             dgvPhieu.ReadOnly = true;
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPhieu.Size = new Size(1020, 351);
+            dgvPhieu.Size = new Size(1114, 351);
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(746, 78);
+            label3.Location = new Point(790, 78);
             label3.Name = "label3";
             label3.Size = new Size(84, 23);
             label3.TabIndex = 5;
@@ -116,7 +116,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(409, 75);
+            label2.Location = new Point(418, 78);
             label2.Name = "label2";
             label2.Size = new Size(73, 23);
             label2.TabIndex = 4;
@@ -134,7 +134,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(846, 78);
+            dateTimePicker2.Location = new Point(910, 78);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(180, 30);
             dateTimePicker2.TabIndex = 2;
@@ -142,7 +142,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(494, 74);
+            dateTimePicker1.Location = new Point(515, 73);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(180, 30);
             dateTimePicker1.TabIndex = 1;
@@ -163,7 +163,7 @@
             groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1026, 330);
+            groupBox2.Size = new Size(1120, 330);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -181,7 +181,7 @@
             dgvCt.ReadOnly = true;
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCt.Size = new Size(1020, 301);
+            dgvCt.Size = new Size(1114, 301);
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -252,7 +252,7 @@
             panel1.Controls.Add(labelTenNV);
             panel1.Controls.Add(labelMaNV);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1026, 0);
+            panel1.Location = new Point(1120, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(399, 912);
             panel1.TabIndex = 0;
@@ -261,7 +261,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1425, 912);
+            ClientSize = new Size(1519, 912);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
