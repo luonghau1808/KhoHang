@@ -115,6 +115,16 @@ namespace DuAn1_Nhom4
                 formDangNhap.FormClosed += (s, args) => this.Close();
             }
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            LoadFormToPanel(new ThongKe());
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
