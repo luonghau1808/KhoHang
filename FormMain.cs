@@ -65,6 +65,16 @@ namespace DuAn1_Nhom4
             LoadFormToPanel(new FormLichSu());
 
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            LoadFormToPanel(new ThongKe());
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

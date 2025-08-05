@@ -210,6 +210,7 @@
             btnThongKe.TabIndex = 1;
             btnThongKe.Text = "Thống kê";
             btnThongKe.UseVisualStyleBackColor = true;
+            btnThongKe.Click += btnThongKe_Click;
             // 
             // pictureBoxLogo
             // 
@@ -231,6 +232,7 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new Size(928, 922);
             panelMain.TabIndex = 1;
+            panelMain.Paint += panelMain_Paint;
             // 
             // FormMain
             // 
