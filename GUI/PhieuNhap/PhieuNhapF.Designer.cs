@@ -60,7 +60,7 @@
             // 
             btnThanhToan.Anchor = AnchorStyles.Right;
             btnThanhToan.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThanhToan.Image = Properties.Resources.icons8_dollar_bag_30;
+            btnThanhToan.Image = Properties.Resources.icons8_money_60;
             btnThanhToan.ImageAlign = ContentAlignment.MiddleLeft;
             btnThanhToan.Location = new Point(889, 902);
             btnThanhToan.Name = "btnThanhToan";
@@ -107,7 +107,7 @@
             // 
             btnThemPhieuNhap.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btnThemPhieuNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemPhieuNhap.Image = Properties.Resources.icons8_add_30;
+            btnThemPhieuNhap.Image = Properties.Resources.icons8_create_document_30;
             btnThemPhieuNhap.ImageAlign = ContentAlignment.MiddleLeft;
             btnThemPhieuNhap.Location = new Point(1155, 43);
             btnThemPhieuNhap.Name = "btnThemPhieuNhap";
@@ -149,11 +149,11 @@
             // 
             btnThem.Anchor = AnchorStyles.Right;
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThem.Image = Properties.Resources.icons8_add_30;
+            btnThem.Image = Properties.Resources.icons8_add_to_shopping_basket_30;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
             btnThem.Location = new Point(1118, 29);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(372, 41);
+            btnThem.Size = new Size(372, 47);
             btnThem.TabIndex = 33;
             btnThem.Text = "Thêm sản phẩm vào chi tiết phiếu";
             btnThem.UseVisualStyleBackColor = true;

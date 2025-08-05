@@ -275,9 +275,9 @@ namespace DuAn1_Nhom4.GUI
         {
             // Xóa text các ô bên phải
             txtsdt.Clear();
-            txtSdtdh.Clear();
+       
             txtTen.Clear();
-            txtTendh.Clear();
+      
             txtTienkhach.Clear();
             txtsdt.Clear();
             txtTen.Clear();

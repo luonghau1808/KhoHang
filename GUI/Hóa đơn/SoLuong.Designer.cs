@@ -36,25 +36,30 @@
             // txtSoluong
             // 
             txtSoluong.BorderStyle = BorderStyle.FixedSingle;
+            txtSoluong.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtSoluong.Location = new Point(94, 70);
             txtSoluong.Name = "txtSoluong";
-            txtSoluong.Size = new Size(389, 27);
+            txtSoluong.Size = new Size(389, 30);
             txtSoluong.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label1.Location = new Point(94, 30);
             label1.Name = "label1";
-            label1.Size = new Size(107, 20);
+            label1.Size = new Size(124, 23);
             label1.TabIndex = 1;
             label1.Text = "Nhập số lượng";
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(389, 130);
+            btnSubmit.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnSubmit.Image = Properties.Resources.icons8_tick_301;
+            btnSubmit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSubmit.Location = new Point(369, 130);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(130, 35);
+            btnSubmit.Size = new Size(114, 35);
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "OK";
             btnSubmit.UseVisualStyleBackColor = true;
