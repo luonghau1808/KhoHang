@@ -12,11 +12,14 @@ using DuAn1_Nhom4.Models;
 
 namespace DuAn1_Nhom4.GUI
 {
+
     public partial class TaiKhoanF : Form
     {
         NhanVien _NhanVien;
         GenericBLL<TaiKhoanNhanVien> _tkBLL = new GenericBLL<TaiKhoanNhanVien>();
         GenericBLL<ChucVu> _chucVuBLL = new GenericBLL<ChucVu>();
+        bool isNewShown = false;
+        bool isConfirmShown = false;
         public TaiKhoanF(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -48,17 +51,17 @@ namespace DuAn1_Nhom4.GUI
         private void TaiKhoanF_Load(object sender, EventArgs e)
         {
             LoadNhanVien();
+
+            picEyeNew.Image = Properties.Resources.eye_off;
+            picEyeConfirm.Image = Properties.Resources.eye_off;
+
+            // Ẩn mật khẩu ban đầu
+            txtMKMoi.UseSystemPasswordChar = true;
+            txtXacNhan.UseSystemPasswordChar = true;
+
+
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnLuuMK_Click(object sender, EventArgs e)
         {
@@ -67,7 +70,7 @@ namespace DuAn1_Nhom4.GUI
                 var tk = _tkBLL.GetAll().FirstOrDefault(x => x.Id == _NhanVien.Id);
                 if (tk != null)
                 {
-                    if(txtMkCu.Text != tk.MatKhau)
+                    if (txtMkCu.Text != tk.MatKhau)
                     {
                         MessageBox.Show("Mật khẩu cũ không đúng, vui lòng nhập lại.");
                         return;
@@ -93,6 +96,18 @@ namespace DuAn1_Nhom4.GUI
             txtMkCu.Clear();
             txtXacNhan.Clear();
         }
+        private void picEyeNew_Click(object sender, EventArgs e)
+        {
+            isNewShown = !isNewShown;
+            txtMKMoi.UseSystemPasswordChar = !isNewShown;
+            picEyeNew.Image = isNewShown ? Properties.Resources.eye: Properties.Resources.eye_off;
+        }
 
+        private void picEyeConfirm_Click(object sender, EventArgs e)
+        {
+            isConfirmShown = !isConfirmShown;
+            txtXacNhan.UseSystemPasswordChar = !isConfirmShown;
+            picEyeConfirm.Image = isConfirmShown ? Properties.Resources.eye : Properties.Resources.eye_off;
+        }
     }
 }

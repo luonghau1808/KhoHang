@@ -53,7 +53,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(371, 408);
+            panel1.Size = new Size(358, 408);
             panel1.TabIndex = 15;
             // 
             // pictureBox1
@@ -63,7 +63,7 @@
             pictureBox1.Image = Properties.Resources.Screenshot_2025_07_08_195922_removebg_preview1;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(371, 408);
+            pictureBox1.Size = new Size(358, 408);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -83,7 +83,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Historic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(499, 40);
+            label1.Location = new Point(522, 30);
             label1.Name = "label1";
             label1.Size = new Size(237, 41);
             label1.TabIndex = 16;
@@ -92,16 +92,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(473, 117);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label2.Location = new Point(463, 114);
             label2.Name = "label2";
-            label2.Size = new Size(46, 20);
+            label2.Size = new Size(51, 23);
             label2.TabIndex = 17;
             label2.Text = "Email";
             // 
             // txtEmail
             // 
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.Location = new Point(525, 110);
+            txtEmail.Location = new Point(535, 109);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(234, 27);
             txtEmail.TabIndex = 18;
@@ -109,7 +110,7 @@
             // txtOTP
             // 
             txtOTP.BorderStyle = BorderStyle.FixedSingle;
-            txtOTP.Location = new Point(525, 164);
+            txtOTP.Location = new Point(535, 163);
             txtOTP.Name = "txtOTP";
             txtOTP.Size = new Size(234, 27);
             txtOTP.TabIndex = 20;
@@ -118,9 +119,10 @@
             // lbOTP
             // 
             lbOTP.AutoSize = true;
-            lbOTP.Location = new Point(459, 171);
+            lbOTP.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            lbOTP.Location = new Point(443, 174);
             lbOTP.Name = "lbOTP";
-            lbOTP.Size = new Size(60, 20);
+            lbOTP.Size = new Size(71, 23);
             lbOTP.TabIndex = 19;
             lbOTP.Text = "Mã OTP";
             lbOTP.Visible = false;
@@ -128,7 +130,7 @@
             // txtMkmoi
             // 
             txtMkmoi.BorderStyle = BorderStyle.FixedSingle;
-            txtMkmoi.Location = new Point(525, 220);
+            txtMkmoi.Location = new Point(535, 219);
             txtMkmoi.Name = "txtMkmoi";
             txtMkmoi.Size = new Size(234, 27);
             txtMkmoi.TabIndex = 22;
@@ -137,9 +139,10 @@
             // lbMkmoi
             // 
             lbMkmoi.AutoSize = true;
-            lbMkmoi.Location = new Point(419, 222);
+            lbMkmoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            lbMkmoi.Location = new Point(403, 225);
             lbMkmoi.Name = "lbMkmoi";
-            lbMkmoi.Size = new Size(100, 20);
+            lbMkmoi.Size = new Size(118, 23);
             lbMkmoi.TabIndex = 21;
             lbMkmoi.Text = "Mật khẩu mới";
             lbMkmoi.Visible = false;
@@ -147,7 +150,7 @@
             // txtMkxacNhan
             // 
             txtMkxacNhan.BorderStyle = BorderStyle.FixedSingle;
-            txtMkxacNhan.Location = new Point(525, 274);
+            txtMkxacNhan.Location = new Point(535, 273);
             txtMkxacNhan.Name = "txtMkxacNhan";
             txtMkxacNhan.Size = new Size(234, 27);
             txtMkxacNhan.TabIndex = 24;
@@ -156,18 +159,20 @@
             // lbMkxacNhan
             // 
             lbMkxacNhan.AutoSize = true;
-            lbMkxacNhan.Location = new Point(385, 274);
+            lbMkxacNhan.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            lbMkxacNhan.Location = new Point(369, 277);
             lbMkxacNhan.Name = "lbMkxacNhan";
-            lbMkxacNhan.Size = new Size(134, 20);
+            lbMkxacNhan.Size = new Size(160, 23);
             lbMkxacNhan.TabIndex = 23;
             lbMkxacNhan.Text = "Xác nhận mật khẩu";
             lbMkxacNhan.Visible = false;
             // 
             // btnXacnhan
             // 
-            btnXacnhan.Location = new Point(709, 332);
+            btnXacnhan.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXacnhan.Location = new Point(723, 332);
             btnXacnhan.Name = "btnXacnhan";
-            btnXacnhan.Size = new Size(94, 29);
+            btnXacnhan.Size = new Size(104, 35);
             btnXacnhan.TabIndex = 25;
             btnXacnhan.Text = "Xác nhận";
             btnXacnhan.UseVisualStyleBackColor = true;
@@ -176,9 +181,10 @@
             // 
             // btnEmail
             // 
-            btnEmail.Location = new Point(766, 110);
+            btnEmail.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEmail.Location = new Point(784, 108);
             btnEmail.Name = "btnEmail";
-            btnEmail.Size = new Size(58, 27);
+            btnEmail.Size = new Size(72, 27);
             btnEmail.TabIndex = 26;
             btnEmail.Text = "Gửi";
             btnEmail.UseVisualStyleBackColor = true;
@@ -186,9 +192,10 @@
             // 
             // btnOTP
             // 
-            btnOTP.Location = new Point(766, 163);
+            btnOTP.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOTP.Location = new Point(784, 163);
             btnOTP.Name = "btnOTP";
-            btnOTP.Size = new Size(58, 28);
+            btnOTP.Size = new Size(72, 28);
             btnOTP.TabIndex = 27;
             btnOTP.Text = "OK";
             btnOTP.UseVisualStyleBackColor = true;
@@ -199,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(836, 408);
+            ClientSize = new Size(868, 408);
             Controls.Add(btnOTP);
             Controls.Add(btnEmail);
             Controls.Add(btnXacnhan);
