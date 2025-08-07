@@ -75,7 +75,7 @@ namespace DuAn1_Nhom4.GUI
                 ThanhTien = ct.SoLuong * (ct.MaCtspNavigation?.DonGiaXuat ?? 0)
             }).ToList();
 
-            lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("C2"); // Cập nhật tổng tiền của hóa đơn
+            lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("N0") + "VNĐ"; // Cập nhật tổng tiền của hóa đơn
 
             btnTao.Enabled = false;
             btnThem.Visible = true; 

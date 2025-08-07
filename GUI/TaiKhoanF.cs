@@ -20,6 +20,7 @@ namespace DuAn1_Nhom4.GUI
         GenericBLL<ChucVu> _chucVuBLL = new GenericBLL<ChucVu>();
         bool isNewShown = false;
         bool isConfirmShown = false;
+        bool isOldShown = false;
         public TaiKhoanF(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -54,10 +55,12 @@ namespace DuAn1_Nhom4.GUI
 
             picEyeNew.Image = Properties.Resources.eye_off;
             picEyeConfirm.Image = Properties.Resources.eye_off;
+            pictureBoxeyeOld.Image = Properties.Resources.eye_off;
 
             // Ẩn mật khẩu ban đầu
             txtMKMoi.UseSystemPasswordChar = true;
             txtXacNhan.UseSystemPasswordChar = true;
+            txtMkCu.UseSystemPasswordChar = true;
 
 
         }
@@ -65,6 +68,11 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnLuuMK_Click(object sender, EventArgs e)
         {
+            if (txtMaXacNhan.Text != lbcapchar.Text)
+            {
+                MessageBox.Show("Mã xác nhận không đúng, vui lòng nhập lại.");
+                return;
+            }
             if (txtMKMoi.Text == txtXacNhan.Text)
             {
                 var tk = _tkBLL.GetAll().FirstOrDefault(x => x.Id == _NhanVien.Id);
@@ -100,7 +108,7 @@ namespace DuAn1_Nhom4.GUI
         {
             isNewShown = !isNewShown;
             txtMKMoi.UseSystemPasswordChar = !isNewShown;
-            picEyeNew.Image = isNewShown ? Properties.Resources.eye: Properties.Resources.eye_off;
+            picEyeNew.Image = isNewShown ? Properties.Resources.eye : Properties.Resources.eye_off;
         }
 
         private void picEyeConfirm_Click(object sender, EventArgs e)
@@ -108,6 +116,13 @@ namespace DuAn1_Nhom4.GUI
             isConfirmShown = !isConfirmShown;
             txtXacNhan.UseSystemPasswordChar = !isConfirmShown;
             picEyeConfirm.Image = isConfirmShown ? Properties.Resources.eye : Properties.Resources.eye_off;
+        }
+
+        private void pictureBoxeyeOld_Click(object sender, EventArgs e)
+        {
+            isOldShown = !isOldShown;
+            txtMkCu.UseSystemPasswordChar = !isOldShown;
+            pictureBoxeyeOld.Image = isOldShown ? Properties.Resources.eye_off : Properties.Resources.eye;
         }
     }
 }
