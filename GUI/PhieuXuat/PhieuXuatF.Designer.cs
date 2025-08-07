@@ -42,10 +42,8 @@
             label3 = new Label();
             txtTienkhach = new TextBox();
             lbNV = new Label();
-            cbHTTT = new ComboBox();
             lbTienthua = new Label();
             label6 = new Label();
-            label5 = new Label();
             lbTongtienhd = new Label();
             panel4 = new Panel();
             txtsdt = new TextBox();
@@ -146,6 +144,7 @@
             // 
             // btnHuy
             // 
+            btnHuy.Enabled = false;
             btnHuy.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHuy.Image = Properties.Resources.icons8_delete_document_30;
             btnHuy.ImageAlign = ContentAlignment.MiddleLeft;
@@ -174,6 +173,7 @@
             // 
             // btnThanhToan
             // 
+            btnThanhToan.Enabled = false;
             btnThanhToan.Font = new Font("Segoe UI Semibold", 13.2F, FontStyle.Bold);
             btnThanhToan.Image = Properties.Resources.icons8_money_601;
             btnThanhToan.ImageAlign = ContentAlignment.MiddleLeft;
@@ -190,10 +190,8 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(txtTienkhach);
             panel2.Controls.Add(lbNV);
-            panel2.Controls.Add(cbHTTT);
             panel2.Controls.Add(lbTienthua);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
             panel2.Controls.Add(lbTongtienhd);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 202);
@@ -204,7 +202,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(471, 221);
+            label3.Location = new Point(471, 167);
             label3.Name = "label3";
             label3.Size = new Size(18, 20);
             label3.TabIndex = 8;
@@ -213,7 +211,7 @@
             // txtTienkhach
             // 
             txtTienkhach.BorderStyle = BorderStyle.FixedSingle;
-            txtTienkhach.Location = new Point(288, 215);
+            txtTienkhach.Location = new Point(288, 160);
             txtTienkhach.Name = "txtTienkhach";
             txtTienkhach.Size = new Size(177, 27);
             txtTienkhach.TabIndex = 7;
@@ -230,19 +228,11 @@
             lbNV.TabIndex = 6;
             lbNV.Text = "Nhân viên: ";
             // 
-            // cbHTTT
-            // 
-            cbHTTT.FormattingEnabled = true;
-            cbHTTT.Location = new Point(288, 158);
-            cbHTTT.Name = "cbHTTT";
-            cbHTTT.Size = new Size(172, 28);
-            cbHTTT.TabIndex = 5;
-            // 
             // lbTienthua
             // 
             lbTienthua.AutoSize = true;
             lbTienthua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            lbTienthua.Location = new Point(64, 274);
+            lbTienthua.Location = new Point(64, 219);
             lbTienthua.Name = "lbTienthua";
             lbTienthua.Size = new Size(87, 23);
             lbTienthua.TabIndex = 4;
@@ -252,21 +242,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(64, 219);
+            label6.Location = new Point(64, 164);
             label6.Name = "label6";
             label6.Size = new Size(132, 23);
             label6.TabIndex = 3;
             label6.Text = "Tiền khách đưa:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(64, 166);
-            label5.Name = "label5";
-            label5.Size = new Size(182, 23);
-            label5.TabIndex = 2;
-            label5.Text = "Hình thức thanh toán ";
             // 
             // lbTongtienhd
             // 
@@ -569,10 +549,8 @@
         private Label label3;
         private TextBox txtTienkhach;
         private Label lbNV;
-        private ComboBox cbHTTT;
         private Label lbTienthua;
         private Label label6;
-        private Label label5;
         private Label lbTongtienhd;
         private Panel panel4;
         private TextBox txtsdt;

@@ -81,7 +81,8 @@ namespace DuAn1_Nhom4.GUI
             btnThem.Visible = true; 
             btnXoa.Visible = true; 
             btnSua.Visible = true;
-
+            btnThanhToan.Enabled = true; // Kích hoạt nút thanh toán nếu có sản phẩm trong giỏ hàng
+            btnHuy.Enabled = true; // Kích hoạt nút hủy nếu có sản phẩm trong giỏ hàng
 
         }
 
@@ -289,8 +290,7 @@ namespace DuAn1_Nhom4.GUI
 
 
             lbNV.Text = "Nhân viên: ";
-            // ComboBox thanh toán
-            cbHTTT.SelectedIndex = -1;
+
 
             // Label tổng tiền
             lbTongtienhd.Text = "Tổng tiền: 0";
@@ -309,6 +309,8 @@ namespace DuAn1_Nhom4.GUI
             btnThem.Visible = false;
             btnXoa.Visible = false;
             btnSua.Visible = false;
+            btnHuy.Enabled = false; // Vô hiệu hóa nút hủy
+            btnThanhToan.Enabled = false; // Vô hiệu hóa nút thanh toán
 
         }
         bool isTyping = false;
