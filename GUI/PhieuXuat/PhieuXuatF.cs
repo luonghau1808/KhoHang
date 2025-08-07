@@ -50,7 +50,6 @@ namespace DuAn1_Nhom4.GUI
                 TrangThai = px.TrangThaiThanhToan,
             }).ToList();
 
-            dtgDanhSachHD_CellClick(null, new DataGridViewCellEventArgs(0, 0)); // Gọi sự kiện CellClick để cập nhật giỏ hàng và thông tin khách hàng khi load form lần đầu
         }
 
 
@@ -77,6 +76,12 @@ namespace DuAn1_Nhom4.GUI
             }).ToList();
 
             lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("C2"); // Cập nhật tổng tiền của hóa đơn
+
+            btnTao.Enabled = false;
+            btnThem.Visible = true; 
+            btnXoa.Visible = true; 
+            btnSua.Visible = true;
+
 
         }
 
@@ -300,6 +305,11 @@ namespace DuAn1_Nhom4.GUI
             LoadPhieuXuat();
             _khachHang = null; // Đặt lại khách hàng
             btnThemkh.Visible = true; // Hiển thị lại nút thêm khách hàng
+            btnTao.Enabled = true; // Kích hoạt nút tạo phiếu xuất
+            btnThem.Visible = false;
+            btnXoa.Visible = false;
+            btnSua.Visible = false;
+
         }
         bool isTyping = false;
 

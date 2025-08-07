@@ -382,6 +382,7 @@
             btnSua.TabIndex = 33;
             btnSua.Text = "Sửa số lượng";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Visible = false;
             btnSua.Click += btnSua_Click;
             // 
             // label4
@@ -415,6 +416,7 @@
             btnThem.TabIndex = 30;
             btnThem.Text = "Thêm vào giỏ hàng";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Visible = false;
             btnThem.Click += btnThem_Click;
             // 
             // btnXoa
@@ -428,6 +430,7 @@
             btnXoa.TabIndex = 24;
             btnXoa.Text = "Xóa sản phẩm";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Visible = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // dtgGioHang
