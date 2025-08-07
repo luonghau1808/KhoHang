@@ -150,13 +150,13 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 366);
+            dataGridView1.Location = new Point(3, 179);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1482, 55);
+            dataGridView1.Size = new Size(1482, 242);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -421,13 +421,13 @@
             dtgDanhSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgDanhSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgDanhSach.Dock = DockStyle.Bottom;
-            dtgDanhSach.Location = new Point(3, -3);
+            dtgDanhSach.Location = new Point(3, 112);
             dtgDanhSach.MultiSelect = false;
             dtgDanhSach.Name = "dtgDanhSach";
             dtgDanhSach.ReadOnly = true;
             dtgDanhSach.RowHeadersWidth = 51;
             dtgDanhSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgDanhSach.Size = new Size(1482, 425);
+            dtgDanhSach.Size = new Size(1482, 310);
             dtgDanhSach.TabIndex = 0;
             dtgDanhSach.CellClick += dtgDanhSach_CellClick;
             // 
