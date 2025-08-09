@@ -89,6 +89,7 @@
             // 
             // cbTrangthai
             // 
+            cbTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTrangthai.FormattingEnabled = true;
             cbTrangthai.Location = new Point(131, 127);
             cbTrangthai.Name = "cbTrangthai";
@@ -171,6 +172,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(131, 76);
             comboBox1.Name = "comboBox1";

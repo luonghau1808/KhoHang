@@ -322,31 +322,7 @@ namespace DuAn1_Nhom4.GUI
 
         private void txtTienkhach_TextChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    var tongTien = TinhTongTien();
-            //    if (tongTien == 0)
-            //    {
-            //        lbTienthua.Text = "Tiền thừa: 0 đ"; // Nếu không có sản phẩm nào trong giỏ hàng
-            //        return;
-            //    }
-            //    var tienKhach = 0;
-            //    try
-            //    {
-            //        tienKhach = int.Parse(txtTienkhach.Text);
-            //    }
-            //    catch (Exception)
-            //    {
-            //        MessageBox.Show("Xin vui lòng chỉ nhập số");
-            //    }
-            //    var tienThua = tienKhach - tongTien;
-
-            //    lbTienthua.Text = "Tiền thừa: " + tienThua.ToString("C2");
-            //}
-            //catch (Exception ex)
-            //{
-            //    lbTienthua.Text = "Tiền thừa: 0 đ"; // fallback khi lỗi
-            //}
+            
 
             var px = dtgDanhSachHD.CurrentRow?.Cells["MaPX"].Value;
             if (px == null)
