@@ -39,7 +39,7 @@ namespace DuAn1_Nhom4.GUI
 
         private void LoadPhieuXuat()
         {
-            var list = _phieuXuatBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(x => x.TrangThaiThanhToan != "Đã thanh toán");
+            var list = _phieuXuatBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(x => x.TrangThaiThanhToan == "Chưa thanh toán");
             dtgDanhSachHD.DataSource = list.Select((px, index) => new
             {
                 STT = index + 1,
@@ -128,6 +128,11 @@ namespace DuAn1_Nhom4.GUI
         {
             var px = dtgDanhSachHD.CurrentRow.Cells["MaPX"].Value;
             var ctpx = dtgGioHang.CurrentRow?.Cells["MaCT"].Value;
+            if(dtgGioHang.Rows.Count < 2)
+            {
+                MessageBox.Show("Không thể xóa sản phẩm vì giỏ hàng chỉ còn một sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể xóa nếu giỏ hàng chỉ còn một sản phẩm
+            }
             if (ctpx == null)
             {
                 MessageBox.Show("Vui lòng chọn sản phầm trong giỏ để xóa"); return;
@@ -390,7 +395,9 @@ namespace DuAn1_Nhom4.GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             var pxXoa = dtgDanhSachHD.CurrentRow?.Cells["MaPX"].Value;
+
             if (pxXoa == null) return;
+            var px = _phieuXuatBLL.GetById((int)pxXoa);
             var list = _ctPhieuXuatBLL.GetAll().Where(x => x.MaPhieuXuat == (int)pxXoa).ToList();
             foreach (var item in list)
             {
@@ -399,11 +406,13 @@ namespace DuAn1_Nhom4.GUI
                 {
                     ctsp.SoLuong += item.SoLuong; // Trả lại số lượng sản phẩm vào kho
                     _ctSanphamBLL.Update(ctsp); // Cập nhật số lượng sản phẩm trong kho
-                    _ctPhieuXuatBLL.Delete(item.MaCt); // Xóa chi tiết phiếu xuất
+                    
                 }
             }
 
-            _phieuXuatBLL.Delete((int)pxXoa); // Xóa phiếu xuất
+            px.TrangThaiThanhToan = "Đã hủy"; // Cập nhật trạng thái phiếu xuất
+
+            _phieuXuatBLL.Update(px); // Xóa phiếu xuất
             LoadPhieuXuat(); // Cập nhật danh sách phiếu xuất
             ResetForm_XuatHang(); // Đặt lại form xuất hàng về trạng thái ban đầu
         }
