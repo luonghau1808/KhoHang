@@ -30,6 +30,8 @@
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox1 = new GroupBox();
+            label4 = new Label();
+            cbTrangthai = new ComboBox();
             btnTk = new Button();
             dgvPhieu = new DataGridView();
             label3 = new Label();
@@ -57,6 +59,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(cbTrangthai);
             groupBox1.Controls.Add(btnTk);
             groupBox1.Controls.Add(dgvPhieu);
             groupBox1.Controls.Add(label3);
@@ -70,17 +74,34 @@
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1120, 582);
-
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(35, 129);
+            label4.Name = "label4";
+            label4.Size = new Size(87, 23);
+            label4.TabIndex = 9;
+            label4.Text = "Trạng thái";
+            // 
+            // cbTrangthai
+            // 
+            cbTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTrangthai.FormattingEnabled = true;
+            cbTrangthai.Location = new Point(131, 127);
+            cbTrangthai.Name = "cbTrangthai";
+            cbTrangthai.Size = new Size(180, 31);
+            cbTrangthai.TabIndex = 8;
+            cbTrangthai.SelectedIndexChanged += cbTrangthai_SelectedIndexChanged;
             // 
             // btnTk
             // 
             btnTk.Image = Properties.Resources.icons8_view_30;
             btnTk.ImageAlign = ContentAlignment.MiddleLeft;
             btnTk.Location = new Point(947, 139);
-
             btnTk.Name = "btnTk";
             btnTk.Size = new Size(143, 43);
             btnTk.TabIndex = 7;
@@ -103,7 +124,6 @@
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPhieu.Size = new Size(1114, 351);
-
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
@@ -152,6 +172,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(131, 76);
             comboBox1.Name = "comboBox1";
@@ -167,7 +188,6 @@
             groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(1120, 330);
-
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -186,7 +206,6 @@
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCt.Size = new Size(1114, 301);
-
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -258,7 +277,6 @@
             panel1.Controls.Add(labelMaNV);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(1120, 0);
-
             panel1.Name = "panel1";
             panel1.Size = new Size(399, 912);
             panel1.TabIndex = 0;
@@ -305,5 +323,7 @@
         private Label labelTrangThai;
         private Label labelTongTien;
         private Panel panel1;
+        private Label label4;
+        private ComboBox cbTrangthai;
     }
 }
