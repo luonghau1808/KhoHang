@@ -122,7 +122,7 @@ namespace DuAn1_Nhom4.GUI
         {
             isOldShown = !isOldShown;
             txtMkCu.UseSystemPasswordChar = !isOldShown;
-            pictureBoxeyeOld.Image = isOldShown ? Properties.Resources.eye_off : Properties.Resources.eye;
+            pictureBoxeyeOld.Image = isOldShown ? Properties.Resources.eye : Properties.Resources.eye_off;
         }
     }
 }
