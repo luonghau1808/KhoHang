@@ -31,11 +31,14 @@
             lbTongTien = new Label();
             btnThanhToan = new Button();
             groupBox2 = new GroupBox();
+            btnHuyPhieu = new Button();
             cbTrangThai = new ComboBox();
             label2 = new Label();
             btnThemPhieuNhap = new Button();
             dgvDanhSachPhieuNhap = new DataGridView();
             groupBox3 = new GroupBox();
+            btnXoaSanPham = new Button();
+            btnThayDoiSoLuong = new Button();
             btnThem = new Button();
             dgvGioHang = new DataGridView();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
@@ -72,6 +75,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnHuyPhieu);
             groupBox2.Controls.Add(cbTrangThai);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(btnThemPhieuNhap);
@@ -84,6 +88,20 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách phiếu nhập";
+            // 
+            // btnHuyPhieu
+            // 
+            btnHuyPhieu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            btnHuyPhieu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHuyPhieu.Image = Properties.Resources.icons8_delete_302;
+            btnHuyPhieu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuyPhieu.Location = new Point(1253, 48);
+            btnHuyPhieu.Name = "btnHuyPhieu";
+            btnHuyPhieu.Size = new Size(237, 43);
+            btnHuyPhieu.TabIndex = 37;
+            btnHuyPhieu.Text = "Hủy phiếu nhập";
+            btnHuyPhieu.UseVisualStyleBackColor = true;
+            btnHuyPhieu.Click += btnHuyPhieu_Click;
             // 
             // cbTrangThai
             // 
@@ -109,9 +127,9 @@
             btnThemPhieuNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThemPhieuNhap.Image = Properties.Resources.icons8_create_document_30;
             btnThemPhieuNhap.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThemPhieuNhap.Location = new Point(1155, 43);
+            btnThemPhieuNhap.Location = new Point(978, 48);
             btnThemPhieuNhap.Name = "btnThemPhieuNhap";
-            btnThemPhieuNhap.Size = new Size(335, 43);
+            btnThemPhieuNhap.Size = new Size(238, 43);
             btnThemPhieuNhap.TabIndex = 34;
             btnThemPhieuNhap.Text = "Thêm phiếu nhập";
             btnThemPhieuNhap.UseVisualStyleBackColor = true;
@@ -134,16 +152,48 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnXoaSanPham);
+            groupBox3.Controls.Add(btnThayDoiSoLuong);
             groupBox3.Controls.Add(btnThem);
             groupBox3.Controls.Add(dgvGioHang);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(0, 458);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1502, 393);
+            groupBox3.Size = new Size(1502, 420);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Chi tiết phiếu nhập";
+            // 
+            // btnXoaSanPham
+            // 
+            btnXoaSanPham.Anchor = AnchorStyles.Right;
+            btnXoaSanPham.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXoaSanPham.Image = Properties.Resources.icons8_add_to_shopping_basket_30;
+            btnXoaSanPham.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoaSanPham.Location = new Point(940, 63);
+            btnXoaSanPham.Name = "btnXoaSanPham";
+            btnXoaSanPham.Size = new Size(322, 47);
+            btnXoaSanPham.TabIndex = 35;
+            btnXoaSanPham.Text = "Xóa sản phẩm khỏi chi tiết phiếu";
+            btnXoaSanPham.TextAlign = ContentAlignment.MiddleRight;
+            btnXoaSanPham.UseVisualStyleBackColor = true;
+            btnXoaSanPham.Click += btnXoaSanPham_Click;
+            // 
+            // btnThayDoiSoLuong
+            // 
+            btnThayDoiSoLuong.Anchor = AnchorStyles.Right;
+            btnThayDoiSoLuong.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThayDoiSoLuong.Image = Properties.Resources.icons8_edit_302;
+            btnThayDoiSoLuong.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThayDoiSoLuong.Location = new Point(638, 63);
+            btnThayDoiSoLuong.Name = "btnThayDoiSoLuong";
+            btnThayDoiSoLuong.Size = new Size(283, 47);
+            btnThayDoiSoLuong.TabIndex = 34;
+            btnThayDoiSoLuong.Text = "Thay đổi số lượng sản phẩm";
+            btnThayDoiSoLuong.TextAlign = ContentAlignment.MiddleRight;
+            btnThayDoiSoLuong.UseVisualStyleBackColor = true;
+            btnThayDoiSoLuong.Click += btnThayDoiSoLuong_Click;
             // 
             // btnThem
             // 
@@ -151,11 +201,12 @@
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThem.Image = Properties.Resources.icons8_add_to_shopping_basket_30;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(1118, 29);
+            btnThem.Location = new Point(293, 63);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(372, 47);
+            btnThem.Size = new Size(322, 47);
             btnThem.TabIndex = 33;
             btnThem.Text = "Thêm sản phẩm vào chi tiết phiếu";
+            btnThem.TextAlign = ContentAlignment.MiddleRight;
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
@@ -164,13 +215,13 @@
             dgvGioHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGioHang.Dock = DockStyle.Bottom;
-            dgvGioHang.Location = new Point(3, 92);
+            dgvGioHang.Location = new Point(3, 142);
             dgvGioHang.MultiSelect = false;
             dgvGioHang.Name = "dgvGioHang";
             dgvGioHang.ReadOnly = true;
             dgvGioHang.RowHeadersWidth = 51;
             dgvGioHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGioHang.Size = new Size(1496, 298);
+            dgvGioHang.Size = new Size(1496, 275);
             dgvGioHang.TabIndex = 1;
             dgvGioHang.CellClick += dgvGioHang_CellClick;
             // 
@@ -218,5 +269,8 @@
         private Button btnThemPhieuNhap;
         private ComboBox cbTrangThai;
         private Label label2;
+        private Button btnHuyPhieu;
+        private Button btnXoaSanPham;
+        private Button btnThayDoiSoLuong;
     }
 }

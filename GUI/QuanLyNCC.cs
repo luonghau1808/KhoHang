@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DuAn1_Nhom4.GUI
 {
@@ -28,6 +29,7 @@ namespace DuAn1_Nhom4.GUI
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
+            if(!ValidateNCC()) return;
             var ncc = new NhaCungCap
             {
                 TenNcc = txtTenNCC.Text,
@@ -43,6 +45,11 @@ namespace DuAn1_Nhom4.GUI
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtMaNCC.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một nhà cung cấp để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (!ValidateInput()) return;
             if (!int.TryParse(txtMaNCC.Text, out int id)) return;
             var ncc = nhaCungCapBAL.GetById(id);
@@ -58,22 +65,12 @@ namespace DuAn1_Nhom4.GUI
             MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (!int.TryParse(txtMaNCC.Text, out int id)) return;
-            var a = MessageBox.Show("Bạn có chắc chắn muốn xoá nhà cung cấp này không ?", "Xác nhận",
-                 MessageBoxButtons.YesNo);
-            if (a != DialogResult.Yes) return;
-            nhaCungCapBAL.Delete(id);
-            LoadNCC();
-            ClearForm();
-            MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
+       
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             LoadNCC();
             ClearForm();
+            btnThem.Enabled = true;
         }
         private void dtgDanhSachNCC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -84,6 +81,8 @@ namespace DuAn1_Nhom4.GUI
             txtSDT.Text = row.Cells["SoDienThoai"].Value.ToString();
             txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
             txtEmail.Text = row.Cells["Email"].Value.ToString();
+            // Không cho bấm Thêm khi đang chọn dữ liệu
+            btnThem.Enabled = false;
         }
 
         private void QuanLyNCC_Load(object sender, EventArgs e)
@@ -164,13 +163,56 @@ namespace DuAn1_Nhom4.GUI
 
             var ketQua = nhaCungCapBAL.GetAll()
                .Where(ncc =>
-             ncc.TenNcc.ToLower().Contains(tuKhoa) ||
-             ncc.Email.ToLower().Contains(tuKhoa) ||
-             (ncc.DiaChi != null && ncc.DiaChi.ToLower().Contains(tuKhoa))
-         )
-         .ToList();
+                    ncc.MaNcc.ToString().Contains(tuKhoa) || // tìm theo mã
+                    ncc.TenNcc.ToLower().Contains(tuKhoa) || // tìm theo tên
+                    ncc.Email.ToLower().Contains(tuKhoa) ||
+                    (ncc.DiaChi != null && ncc.DiaChi.ToLower().Contains(tuKhoa))
+                )
+                .ToList();
 
             dtgDanhSachNCC.DataSource = ketQua;
+       
         }
+        private bool ValidateNCC()
+        {
+            var allNCC = nhaCungCapBAL.GetAll();
+
+            // Check trùng tên
+            if (allNCC.Any(n => n.TenNcc.Trim().ToLower() == txtTenNCC.Text.Trim().ToLower()))
+            {
+                MessageBox.Show("Tên nhà cung cấp đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTenNCC.Focus();
+                return false;
+            }
+
+            // Check trùng SĐT
+            if (allNCC.Any(n => n.SoDienThoai.Trim() == txtSDT.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSDT.Focus();
+                return false;
+            }
+
+            // Check trùng Email
+            if (allNCC.Any(n => n.Email.Trim().ToLower() == txtEmail.Text.Trim().ToLower()))
+            {
+                MessageBox.Show("Email đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return false;
+            }
+
+            // Check trùng Địa chỉ
+            if (allNCC.Any(n => n.DiaChi.Trim().ToLower() == txtDiaChi.Text.Trim().ToLower()))
+            {
+                MessageBox.Show("Địa chỉ đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDiaChi.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
+
     }
 }
