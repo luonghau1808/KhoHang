@@ -21,15 +21,21 @@ namespace DuAn1_Nhom4.GUI
             comboBox1.Items.Add("Phiếu xuất");
             comboBox1.SelectedIndex = 0; // Mặc định chọn Phiếu nhập
 
+            cbTrangthai.Items.Add("Tất cả");
+            cbTrangthai.Items.Add("Chưa thanh toán");
+            cbTrangthai.Items.Add("Đã thanh toán");
+            cbTrangthai.Items.Add("Đã hủy");
+            cbTrangthai.SelectedIndex = 0; // Mặc định chọn Tất cả
+
         }
         private void FormLichSu_Load(object sender, EventArgs e)
         {
             LoadCB();
         }
 
-        private void LoadPhieuXuat()
+        private void LoadPhieuXuat(string? trangThai = null)
         {
-            var list = _pxBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation);
+            var list = _pxBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(px => trangThai == null || px.TrangThaiThanhToan == trangThai);
             dgvPhieu.DataSource = list.Select((px, index) => new
             {
                 STT = index + 1,
@@ -43,9 +49,9 @@ namespace DuAn1_Nhom4.GUI
 
         }
 
-        private void LoadPhieuNhap()
+        private void LoadPhieuNhap(string? trangThai = null)
         {
-            var list = _pnBLL.GetAll(x => x.MaNvNavigation);
+            var list = _pnBLL.GetAll(x => x.MaNvNavigation).Where(pn => trangThai == null || pn.TrangThaiThanhToan == trangThai);
             dgvPhieu.DataSource = list.Select((pn, index) => new
             {
                 STT = index + 1,
@@ -62,10 +68,12 @@ namespace DuAn1_Nhom4.GUI
             if (comboBox1.SelectedIndex == 0)
             {
                 LoadPhieuNhap();
+                cbTrangthai.SelectedItem = "Tất cả";
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 LoadPhieuXuat();
+                cbTrangthai.SelectedItem = "Tất cả";
             }
 
             dgvCt.DataSource = null; // Xóa dữ liệu cũ trong DataGridView chi tiết
@@ -214,5 +222,42 @@ namespace DuAn1_Nhom4.GUI
             }
         }
 
+        private void cbTrangthai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTrangthai.Text == "Tất cả")
+            {
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    LoadPhieuNhap();
+                }
+                else
+                {
+                    LoadPhieuXuat();
+                }
+            }
+            else if (cbTrangthai.Text == "Đã thanh toán")
+            {
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    LoadPhieuNhap(cbTrangthai.Text);
+
+                }
+                else
+                {
+                    LoadPhieuXuat(cbTrangthai.Text);
+                }
+            }
+            else if (cbTrangthai.Text == "Chưa thanh toán" || cbTrangthai.Text == "Đã hủy")
+            {
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    LoadPhieuNhap(cbTrangthai.Text);
+                }
+                else
+                {
+                    LoadPhieuXuat(cbTrangthai.Text);
+                }
+            }
+        }
     }
 }

@@ -34,7 +34,6 @@
             tabControl1 = new TabControl();
             tabHoaDon = new TabPage();
             panel3 = new Panel();
-            btnLammoi = new Button();
             btnHuy = new Button();
             btnTao = new Button();
             btnThanhToan = new Button();
@@ -42,15 +41,12 @@
             label3 = new Label();
             txtTienkhach = new TextBox();
             lbNV = new Label();
-            cbHTTT = new ComboBox();
             lbTienthua = new Label();
             label6 = new Label();
-            label5 = new Label();
             lbTongtienhd = new Label();
             panel4 = new Panel();
             txtsdt = new TextBox();
             label2 = new Label();
-            btnThemkh = new Button();
             txtTen = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
@@ -121,7 +117,6 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(btnLammoi);
             panel3.Controls.Add(btnHuy);
             panel3.Controls.Add(btnTao);
             panel3.Controls.Add(btnThanhToan);
@@ -130,19 +125,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(495, 363);
             panel3.TabIndex = 11;
-            // 
-            // btnLammoi
-            // 
-            btnLammoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLammoi.Image = Properties.Resources.icons8_replace_301;
-            btnLammoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLammoi.Location = new Point(41, 263);
-            btnLammoi.Name = "btnLammoi";
-            btnLammoi.Size = new Size(419, 61);
-            btnLammoi.TabIndex = 3;
-            btnLammoi.Text = "Làm mới";
-            btnLammoi.UseVisualStyleBackColor = true;
-            btnLammoi.Click += btnLammoi_Click;
             // 
             // btnHuy
             // 
@@ -190,10 +172,8 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(txtTienkhach);
             panel2.Controls.Add(lbNV);
-            panel2.Controls.Add(cbHTTT);
             panel2.Controls.Add(lbTienthua);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
             panel2.Controls.Add(lbTongtienhd);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 202);
@@ -204,7 +184,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(471, 221);
+            label3.Location = new Point(471, 167);
             label3.Name = "label3";
             label3.Size = new Size(18, 20);
             label3.TabIndex = 8;
@@ -213,7 +193,7 @@
             // txtTienkhach
             // 
             txtTienkhach.BorderStyle = BorderStyle.FixedSingle;
-            txtTienkhach.Location = new Point(288, 215);
+            txtTienkhach.Location = new Point(288, 160);
             txtTienkhach.Name = "txtTienkhach";
             txtTienkhach.Size = new Size(177, 27);
             txtTienkhach.TabIndex = 7;
@@ -230,19 +210,11 @@
             lbNV.TabIndex = 6;
             lbNV.Text = "Nhân viên: ";
             // 
-            // cbHTTT
-            // 
-            cbHTTT.FormattingEnabled = true;
-            cbHTTT.Location = new Point(288, 158);
-            cbHTTT.Name = "cbHTTT";
-            cbHTTT.Size = new Size(172, 28);
-            cbHTTT.TabIndex = 5;
-            // 
             // lbTienthua
             // 
             lbTienthua.AutoSize = true;
             lbTienthua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            lbTienthua.Location = new Point(64, 274);
+            lbTienthua.Location = new Point(64, 219);
             lbTienthua.Name = "lbTienthua";
             lbTienthua.Size = new Size(87, 23);
             lbTienthua.TabIndex = 4;
@@ -252,21 +224,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label6.Location = new Point(64, 219);
+            label6.Location = new Point(64, 164);
             label6.Name = "label6";
             label6.Size = new Size(132, 23);
             label6.TabIndex = 3;
             label6.Text = "Tiền khách đưa:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(64, 166);
-            label5.Name = "label5";
-            label5.Size = new Size(182, 23);
-            label5.TabIndex = 2;
-            label5.Text = "Hình thức thanh toán ";
             // 
             // lbTongtienhd
             // 
@@ -282,7 +244,6 @@
             // 
             panel4.Controls.Add(txtsdt);
             panel4.Controls.Add(label2);
-            panel4.Controls.Add(btnThemkh);
             panel4.Controls.Add(txtTen);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
@@ -309,20 +270,6 @@
             label2.Size = new Size(122, 25);
             label2.TabIndex = 4;
             label2.Text = "Số điện thoại";
-            // 
-            // btnThemkh
-            // 
-            btnThemkh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemkh.Image = Properties.Resources.icons8_find_user_male_30;
-            btnThemkh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThemkh.Location = new Point(280, 139);
-            btnThemkh.Name = "btnThemkh";
-            btnThemkh.Size = new Size(189, 43);
-            btnThemkh.TabIndex = 3;
-            btnThemkh.Text = "Chọn khách hàng";
-            btnThemkh.TextAlign = ContentAlignment.MiddleRight;
-            btnThemkh.UseVisualStyleBackColor = true;
-            btnThemkh.Click += btnThemkh_Click;
             // 
             // txtTen
             // 
@@ -409,7 +356,7 @@
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnThem.Image = Properties.Resources.icons8_add_to_shopping_basket_301;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(314, 355);
+            btnThem.Location = new Point(27, 355);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(240, 48);
             btnThem.TabIndex = 30;
@@ -422,7 +369,7 @@
             btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnXoa.Image = Properties.Resources.icons8_delete_302;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(3, 355);
+            btnXoa.Location = new Point(315, 355);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(254, 48);
             btnXoa.TabIndex = 24;
@@ -558,7 +505,6 @@
         private TabControl tabControl1;
         private TabPage tabHoaDon;
         private Panel panel3;
-        private Button btnLammoi;
         private Button btnHuy;
         private Button btnTao;
         private Button btnThanhToan;
@@ -566,15 +512,12 @@
         private Label label3;
         private TextBox txtTienkhach;
         private Label lbNV;
-        private ComboBox cbHTTT;
         private Label lbTienthua;
         private Label label6;
-        private Label label5;
         private Label lbTongtienhd;
         private Panel panel4;
         private TextBox txtsdt;
         private Label label2;
-        private Button btnThemkh;
         private TextBox txtTen;
         private Label label1;
     }

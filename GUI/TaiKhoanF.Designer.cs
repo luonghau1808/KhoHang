@@ -57,10 +57,12 @@
             label6 = new Label();
             txtMkCu = new TextBox();
             txtTenDangNhap = new TextBox();
+            pictureBoxeyeOld = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picEyeNew).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -206,6 +208,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(pictureBoxeyeOld);
             groupBox2.Controls.Add(picEyeConfirm);
             groupBox2.Controls.Add(picEyeNew);
             groupBox2.Controls.Add(label13);
@@ -373,6 +376,17 @@
             txtTenDangNhap.Size = new Size(457, 31);
             txtTenDangNhap.TabIndex = 11;
             // 
+            // pictureBoxeyeOld
+            // 
+            pictureBoxeyeOld.Cursor = Cursors.Hand;
+            pictureBoxeyeOld.Location = new Point(1011, 139);
+            pictureBoxeyeOld.Name = "pictureBoxeyeOld";
+            pictureBoxeyeOld.Size = new Size(33, 31);
+            pictureBoxeyeOld.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxeyeOld.TabIndex = 25;
+            pictureBoxeyeOld.TabStop = false;
+            pictureBoxeyeOld.Click += pictureBoxeyeOld_Click;
+            // 
             // TaiKhoanF
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -389,6 +403,7 @@
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).EndInit();
             ((System.ComponentModel.ISupportInitialize)picEyeNew).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).EndInit();
             ResumeLayout(false);
         }
 
@@ -422,5 +437,6 @@
         private Label label13;
         private PictureBox picEyeNew;
         private PictureBox picEyeConfirm;
+        private PictureBox pictureBoxeyeOld;
     }
 }
