@@ -119,6 +119,7 @@ namespace DuAn1_Nhom4
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             LoadFormToPanel(new ThongKe());
+            HighlightButton((Button)sender);
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)
