@@ -68,10 +68,12 @@ namespace DuAn1_Nhom4.GUI
             if (comboBox1.SelectedIndex == 0)
             {
                 LoadPhieuNhap();
+                cbTrangthai.SelectedItem = "Tất cả";
             }
             else if (comboBox1.SelectedIndex == 1)
             {
                 LoadPhieuXuat();
+                cbTrangthai.SelectedItem = "Tất cả";
             }
 
             dgvCt.DataSource = null; // Xóa dữ liệu cũ trong DataGridView chi tiết

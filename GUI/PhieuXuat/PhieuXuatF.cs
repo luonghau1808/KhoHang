@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Globalization;
+using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.GUI.Hóa_đơn;
 using DuAn1_Nhom4.Models;
@@ -12,7 +13,7 @@ namespace DuAn1_Nhom4.GUI
         private GenericBLL<PhieuXuat> _phieuXuatBLL = new GenericBLL<PhieuXuat>();
         private GenericBLL<PhieuXuatChiTiet> _ctPhieuXuatBLL = new GenericBLL<PhieuXuatChiTiet>();
         NhanVien _nhanVien;
-        KhachHang _khachHang;
+        //KhachHang _khachHang;
         public PhieuXuatF(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -34,6 +35,13 @@ namespace DuAn1_Nhom4.GUI
                 DonGiaXuat = sp.DonGiaXuat
 
             }).ToList();
+
+            dtgDanhSachSP.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["MaSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["DonGiaNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["DonGiaXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
 
@@ -49,6 +57,12 @@ namespace DuAn1_Nhom4.GUI
                 NgayXuat = px.NgayXuat,
                 TrangThai = px.TrangThaiThanhToan,
             }).ToList();
+            dtgDanhSachHD.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachHD.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachHD.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dtgDanhSachHD_CellClick(null, new DataGridViewCellEventArgs(0, 0)); // Gọi hàm để load giỏ hàng cho phiếu xuất đầu tiên nếu có
 
         }
 
@@ -77,15 +91,25 @@ namespace DuAn1_Nhom4.GUI
 
             lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("N0") + "VNĐ"; // Cập nhật tổng tiền của hóa đơn
 
-            btnTao.Enabled = false;
-            btnThem.Visible = true; 
-            btnXoa.Visible = true; 
-            btnSua.Visible = true;
-            btnThanhToan.Enabled = true; // Kích hoạt nút thanh toán nếu có sản phẩm trong giỏ hàng
-            btnHuy.Enabled = true; // Kích hoạt nút hủy nếu có sản phẩm trong giỏ hàng
+            dtgGioHang.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgGioHang.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgGioHang.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgGioHang.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgGioHang.Columns["MaCT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+
+            if (dtgGioHang.Rows.Count <= 0)
+            {
+                btnXoa.Enabled = false; // Vô hiệu hóa nút Xóa nếu giỏ hàng không có sản phẩm
+                btnSua.Enabled = false; // Vô hiệu hóa nút Sửa nếu giỏ hàng không có sản phẩm
+            }
+            else
+            {
+                btnXoa.Enabled = true; // Kích hoạt nút Xóa nếu giỏ hàng có sản phẩm
+                btnSua.Enabled = true; // Kích hoạt nút Sửa nếu giỏ hàng có sản phẩm
+
+            }
         }
-
 
         private decimal TinhTongTien()
         {
@@ -114,10 +138,7 @@ namespace DuAn1_Nhom4.GUI
 
             int maPx = Convert.ToInt32(dtgDanhSachHD.Rows[e.RowIndex].Cells[1].Value);
             var px = _phieuXuatBLL.GetById(maPx);
-            if (px.MaKh != null)
-            {
-                btnThemkh.Visible = false; // Ẩn nút thêm khách hàng nếu phiếu xuất đã có khách hàng
-            }
+            
             LoadCTPX(maPx);
             LoadKhachHang(_phieuXuatBLL.GetById(maPx).MaKhNavigation); // Cập nhật thông tin khách hàng
             lbNV.Text = "Nhân viên: " + px.MaNvNavigation.HoTen;
@@ -237,13 +258,22 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnTao_Click(object sender, EventArgs e)
         {
+            KhachHangF khachHangForm = new KhachHangF();
+            khachHangForm.ShowDialog();
+            // Kiểm tra xem khách hàng đã được chọn hay chưa
+            var kh = khachHangForm.Kh;
+            if (kh == null)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng trước khi tạo phiếu xuất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể tạo phiếu xuất nếu chưa chọn khách hàng
+            }
             var nhanVien = _nhanVien;
             if (nhanVien == null)
             {
                 MessageBox.Show("Vui lòng đăng nhập trước khi tạo phiếu xuất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Không thể tạo phiếu xuất nếu chưa đăng nhập
             }
-            if (_khachHang == null)
+            if (kh == null)
             {
                 MessageBox.Show("Vui lòng chọn khách hàng trước khi tạo phiếu xuất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Không thể tạo phiếu xuất nếu chưa chọn khách hàng
@@ -251,26 +281,25 @@ namespace DuAn1_Nhom4.GUI
 
             var phieuXuat = new PhieuXuat()
             {
-                MaKh = _khachHang.MaKh, // Lấy mã khách hàng nếu đã chọn
+                MaKh = kh.MaKh, // Lấy mã khách hàng nếu đã chọn
                 MaNv = nhanVien.Id,
                 NgayXuat = DateOnly.FromDateTime(DateTime.Now),
                 TrangThaiThanhToan = "Chưa thanh toán",
             };
             _phieuXuatBLL.Add(phieuXuat); // Thêm phiếu xuất mới vào cơ sở dữ liệu
             LoadPhieuXuat(); // Cập nhật danh sách phiếu xuất
-            _khachHang = null; // Đặt lại khách hàng sau khi tạo phiếu xuất
+            dtgDanhSachHD.ClearSelection(); // Xóa lựa chọn hiện tại trong DataGridView
+
+            dtgDanhSachHD.Rows[dtgDanhSachHD.Rows.Count - 1].Selected = true; // Chọn phiếu xuất mới nhất
+            dtgDanhSachHD.CurrentCell = dtgDanhSachHD.Rows[dtgDanhSachHD.Rows.Count - 1].Cells[0]; // Đặt con trỏ vào ô đầu tiên của phiếu xuất mới
+            dtgDanhSachHD.FirstDisplayedScrollingRowIndex = dtgDanhSachHD.Rows.Count - 1;
+
+            LoadCTPX(phieuXuat.MaPhieuXuat); // Tải giỏ hàng cho phiếu xuất mới
+
+
         }
 
-        private void btnThemkh_Click(object sender, EventArgs e)
-        {
-            KhachHangF khachHangForm = new KhachHangF();
-            khachHangForm.ShowDialog();
-            if (khachHangForm.Kh != null)
-            {
-                LoadKhachHang(khachHangForm.Kh);
-                _khachHang = khachHangForm.Kh; // Lưu khách hàng đã chọn
-            }
-        }
+
 
         private void LoadKhachHang(KhachHang khachHang)
         {
@@ -278,10 +307,7 @@ namespace DuAn1_Nhom4.GUI
             txtsdt.Text = khachHang.Sdt;
         }
 
-        private void btnLammoi_Click(object sender, EventArgs e)
-        {
-            ResetForm_XuatHang();
-        }
+        
         private void ResetForm_XuatHang()
         {
             // Xóa text các ô bên phải
@@ -308,14 +334,7 @@ namespace DuAn1_Nhom4.GUI
 
             // Load lại danh sách hóa đơn (nếu muốn)
             LoadPhieuXuat();
-            _khachHang = null; // Đặt lại khách hàng
-            btnThemkh.Visible = true; // Hiển thị lại nút thêm khách hàng
-            btnTao.Enabled = true; // Kích hoạt nút tạo phiếu xuất
-            btnThem.Visible = false;
-            btnXoa.Visible = false;
-            btnSua.Visible = false;
-            btnHuy.Enabled = false; // Vô hiệu hóa nút hủy
-            btnThanhToan.Enabled = false; // Vô hiệu hóa nút thanh toán
+            
 
         }
         bool isTyping = false;
@@ -371,7 +390,10 @@ namespace DuAn1_Nhom4.GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             var pxXoa = dtgDanhSachHD.CurrentRow?.Cells["MaPX"].Value;
-
+            if(MessageBox.Show("Bạn có chắc chắn muốn xóa không?","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return; // Không thực hiện xóa nếu người dùng chọn No
+            }
             if (pxXoa == null) return;
             var px = _phieuXuatBLL.GetById((int)pxXoa);
             var list = _ctPhieuXuatBLL.GetAll().Where(x => x.MaPhieuXuat == (int)pxXoa).ToList();
