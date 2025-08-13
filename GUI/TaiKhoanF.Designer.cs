@@ -56,19 +56,13 @@
             label6 = new Label();
             txtMkCu = new TextBox();
             txtTenDangNhap = new TextBox();
-
             pictureBoxeyeOld = new PictureBox();
-
             picEyeConfirm = new PictureBox();
-
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picEyeNew).BeginInit();
-
             ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).BeginInit();
-
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).BeginInit();
-
             SuspendLayout();
             // 
             // label1
@@ -214,8 +208,8 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(pictureBoxeyeOld);
             groupBox2.Controls.Add(picEyeConfirm);
+            groupBox2.Controls.Add(pictureBoxeyeOld);
             groupBox2.Controls.Add(picEyeNew);
             groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label11);
@@ -243,9 +237,9 @@
             // picEyeNew
             // 
             picEyeNew.Cursor = Cursors.Hand;
-            picEyeNew.Location = new Point(1011, 232);
+            picEyeNew.Location = new Point(1011, 139);
             picEyeNew.Name = "picEyeNew";
-            picEyeNew.Size = new Size(33, 25);
+            picEyeNew.Size = new Size(33, 31);
             picEyeNew.SizeMode = PictureBoxSizeMode.Zoom;
             picEyeNew.TabIndex = 23;
             picEyeNew.TabStop = false;
@@ -371,29 +365,25 @@
             txtTenDangNhap.Size = new Size(457, 31);
             txtTenDangNhap.TabIndex = 11;
             // 
-
             // pictureBoxeyeOld
             // 
             pictureBoxeyeOld.Cursor = Cursors.Hand;
-            pictureBoxeyeOld.Location = new Point(1011, 139);
+            pictureBoxeyeOld.Location = new Point(1011, 226);
             pictureBoxeyeOld.Name = "pictureBoxeyeOld";
             pictureBoxeyeOld.Size = new Size(33, 31);
             pictureBoxeyeOld.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxeyeOld.TabIndex = 25;
+            pictureBoxeyeOld.TabIndex = 24;
             pictureBoxeyeOld.TabStop = false;
-            pictureBoxeyeOld.Click += pictureBoxeyeOld_Click;
-
+            // 
             // picEyeConfirm
             // 
             picEyeConfirm.Cursor = Cursors.Hand;
-            picEyeConfirm.Location = new Point(1011, 310);
+            picEyeConfirm.Location = new Point(1011, 304);
             picEyeConfirm.Name = "picEyeConfirm";
-            picEyeConfirm.Size = new Size(33, 25);
+            picEyeConfirm.Size = new Size(33, 31);
             picEyeConfirm.SizeMode = PictureBoxSizeMode.Zoom;
-            picEyeConfirm.TabIndex = 24;
+            picEyeConfirm.TabIndex = 25;
             picEyeConfirm.TabStop = false;
-            picEyeConfirm.Click += picEyeConfirm_Click;
-
             // 
             // TaiKhoanF
             // 
@@ -410,11 +400,8 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picEyeNew).EndInit();
-
             ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).EndInit();
-
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).EndInit();
-
             ResumeLayout(false);
         }
 
