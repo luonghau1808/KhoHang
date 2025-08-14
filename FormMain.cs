@@ -49,7 +49,8 @@ namespace DuAn1_Nhom4
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
-         
+
+            LoadFormToPanel(new ThongKe());
 
             if (NhanVien.MaChucVu == 2)
             {
