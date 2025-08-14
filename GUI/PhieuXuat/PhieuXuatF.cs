@@ -259,6 +259,23 @@ namespace DuAn1_Nhom4.GUI
                 DonGiaXuat = sp.DonGiaXuat
 
             }).ToList();
+
+
+            dtgDanhSachSP.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["MaSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["SoLuong"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["DonGiaNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["DonGiaXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dtgDanhSachSP.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["MaSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["DonGiaNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgDanhSachSP.Columns["DonGiaXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
