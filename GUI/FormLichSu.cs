@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.Models;
 
@@ -28,76 +27,31 @@ namespace DuAn1_Nhom4.GUI
             cbTrangthai.Items.Add("Đã hủy");
             cbTrangthai.SelectedIndex = 0; // Mặc định chọn Tất cả
 
+
+            cbNgayloc.Items.Add("Tất cả");
+            cbNgayloc.Items.Add("Khoảng thời gian");
+            cbNgayloc.SelectedIndex = 0; // Mặc định chọn Tất cả
+
         }
         private void FormLichSu_Load(object sender, EventArgs e)
         {
             LoadCB();
-        }
-
-        private void LoadPhieuXuat(string? trangThai = null)
-        {
-            var list = _pxBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(px => trangThai == null || px.TrangThaiThanhToan == trangThai);
-            dgvPhieu.DataSource = list.Select((px, index) => new
+            ApplyFilters(); // Gọi hàm lọc khi form được tải
+            if(dgvPhieu.Rows.Count >= 0)
             {
-                STT = index + 1,
-                MaPX = px.MaPhieuXuat,
-                TenKH = px.MaKhNavigation.Ten,
-                TenNV = px.MaNvNavigation.HoTen,
-                NgayXuat = px.NgayXuat,
-                TrangThaiPX = px.TrangThaiThanhToan
-            }).ToList();
-
-            dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["MaPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["TenKH"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["NgayXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["TrangThaiPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvPhieu.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
+                dgvPhieu.ClearSelection(); // Xóa lựa chọn cũ trong DataGridView phiếu
+                dgvPhieu_CellClick(dgvPhieu, new DataGridViewCellEventArgs(0, 0)); // Gọi sự kiện click để hiển thị chi tiết
+            }
         }
 
-        private void LoadPhieuNhap(string? trangThai = null)
-        {
-            var list = _pnBLL.GetAll(x => x.MaNvNavigation).Where(pn => trangThai == null || pn.TrangThaiThanhToan == trangThai);
-            dgvPhieu.DataSource = list.Select((pn, index) => new
-            {
-                STT = index + 1,
-                MaPN = pn.MaPhieuNhap,
-                TenNV = pn.MaNvNavigation.HoTen,
-                NgayNhap = pn.NgayNhap,
-                TrangThaiPN = pn.TrangThaiThanhToan,
-            }).ToList();
+        
 
-            dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["MaPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["TenNV"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["NgayNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["TrangThaiPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
-            dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvPhieu.Columns["MaPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvPhieu.Columns["NgayNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
-        }
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == 0)
-            {
-                LoadPhieuNhap();
-                cbTrangthai.SelectedItem = "Tất cả";
-            }
-            else if (comboBox1.SelectedIndex == 1)
-            {
-                LoadPhieuXuat();
-                cbTrangthai.SelectedItem = "Tất cả";
-            }
-
+            
+            cbTrangthai.SelectedItem = "Tất cả"; // Đặt lại trạng thái về "Tất cả" khi thay đổi loại phiếu
+            ApplyFilters(); // Gọi hàm lọc khi thay đổi loại phiếu
             dgvCt.DataSource = null; // Xóa dữ liệu cũ trong DataGridView chi tiết
             if (dgvPhieu.Rows.Count > 0)
             {
@@ -239,24 +193,69 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnTk_Click(object sender, EventArgs e)
         {
-            DateOnly datetuNgay = DateOnly.FromDateTime(dateTimePicker1.Value.Date);
-            DateOnly dateDenngay = DateOnly.FromDateTime(dateTimePicker2.Value.Date);
+            
+            ApplyFilters(); // Gọi hàm lọc khi nhấn nút tìm kiếm
+        }
 
-            if (datetuNgay > dateDenngay)
+        private void cbTrangthai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+            ApplyFilters(); // Gọi hàm lọc khi thay đổi trạng thái
+        }
+
+        private void ApplyFilters()
+        {
+            // Lấy giá trị từ các control
+            string loaiPhieu = comboBox1.Text;
+            string trangThai = cbTrangthai.Text;
+
+            // Lấy trạng thái của combobox ngày lọc
+            int ngayLocIndex = cbNgayloc.SelectedIndex;
+
+            // Khai báo biến cho ngày, sẽ dùng sau
+            DateOnly tuNgay = DateOnly.FromDateTime(DateTime.MinValue);
+            DateOnly denNgay = DateOnly.FromDateTime(DateTime.MaxValue);
+
+            if (ngayLocIndex == 1) // "Khoảng thời gian"
             {
-                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                tuNgay = DateOnly.FromDateTime(dateTimePicker1.Value.Date);
+                denNgay = DateOnly.FromDateTime(dateTimePicker2.Value.Date);
+
+                // Kiểm tra khoảng ngày có hợp lệ không
+                if (tuNgay > denNgay)
+                {
+                    MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
-            if (comboBox1.SelectedIndex == 0)
+            
+
+            // --- Lọc theo Loại phiếu ---
+            if (loaiPhieu == "Phiếu nhập")
             {
-                var list = _pnBLL.GetAll(x => x.MaNvNavigation).Where(x => x.NgayNhap >= datetuNgay && x.NgayNhap <= dateDenngay);
-                dgvPhieu.DataSource = list.Select((pn, index) => new
+                var query = _pnBLL.GetAll(x => x.MaNvNavigation);
+
+                // Áp dụng bộ lọc trạng thái
+                if (trangThai != "Tất cả")
+                {
+                    query = query.Where(pn => pn.TrangThaiThanhToan == trangThai);
+                }
+
+                // Áp dụng bộ lọc ngày tháng (chỉ khi người dùng chọn "Khoảng thời gian")
+                if (ngayLocIndex == 1)
+                {
+                    query = query.Where(pn => pn.NgayNhap >= tuNgay && pn.NgayNhap <= denNgay);
+                }
+
+                // Hiển thị kết quả
+                dgvPhieu.DataSource = query.Select((pn, index) => new
                 {
                     STT = index + 1,
                     MaPN = pn.MaPhieuNhap,
                     TenNV = pn.MaNvNavigation.HoTen,
                     NgayNhap = pn.NgayNhap,
-                    TrangThaiPN = pn.TrangThaiThanhToan,
+                    TrangThaiPN = pn.TrangThaiThanhToan
                 }).ToList();
 
                 dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -265,15 +264,31 @@ namespace DuAn1_Nhom4.GUI
                 dgvPhieu.Columns["NgayNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["TrangThaiPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+
                 dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["MaPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvPhieu.Columns["NgayNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+
             }
-            else
+            else if (loaiPhieu == "Phiếu xuất")
             {
-                var list = _pxBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation).Where(x => x.NgayXuat >= datetuNgay && x.NgayXuat <= dateDenngay);
-                dgvPhieu.DataSource = list.Select((px, index) => new
+                var query = _pxBLL.GetAll(x => x.MaKhNavigation, x => x.MaNvNavigation);
+
+                // Áp dụng bộ lọc trạng thái
+                if (trangThai != "Tất cả")
+                {
+                    query = query.Where(px => px.TrangThaiThanhToan == trangThai);
+                }
+
+                // Áp dụng bộ lọc ngày tháng (chỉ khi người dùng chọn "Khoảng thời gian")
+                if (ngayLocIndex == 1)
+                {
+                    query = query.Where(px => px.NgayXuat >= tuNgay && px.NgayXuat <= denNgay);
+                }
+
+                // Hiển thị kết quả
+                dgvPhieu.DataSource = query.Select((px, index) => new
                 {
                     STT = index + 1,
                     MaPX = px.MaPhieuXuat,
@@ -283,12 +298,12 @@ namespace DuAn1_Nhom4.GUI
                     TrangThaiPX = px.TrangThaiThanhToan
                 }).ToList();
 
+
                 dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["MaPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["TenKH"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["NgayXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["TrangThaiPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
 
                 dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPhieu.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -296,42 +311,29 @@ namespace DuAn1_Nhom4.GUI
             }
         }
 
-        private void cbTrangthai_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbNgayloc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbTrangthai.Text == "Tất cả")
+            if (cbNgayloc.SelectedIndex == 0) // "Tất cả"
             {
-                if (comboBox1.SelectedIndex == 0)
-                {
-                    LoadPhieuNhap();
-                }
-                else
-                {
-                    LoadPhieuXuat();
-                }
-            }
-            else if (cbTrangthai.Text == "Đã thanh toán")
-            {
-                if (comboBox1.SelectedIndex == 0)
-                {
-                    LoadPhieuNhap(cbTrangthai.Text);
+                dateTimePicker1.Visible = false;
+                dateTimePicker2.Visible = false;
+                btnTk.Visible = false;
+                lbDenngay.Visible = false;
+                lbTungay.Visible = false;
 
-                }
-                else
-                {
-                    LoadPhieuXuat(cbTrangthai.Text);
-                }
             }
-            else if (cbTrangthai.Text == "Chưa thanh toán" || cbTrangthai.Text == "Đã hủy")
+            else // "Khoảng thời gian"
             {
-                if (comboBox1.SelectedIndex == 0)
-                {
-                    LoadPhieuNhap(cbTrangthai.Text);
-                }
-                else
-                {
-                    LoadPhieuXuat(cbTrangthai.Text);
-                }
+                dateTimePicker1.Visible = true;
+                dateTimePicker2.Visible = true;
+                btnTk.Visible = true;
+                lbDenngay.Visible = true;
+                lbTungay.Visible = true;
+
             }
+
+            // Quan trọng: Gọi hàm lọc để cập nhật dữ liệu ngay lập tức
+            ApplyFilters();
         }
     }
 }
