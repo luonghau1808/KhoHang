@@ -37,7 +37,17 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            int input = int.Parse(txtSoluong.Text.Trim());
+            int input = 0;
+            try
+            {
+                input = int.Parse(txtSoluong.Text.Trim());
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Số lượng không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Trả về nếu không thể chuyển đổi sang số nguyên
+            }
             if(input <= 0)
             {
                 MessageBox.Show("Số lượng phải lớn hơn 0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -1,9 +1,10 @@
 ﻿using System.Data;
 using System.Globalization;
-using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.GUI.Hóa_đơn;
 using DuAn1_Nhom4.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace DuAn1_Nhom4.GUI
 {
@@ -57,12 +58,30 @@ namespace DuAn1_Nhom4.GUI
                 NgayXuat = px.NgayXuat,
                 TrangThai = px.TrangThaiThanhToan,
             }).ToList();
+            if (dtgDanhSachHD.Rows.Count <= 0)
+            {
+                btnXoa.Enabled = false; // Vô hiệu hóa nút Xóa nếu không có phiếu xuất nào
+                btnSua.Enabled = false; // Vô hiệu hóa nút Sửa nếu không có phiếu xuất nào
+                btnThem.Enabled = false; // Vô hiệu hóa nút Thêm nếu không có phiếu xuất nào
+            }
+            else
+            {
+                btnXoa.Enabled = true; // Kích hoạt nút Xóa nếu có phiếu xuất
+                btnSua.Enabled = true; // Kích hoạt nút Sửa nếu có phiếu xuất
+                btnThem.Enabled = true; // Kích hoạt nút Thêm nếu có phiếu xuất
+            }
             dtgDanhSachHD.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-
-            dtgDanhSachHD_CellClick(null, new DataGridViewCellEventArgs(0, 0)); // Gọi hàm để load giỏ hàng cho phiếu xuất đầu tiên nếu có
+            if (dtgDanhSachHD.Rows.Count > 0)
+            {
+                int maPX = Convert.ToInt32(dtgDanhSachHD.Rows[0].Cells["MaPX"].Value);
+                var px = _phieuXuatBLL.GetById(maPX);
+                LoadKhachHang(_phieuXuatBLL.GetById(maPX).MaKhNavigation); // Cập nhật thông tin khách hàng
+                lbNV.Text = "Nhân viên: " + px.MaNvNavigation.HoTen;
+                LoadCTPX(maPX);
+            }
 
         }
 
@@ -102,11 +121,13 @@ namespace DuAn1_Nhom4.GUI
             {
                 btnXoa.Enabled = false; // Vô hiệu hóa nút Xóa nếu giỏ hàng không có sản phẩm
                 btnSua.Enabled = false; // Vô hiệu hóa nút Sửa nếu giỏ hàng không có sản phẩm
+                txtTienkhach.ReadOnly = true; // Đặt ô tiền khách hàng thành chỉ đọc nếu giỏ hàng không có sản phẩm
             }
             else
             {
                 btnXoa.Enabled = true; // Kích hoạt nút Xóa nếu giỏ hàng có sản phẩm
                 btnSua.Enabled = true; // Kích hoạt nút Sửa nếu giỏ hàng có sản phẩm
+                txtTienkhach.ReadOnly = false; // Bỏ chỉ đọc ô tiền khách hàng nếu giỏ hàng có sản phẩm
 
             }
         }
@@ -137,8 +158,9 @@ namespace DuAn1_Nhom4.GUI
             }
 
             int maPx = Convert.ToInt32(dtgDanhSachHD.Rows[e.RowIndex].Cells[1].Value);
-            var px = _phieuXuatBLL.GetById(maPx);
             
+            var px = _phieuXuatBLL.GetById(maPx);
+
             LoadCTPX(maPx);
             LoadKhachHang(_phieuXuatBLL.GetById(maPx).MaKhNavigation); // Cập nhật thông tin khách hàng
             lbNV.Text = "Nhân viên: " + px.MaNvNavigation.HoTen;
@@ -147,9 +169,14 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (dtgDanhSachHD.Rows.Count < 0)
+            {
+                MessageBox.Show("Vui lòng tạo phiếu xuất trước khi xóa sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể xóa sản phẩm nếu chưa có phiếu xuất
+            }
             var px = dtgDanhSachHD.CurrentRow.Cells["MaPX"].Value;
             var ctpx = dtgGioHang.CurrentRow?.Cells["MaCT"].Value;
-            if(dtgGioHang.Rows.Count < 2)
+            if (dtgGioHang.Rows.Count < 2)
             {
                 MessageBox.Show("Không thể xóa sản phẩm vì giỏ hàng chỉ còn một sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Không thể xóa nếu giỏ hàng chỉ còn một sản phẩm
@@ -210,6 +237,11 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (dtgDanhSachHD.Rows.Count < 0)
+            {
+                MessageBox.Show("Vui lòng tạo phiếu xuất trước khi thêm sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể thêm sản phẩm nếu chưa có phiếu xuất
+            }
             var sp = dtgDanhSachSP.CurrentRow.Cells["MaSP"].Value;
             var px = dtgDanhSachHD.CurrentRow.Cells["MaPX"].Value;
             var donGia = dtgDanhSachSP.CurrentRow.Cells["DonGiaXuat"].Value;
@@ -220,13 +252,13 @@ namespace DuAn1_Nhom4.GUI
                 return; // Không thêm sản phẩm nếu đã có trong giỏ hàng
             }
             SoLuong soLuongForm = new SoLuong();
-            soLuongForm.ShowDialog();            
+            soLuongForm.ShowDialog();
             soLuong = soLuongForm.SoLuongSanPham;
-            if(soLuong == 0)
+            if (soLuong == 0)
             {
                 return;
             }
-            
+
 
             var ctpx = new PhieuXuatChiTiet
             {
@@ -307,14 +339,14 @@ namespace DuAn1_Nhom4.GUI
             txtsdt.Text = khachHang.Sdt;
         }
 
-        
+
         private void ResetForm_XuatHang()
         {
             // Xóa text các ô bên phải
             txtsdt.Clear();
-       
+
             txtTen.Clear();
-      
+
             txtTienkhach.Clear();
             txtsdt.Clear();
             txtTen.Clear();
@@ -334,14 +366,14 @@ namespace DuAn1_Nhom4.GUI
 
             // Load lại danh sách hóa đơn (nếu muốn)
             LoadPhieuXuat();
-            
+
 
         }
         bool isTyping = false;
 
         private void txtTienkhach_TextChanged(object sender, EventArgs e)
         {
-            
+
 
             var px = dtgDanhSachHD.CurrentRow?.Cells["MaPX"].Value;
             if (px == null)
@@ -365,7 +397,7 @@ namespace DuAn1_Nhom4.GUI
             if (decimal.TryParse(clean, out decimal value))
             {
                 // Gán lại định dạng C0 (1.000.000 ₫)
-                txt.Text = string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0}", value);
+                txt.Text = string.Format(CultureInfo.GetCultureInfo("en-US"), "{0:N0}", value);
                 txt.SelectionStart = txt.Text.Length; // Đặt con trỏ ở cuối
 
                 // Tính tiền thừa
@@ -390,11 +422,16 @@ namespace DuAn1_Nhom4.GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             var pxXoa = dtgDanhSachHD.CurrentRow?.Cells["MaPX"].Value;
-            if(MessageBox.Show("Bạn có chắc chắn muốn xóa không?","Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (pxXoa == null)
+            {
+                MessageBox.Show("Vui lòng chọn phiếu xuất để hủy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể xóa nếu không có phiếu xuất được chọn
+            }
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return; // Không thực hiện xóa nếu người dùng chọn No
             }
-            if (pxXoa == null) return;
+
             var px = _phieuXuatBLL.GetById((int)pxXoa);
             var list = _ctPhieuXuatBLL.GetAll().Where(x => x.MaPhieuXuat == (int)pxXoa).ToList();
             foreach (var item in list)
@@ -404,7 +441,7 @@ namespace DuAn1_Nhom4.GUI
                 {
                     ctsp.SoLuong += item.SoLuong; // Trả lại số lượng sản phẩm vào kho
                     _ctSanphamBLL.Update(ctsp); // Cập nhật số lượng sản phẩm trong kho
-                    
+
                 }
             }
 
@@ -417,6 +454,11 @@ namespace DuAn1_Nhom4.GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            if (dtgDanhSachHD.Rows.Count <= 0)
+            {
+                MessageBox.Show("Vui lòng tạo phiếu xuất trước khi sửa sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể xóa sản phẩm nếu chưa có phiếu xuất
+            }
             var ctpx = dtgGioHang.CurrentRow?.Cells["MaCT"].Value;
             if (ctpx == null)
             {
@@ -434,7 +476,7 @@ namespace DuAn1_Nhom4.GUI
 
             soLuongForm.ShowDialog();
             int soLuong = soLuongForm.SoLuongSanPham;
-            if(soLuong == 0)
+            if (soLuong == 0)
             {
                 return; // Không thể sửa nếu không có số lượng
             }
@@ -464,12 +506,22 @@ namespace DuAn1_Nhom4.GUI
                 MessageBox.Show("Vui lòng chọn phiếu xuất để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var tienKhach = 0m;
+
+            var phieuXuat = _phieuXuatBLL.GetById((int)px);
+            var list = _ctPhieuXuatBLL.GetAll().Where(x => x.MaPhieuXuat == (int)px).ToList();
+            if (list.Count() == 0)
+            {
+                MessageBox.Show("Giỏ hàng không có sản phẩm nào để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Không thể thanh toán nếu giỏ hàng không có sản phẩm
+            }
+
+            decimal tienKhach = 0;
+
             try
             {
-                tienKhach = decimal.Parse(txtTienkhach.Text);
+                tienKhach = decimal.Parse(txtTienkhach.Text.Trim());
             }
-            catch (FormatException)
+            catch (Exception)
             {
                 MessageBox.Show("Xin vui lòng nhập số tiền hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -481,13 +533,7 @@ namespace DuAn1_Nhom4.GUI
                 return; // Không thể thanh toán nếu số tiền không đủ
             }
             // Cập nhật trạng thái thanh toán của phiếu xuất
-            var phieuXuat = _phieuXuatBLL.GetById((int)px);
-            var list = _ctPhieuXuatBLL.GetAll().Where(x => x.MaPhieuXuat == (int)px).ToList();
-            if (list.Count() == 0)
-            {
-                MessageBox.Show("Giỏ hàng không có sản phẩm nào để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Không thể thanh toán nếu giỏ hàng không có sản phẩm
-            }
+            
             if (phieuXuat == null)
             {
                 MessageBox.Show("Phiếu xuất không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -495,10 +541,132 @@ namespace DuAn1_Nhom4.GUI
             }
             phieuXuat.TrangThaiThanhToan = "Đã thanh toán";
             _phieuXuatBLL.Update(phieuXuat); // Cập nhật phiếu xuất
+            // Xuất hóa đơn PDF
+            if (MessageBox.Show("Bạn có muốn in hóa đơn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string filePath = @"D:\DuAn1\GUI\PhieuXuat\HoaDon.pdf";
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath); // Xóa file cũ nếu tồn tại
+                }
+                XuatHoaDonPDF(filePath, phieuXuat.MaPhieuXuat.ToString(), phieuXuat.MaKhNavigation.Ten, phieuXuat.NgayXuat.ToDateTime(new TimeOnly()), tongTien, list);
+            }
+
             MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ResetForm_XuatHang(); // Đặt lại form xuất hàng về trạng thái ban đầu sau khi thanh toán thành công
             LoadPhieuXuat(); // Cập nhật danh sách phiếu xuất
 
         }
+
+
+
+
+        public static void XuatHoaDonPDF(string filePath, string maHoaDon, string tenKhach, DateTime ngayLap, decimal tongTien, List<PhieuXuatChiTiet> chiTiet)
+        {
+            // Tạo document PDF
+            Document document = new Document(PageSize.A4, 25, 25, 30, 30);
+            try
+            {
+                PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+                document.Open();
+
+                // Khai báo font hỗ trợ tiếng Việt (Unicode)
+                // Thay đổi đường dẫn đến font Arial Unicode MS hoặc một font khác có sẵn trên máy của bạn
+                string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arialuni.ttf");
+
+                // Nếu không tìm thấy font, hãy sử dụng một font mặc định hoặc font có sẵn khác.
+                if (!File.Exists(fontPath))
+                {
+                    fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "times.ttf");
+                }
+
+                BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+                // Định nghĩa các font cần dùng
+                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(baseFont, 18, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font normalFont = new iTextSharp.text.Font(baseFont, 12);
+                iTextSharp.text.Font boldFont = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.BOLD);
+
+
+                // Tiêu đề hóa đơn
+                Paragraph title = new Paragraph("HÓA ĐƠN BÁN HÀNG\n\n", titleFont);
+                title.Alignment = Element.ALIGN_CENTER;
+                document.Add(title);
+
+                // Thông tin hóa đơn
+                document.Add(new Paragraph($"Mã hóa đơn: {maHoaDon}", normalFont));
+                document.Add(new Paragraph($"Khách hàng: {tenKhach}", normalFont));
+                document.Add(new Paragraph($"Ngày lập: {ngayLap:dd/MM/yyyy}", normalFont));
+                document.Add(new Paragraph("\n"));
+
+                // Bảng chi tiết sản phẩm
+                PdfPTable table = new PdfPTable(5);
+                table.WidthPercentage = 100;
+                table.SetWidths(new float[] { 10f ,40f, 20f, 20f, 20f });
+
+                // Tiêu đề bảng
+                PdfPCell cellSTT = new PdfPCell(new Phrase("STT", boldFont));
+                cellSTT.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(cellSTT);
+                PdfPCell cellTensp = new PdfPCell(new Phrase("Tên sản phẩm", boldFont));
+                cellTensp.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(cellTensp);
+                PdfPCell cellSl = new PdfPCell(new Phrase("Số lượng", boldFont));
+                cellSl.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(cellSl); 
+                PdfPCell celldonGia = new PdfPCell(new Phrase("Đơn giá", boldFont));
+                celldonGia.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(celldonGia);
+                PdfPCell cellTongtien = new PdfPCell(new Phrase("Thành tiền", boldFont));
+                cellTongtien.HorizontalAlignment = Element.ALIGN_CENTER;
+                table.AddCell(cellTongtien);
+
+                int count = 1; // Biến đếm số thứ tự sản phẩm
+
+                // Dữ liệu chi tiết
+                foreach (var item in chiTiet)
+                {
+                    PdfPCell cellStt = new PdfPCell(new Phrase((count++).ToString(), normalFont));
+                    cellSTT.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(cellSTT);
+                    // Cột Tên SP
+                    table.AddCell(new Phrase(item.MaCtspNavigation.MaSpNavigation.TenSp, normalFont));
+
+                    // Cột Số lượng
+                    PdfPCell cellSoLuong = new PdfPCell(new Phrase(item.SoLuong.ToString(), normalFont));
+                    cellSoLuong.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    table.AddCell(cellSoLuong);
+
+                    // Cột Giá bán
+                    PdfPCell cellGiaBan = new PdfPCell(new Phrase(item.GiaBan.ToString("N0"), normalFont));
+                    cellGiaBan.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    table.AddCell(cellGiaBan);
+
+                    // Cột Thành tiền
+                    PdfPCell cellThanhTien = new PdfPCell(new Phrase((item.SoLuong * item.GiaBan).ToString("N0"), normalFont));
+                    cellThanhTien.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    table.AddCell(cellThanhTien);
+                }
+
+                document.Add(table);
+
+                // Tổng tiền
+                document.Add(new Paragraph("\n"));
+                Paragraph total = new Paragraph($"Tổng cộng: {tongTien:N0} VND", titleFont);
+                total.Alignment = Element.ALIGN_RIGHT;
+                document.Add(total);
+
+                document.Add(new Paragraph("\nCảm ơn quý khách!", normalFont));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi xuất PDF: " + ex.Message);
+            }
+            finally
+            {
+                document.Close();
+            }
+        }
     }
 }
+
