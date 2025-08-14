@@ -25,6 +25,12 @@ namespace DuAn1_Nhom4.GUI
         {
             var danhSachNCC = nhaCungCapBAL.GetAll();
             dtgDanhSachNCC.DataSource = danhSachNCC;
+
+            dtgDanhSachNCC.Columns["MaNcc"].HeaderText = "Mã nhà cung cấp";
+            dtgDanhSachNCC.Columns["TenNcc"].HeaderText = "Tên nhà cung cấp";
+            dtgDanhSachNCC.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
+            dtgDanhSachNCC.Columns["DiaChi"].HeaderText = "Địa chỉ";
+          
         }
         private void btnThem_Click(object sender, EventArgs e)
         {

@@ -96,6 +96,12 @@ namespace DuAn1_Nhom4.GUI.Hóa_đơn
                     Email = kh.Email
 
                 }).ToList();
+
+            dtgKH.Columns["MaKH"].HeaderText = "Mã khách hàng";
+            dtgKH.Columns["TenKH"].HeaderText = "Tên khách hàng";
+            dtgKH.Columns["Sdt"].HeaderText = "Số điện thoại";
+            dtgKH.Columns["DiaChi"].HeaderText = "Địa chỉ";
+           
         }
 
         private void KhachHangF_Load(object sender, EventArgs e)

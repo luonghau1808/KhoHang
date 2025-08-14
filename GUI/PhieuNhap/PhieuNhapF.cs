@@ -59,6 +59,11 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 NgayNhap = px.NgayNhap.ToString("dd/MM/yyyy"),
                 TrangThai = px.TrangThaiThanhToan
             }).ToList();
+            dgvDanhSachPhieuNhap.Columns["MaPN"].HeaderText = "Mã phiếu nhập";
+            dgvDanhSachPhieuNhap.Columns["TenNV"].HeaderText = "Tên nhân viên";
+            dgvDanhSachPhieuNhap.Columns["NgayNhap"].HeaderText = "Ngày nhập";
+            dgvDanhSachPhieuNhap.Columns["TrangThai"].HeaderText = "Trạng thái";
+
 
         }
 
@@ -143,6 +148,15 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             // 6. Tổng tiền
             _tongTien = list.Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaNhap ?? 1));
             lbTongTien.Text = "Tổng tiền: " + _tongTien.ToString("N0") + " VNĐ";
+
+            dgvGioHang.Columns["MaCT"].HeaderText = "Mã chi tiết";
+            dgvGioHang.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dgvGioHang.Columns["MauSac"].HeaderText = "Màu sắc";
+            dgvGioHang.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dgvGioHang.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvGioHang.Columns["DonGia"].HeaderText = "Đơn giá";
+            dgvGioHang.Columns["ThanhTien"].HeaderText = "Thành tiền";
+
         }
 
 

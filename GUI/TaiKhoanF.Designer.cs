@@ -43,6 +43,8 @@
             txtHoTen = new TextBox();
             txtMa = new TextBox();
             groupBox2 = new GroupBox();
+            picEyeConfirm = new PictureBox();
+            pictureBoxeyeOld = new PictureBox();
             picEyeNew = new PictureBox();
             label13 = new Label();
             label11 = new Label();
@@ -56,13 +58,11 @@
             label6 = new Label();
             txtMkCu = new TextBox();
             txtTenDangNhap = new TextBox();
-            pictureBoxeyeOld = new PictureBox();
-            picEyeConfirm = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picEyeNew).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picEyeNew).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -234,10 +234,32 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin tài khoản";
             // 
+            // picEyeConfirm
+            // 
+            picEyeConfirm.Cursor = Cursors.Hand;
+            picEyeConfirm.Location = new Point(1011, 304);
+            picEyeConfirm.Name = "picEyeConfirm";
+            picEyeConfirm.Size = new Size(33, 31);
+            picEyeConfirm.SizeMode = PictureBoxSizeMode.Zoom;
+            picEyeConfirm.TabIndex = 25;
+            picEyeConfirm.TabStop = false;
+            picEyeConfirm.Click += picEyeConfirm_Click;
+            // 
+            // pictureBoxeyeOld
+            // 
+            pictureBoxeyeOld.Cursor = Cursors.Hand;
+            pictureBoxeyeOld.Location = new Point(1011, 139);
+            pictureBoxeyeOld.Name = "pictureBoxeyeOld";
+            pictureBoxeyeOld.Size = new Size(33, 31);
+            pictureBoxeyeOld.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxeyeOld.TabIndex = 24;
+            pictureBoxeyeOld.TabStop = false;
+            pictureBoxeyeOld.Click += pictureBoxeyeOld_Click;
+            // 
             // picEyeNew
             // 
             picEyeNew.Cursor = Cursors.Hand;
-            picEyeNew.Location = new Point(1011, 139);
+            picEyeNew.Location = new Point(1011, 226);
             picEyeNew.Name = "picEyeNew";
             picEyeNew.Size = new Size(33, 31);
             picEyeNew.SizeMode = PictureBoxSizeMode.Zoom;
@@ -365,28 +387,6 @@
             txtTenDangNhap.Size = new Size(457, 31);
             txtTenDangNhap.TabIndex = 11;
             // 
-            // pictureBoxeyeOld
-            // 
-            pictureBoxeyeOld.Cursor = Cursors.Hand;
-            pictureBoxeyeOld.Location = new Point(1011, 226);
-            pictureBoxeyeOld.Name = "pictureBoxeyeOld";
-            pictureBoxeyeOld.Size = new Size(33, 31);
-            pictureBoxeyeOld.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxeyeOld.TabIndex = 24;
-            pictureBoxeyeOld.TabStop = false;
-            pictureBoxeyeOld.Click += pictureBoxeyeOld_Click;
-            // 
-            // picEyeConfirm
-            // 
-            picEyeConfirm.Cursor = Cursors.Hand;
-            picEyeConfirm.Location = new Point(1011, 304);
-            picEyeConfirm.Name = "picEyeConfirm";
-            picEyeConfirm.Size = new Size(33, 31);
-            picEyeConfirm.SizeMode = PictureBoxSizeMode.Zoom;
-            picEyeConfirm.TabIndex = 25;
-            picEyeConfirm.TabStop = false;
-            picEyeConfirm.Click += picEyeConfirm_Click;
-            // 
             // TaiKhoanF
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -401,9 +401,9 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picEyeNew).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).EndInit();
             ((System.ComponentModel.ISupportInitialize)picEyeConfirm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxeyeOld).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picEyeNew).EndInit();
             ResumeLayout(false);
         }
 

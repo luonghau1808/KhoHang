@@ -57,7 +57,12 @@ namespace DuAn1_Nhom4.GUI
             dgvPhieu.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvPhieu.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-
+            dgvPhieu.Columns["MaPX"].HeaderText = "Mã phiếu xuất";
+            dgvPhieu.Columns["TenNV"].HeaderText = "Tên nhân viên";
+            dgvPhieu.Columns["TenKH"].HeaderText = "Tên khách hàng";
+            dgvPhieu.Columns["NgayXuat"].HeaderText = "Ngày xuất";
+            dgvPhieu.Columns["TrangThaiPX"].HeaderText = "Trạng thái";
+            
         }
 
         private void LoadPhieuNhap(string? trangThai = null)
@@ -83,7 +88,10 @@ namespace DuAn1_Nhom4.GUI
             dgvPhieu.Columns["MaPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvPhieu.Columns["NgayNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-
+            dgvPhieu.Columns["MaPN"].HeaderText = "Mã phiếu nhập";
+            dgvPhieu.Columns["TenNV"].HeaderText = "Tên nhân viên";
+            dgvPhieu.Columns["NgayNhap"].HeaderText = "Ngày nhập";
+            dgvPhieu.Columns["TrangThaiPN"].HeaderText = "Trạng thái";
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -144,7 +152,13 @@ namespace DuAn1_Nhom4.GUI
             dgvCt.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCt.Columns["MaCT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-
+            dgvCt.Columns["MaCT"].HeaderText = "Mã chi tiết";
+            dgvCt.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dgvCt.Columns["MauSac"].HeaderText = "Màu sắc";
+            dgvCt.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dgvCt.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvCt.Columns["DonGia"].HeaderText = "Đơn giá";
+            dgvCt.Columns["ThanhTien"].HeaderText = "Thành tiền";
 
         }
 
@@ -180,6 +194,12 @@ namespace DuAn1_Nhom4.GUI
             dgvCt.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvCt.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCt.Columns["MaCTPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvCt.Columns["MaCTPN"].HeaderText = "Mã chi tiết";
+            dgvCt.Columns["TenSp"].HeaderText = "Tên sản phẩm";
+            dgvCt.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvCt.Columns["DonGia"].HeaderText = "Đơn giá";
+            dgvCt.Columns["ThanhTien"].HeaderText = "Thành tiền";
 
         }
 

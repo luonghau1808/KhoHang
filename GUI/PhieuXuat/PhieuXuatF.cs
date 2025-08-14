@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Globalization;
+using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.GUI.Hóa_đơn;
 using DuAn1_Nhom4.Models;
@@ -53,6 +54,16 @@ namespace DuAn1_Nhom4.GUI
             dtgDanhSachSP.Columns["DonGiaNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachSP.Columns["DonGiaXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            dtgDanhSachSP.Columns["MaSP"].HeaderText = "Mã sản phẩm";
+            dtgDanhSachSP.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dtgDanhSachSP.Columns["MauSac"].HeaderText = "Màu sắc";
+            dtgDanhSachSP.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dtgDanhSachSP.Columns["SoLuong"].HeaderText = "Số lượng";
+            dtgDanhSachSP.Columns["DonGiaNhap"].HeaderText = "Đơn giá nhập";
+            dtgDanhSachSP.Columns["DonGiaXuat"].HeaderText = "Đơn giá xuất";
+
+            dtgDanhSachSP.Columns["TenSP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
         }
 
 
@@ -90,6 +101,14 @@ namespace DuAn1_Nhom4.GUI
             dtgDanhSachHD.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dtgDanhSachHD.Columns["MaPX"].HeaderText = "Mã phiếu xuất";
+            dtgDanhSachHD.Columns["TenKH"].HeaderText = "Tên khách hàng";
+            dtgDanhSachHD.Columns["NgayXuat"].HeaderText = "Ngày xuất";
+            dtgDanhSachHD.Columns["TrangThai"].HeaderText = "Trạng thái";
+            dtgDanhSachHD.Columns["TenNV"].HeaderText = "Tên nhân viên";
+
 
             if (dtgDanhSachHD.Rows.Count > 0)
             {
@@ -142,6 +161,15 @@ namespace DuAn1_Nhom4.GUI
             dtgGioHang.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["MaCT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            dtgGioHang.Columns["MaCT"].HeaderText = "Mã chi tiết";
+            dtgGioHang.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dtgGioHang.Columns["MauSac"].HeaderText = "Màu sắc";
+            dtgGioHang.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dtgGioHang.Columns["DonGia"].HeaderText = "Đơn giá";
+            dtgGioHang.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dtgGioHang.Columns["SoLuong"].HeaderText = "Số lượng";
+
+            dtgGioHang.Columns["TenSP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             if (dtgGioHang.Rows.Count <= 0)
             {
