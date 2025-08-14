@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Windows.Forms;
 using DuAn1_Nhom4.BLL;
 using DuAn1_Nhom4.Models;
 
@@ -46,6 +47,16 @@ namespace DuAn1_Nhom4.GUI
                 TrangThaiPX = px.TrangThaiThanhToan
             }).ToList();
 
+            dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["MaPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["TenKH"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["NgayXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["TrangThaiPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPhieu.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 
         }
 
@@ -60,6 +71,17 @@ namespace DuAn1_Nhom4.GUI
                 NgayNhap = pn.NgayNhap,
                 TrangThaiPN = pn.TrangThaiThanhToan,
             }).ToList();
+
+            dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["MaPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["TenNV"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["NgayNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["TrangThaiPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPhieu.Columns["MaPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPhieu.Columns["NgayNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
         }
@@ -107,6 +129,22 @@ namespace DuAn1_Nhom4.GUI
                 ThanhTien = ct.SoLuong * (ct.MaCtspNavigation?.DonGiaXuat ?? 0)
             }).ToList();
 
+            dgvCt.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["MaCT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["DonGia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["ThanhTien"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dgvCt.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["MaCT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
 
         }
 
@@ -123,11 +161,26 @@ namespace DuAn1_Nhom4.GUI
             {
                 STT = index + 1,
                 MaCTPN = ctpn.MaPhieuNhap,
-                MaSP = ctpn.MaCtspNavigation.MaSpNavigation.TenSp,
+                TenSp = ctpn.MaCtspNavigation.MaSpNavigation.TenSp,
                 SoLuong = ctpn.SoLuong,
                 DonGia = ctpn.DonGia,
                 ThanhTien = ctpn.SoLuong * ctpn.DonGia
             }).ToList();
+
+            dgvCt.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["MaCTPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["TenSp"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["SoLuong"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["DonGia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["ThanhTien"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+            dgvCt.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCt.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCt.Columns["MaCTPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private void dgvPhieu_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -206,6 +259,16 @@ namespace DuAn1_Nhom4.GUI
                     TrangThaiPN = pn.TrangThaiThanhToan,
                 }).ToList();
 
+                dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["MaPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["TenNV"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["NgayNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["TrangThaiPN"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["MaPN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPhieu.Columns["NgayNhap"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             }
             else
             {
@@ -219,6 +282,17 @@ namespace DuAn1_Nhom4.GUI
                     NgayXuat = px.NgayXuat,
                     TrangThaiPX = px.TrangThaiThanhToan
                 }).ToList();
+
+                dgvPhieu.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["MaPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["TenKH"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["NgayXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["TrangThaiPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+                dgvPhieu.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPhieu.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPhieu.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 

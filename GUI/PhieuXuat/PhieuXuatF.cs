@@ -37,6 +37,16 @@ namespace DuAn1_Nhom4.GUI
 
             }).ToList();
 
+            dtgDanhSachSP.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["MaSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["SoLuong"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["DonGiaNhap"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachSP.Columns["DonGiaXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
             dtgDanhSachSP.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachSP.Columns["MaSP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachSP.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -70,6 +80,13 @@ namespace DuAn1_Nhom4.GUI
                 btnSua.Enabled = true; // Kích hoạt nút Sửa nếu có phiếu xuất
                 btnThem.Enabled = true; // Kích hoạt nút Thêm nếu có phiếu xuất
             }
+
+            dtgDanhSachHD.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachHD.Columns["MaPX"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachHD.Columns["TenKH"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachHD.Columns["NgayXuat"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgDanhSachHD.Columns["TrangThai"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             dtgDanhSachHD.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["MaPX"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgDanhSachHD.Columns["NgayXuat"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -109,6 +126,15 @@ namespace DuAn1_Nhom4.GUI
             }).ToList();
 
             lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("N0") + "VNĐ"; // Cập nhật tổng tiền của hóa đơn
+
+
+            dtgGioHang.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["MaCT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["DonGia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgGioHang.Columns["ThanhTien"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dtgGioHang.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -544,11 +570,19 @@ namespace DuAn1_Nhom4.GUI
             // Xuất hóa đơn PDF
             if (MessageBox.Show("Bạn có muốn in hóa đơn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string filePath = @"D:\DuAn1\GUI\PhieuXuat\HoaDon.pdf";
-                if (File.Exists(filePath))
+                string folderPath = Path.Combine(Application.StartupPath, @"..\..\..\GUI\PhieuXuat\HoaDon");
+
+                // Chuẩn hóa đường dẫn (chuyển từ relative sang absolute)
+                folderPath = Path.GetFullPath(folderPath);
+
+                // Tạo thư mục nếu chưa có
+                if (!Directory.Exists(folderPath))
                 {
-                    File.Delete(filePath); // Xóa file cũ nếu tồn tại
+                    Directory.CreateDirectory(folderPath);
                 }
+
+                // Tạo file PDF trong thư mục HoaDon
+                string filePath = Path.Combine(folderPath, $"HoaDon_{phieuXuat.MaPhieuXuat}.pdf");
                 XuatHoaDonPDF(filePath, phieuXuat.MaPhieuXuat.ToString(), phieuXuat.MaKhNavigation.Ten, phieuXuat.NgayXuat.ToDateTime(new TimeOnly()), tongTien, list);
             }
 
@@ -627,8 +661,8 @@ namespace DuAn1_Nhom4.GUI
                 foreach (var item in chiTiet)
                 {
                     PdfPCell cellStt = new PdfPCell(new Phrase((count++).ToString(), normalFont));
-                    cellSTT.HorizontalAlignment = Element.ALIGN_CENTER;
-                    table.AddCell(cellSTT);
+                    cellStt.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(cellStt);
                     // Cột Tên SP
                     table.AddCell(new Phrase(item.MaCtspNavigation.MaSpNavigation.TenSp, normalFont));
 
