@@ -374,6 +374,7 @@
             pictureBoxeyeOld.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxeyeOld.TabIndex = 24;
             pictureBoxeyeOld.TabStop = false;
+            pictureBoxeyeOld.Click += pictureBoxeyeOld_Click;
             // 
             // picEyeConfirm
             // 
@@ -384,6 +385,7 @@
             picEyeConfirm.SizeMode = PictureBoxSizeMode.Zoom;
             picEyeConfirm.TabIndex = 25;
             picEyeConfirm.TabStop = false;
+            picEyeConfirm.Click += picEyeConfirm_Click;
             // 
             // TaiKhoanF
             // 
