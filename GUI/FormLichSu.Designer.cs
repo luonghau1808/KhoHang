@@ -77,7 +77,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1120, 582);
+            groupBox1.Size = new Size(1124, 582);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
@@ -123,7 +123,7 @@
             // 
             btnTk.Image = Properties.Resources.icons8_view_30;
             btnTk.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTk.Location = new Point(761, 71);
+            btnTk.Location = new Point(958, 139);
             btnTk.Name = "btnTk";
             btnTk.Size = new Size(143, 43);
             btnTk.TabIndex = 7;
@@ -145,7 +145,7 @@
             dgvPhieu.ReadOnly = true;
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPhieu.Size = new Size(1114, 351);
+            dgvPhieu.Size = new Size(1118, 351);
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
@@ -209,7 +209,7 @@
             groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1120, 330);
+            groupBox2.Size = new Size(1124, 330);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -227,7 +227,7 @@
             dgvCt.ReadOnly = true;
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCt.Size = new Size(1114, 301);
+            dgvCt.Size = new Size(1118, 301);
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -298,16 +298,16 @@
             panel1.Controls.Add(labelTenNV);
             panel1.Controls.Add(labelMaNV);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1120, 0);
+            panel1.Location = new Point(1124, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(399, 912);
+            panel1.Size = new Size(439, 912);
             panel1.TabIndex = 0;
             // 
             // FormLichSu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1519, 912);
+            ClientSize = new Size(1563, 912);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(panel1);

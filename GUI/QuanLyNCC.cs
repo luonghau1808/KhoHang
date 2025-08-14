@@ -30,53 +30,56 @@ namespace DuAn1_Nhom4.GUI
             dtgDanhSachNCC.Columns["TenNcc"].HeaderText = "Tên nhà cung cấp";
             dtgDanhSachNCC.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
             dtgDanhSachNCC.Columns["DiaChi"].HeaderText = "Địa chỉ";
+            dtgDanhSachNCC.Columns["Email"].HeaderText = "Email";
           
+
+
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (!ValidateInput()) return;
-            if(!ValidateNCC()) return;
-            var ncc = new NhaCungCap
-            {
-                TenNcc = txtTenNCC.Text,
-                DiaChi = txtDiaChi.Text,
-                Email = txtEmail.Text,
-                SoDienThoai = txtSDT.Text
-            };
-            nhaCungCapBAL.Add(ncc);
+            AddAndUpdate form = new AddAndUpdate(null);
+            form.ShowDialog();
             LoadNCC();
             ClearForm();
-            MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMaNCC.Text))
+            // Kiểm tra có chọn dòng hay chưa
+            if (dtgDanhSachNCC.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một nhà cung cấp để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn 1 nhà cung cấp để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!ValidateInput()) return;
-            if (!int.TryParse(txtMaNCC.Text, out int id)) return;
-            var ncc = nhaCungCapBAL.GetById(id);
-            if (ncc == null) return;
-            ncc.TenNcc = txtTenNCC.Text;
-            ncc.DiaChi = txtDiaChi.Text;
-            ncc.Email = txtEmail.Text;
-            ncc.SoDienThoai = txtSDT.Text;
 
-            nhaCungCapBAL.Update(ncc);
+            // Lấy Mã NCC từ dòng đang chọn
+            var maNCC = dtgDanhSachNCC.SelectedRows[0].Cells["MaNcc"].Value?.ToString();
+            if (string.IsNullOrWhiteSpace(maNCC))
+            {
+                MessageBox.Show("Không tìm thấy mã nhà cung cấp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy dữ liệu NCC từ DB
+            var ncc = nhaCungCapBAL.GetAll().FirstOrDefault(n => n.MaNcc.ToString() == maNCC);
+            if (ncc == null)
+            {
+                MessageBox.Show("Nhà cung cấp không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Mở form cập nhật
+            AddAndUpdate form = new AddAndUpdate(ncc);
+            form.ShowDialog();
             LoadNCC();
             ClearForm();
-            MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
-       
+        
+
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             LoadNCC();
             ClearForm();
-            btnThem.Enabled = true;
+
         }
         private void dtgDanhSachNCC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -87,8 +90,7 @@ namespace DuAn1_Nhom4.GUI
             txtSDT.Text = row.Cells["SoDienThoai"].Value.ToString();
             txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
             txtEmail.Text = row.Cells["Email"].Value.ToString();
-            // Không cho bấm Thêm khi đang chọn dữ liệu
-            btnThem.Enabled = false;
+
         }
 
         private void QuanLyNCC_Load(object sender, EventArgs e)
@@ -104,118 +106,21 @@ namespace DuAn1_Nhom4.GUI
             txtDiaChi.Clear();
             txtEmail.Clear();
         }
-        private bool CheckSDT(string phone)
-        {
-            if (string.IsNullOrWhiteSpace(phone)) return false;
-            try
-            {
-                long.Parse(phone);
-            }
-            catch
-            {
-                return false;
-            }
-            return phone.Length >= 9 && phone.Length <= 11;
-        }
-        private bool CheckEmail(string email)
-        {
-            return email.Contains("@") && email.Contains(".") && email.Length >= 6;
-        }
-
-
-        private bool ValidateInput()
-        {
-            if (string.IsNullOrWhiteSpace(txtTenNCC.Text))
-            {
-                MessageBox.Show("Vui lòng nhập tên nhà cung cấp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtTenNCC.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
-            {
-                MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtDiaChi.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                MessageBox.Show("Vui lòng nhập email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtEmail.Focus();
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(txtSDT.Text))
-            {
-                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtSDT.Focus();
-                return false;
-            }
-            if (!CheckSDT(txtSDT.Text))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ! Vui lòng nhập đúng định dạng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSDT.Focus();
-                return false;
-            }
-            if (!CheckEmail(txtEmail.Text))
-            {
-                MessageBox.Show("Email không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
-        }
-
         private void txtTim_TextChanged(object sender, EventArgs e)
         {
             string tuKhoa = txtTim.Text.Trim().ToLower();
 
             var ketQua = nhaCungCapBAL.GetAll()
                .Where(ncc =>
-                    ncc.MaNcc.ToString().Contains(tuKhoa) || // tìm theo mã
-                    ncc.TenNcc.ToLower().Contains(tuKhoa) || // tìm theo tên
-                    ncc.Email.ToLower().Contains(tuKhoa) ||
-                    (ncc.DiaChi != null && ncc.DiaChi.ToLower().Contains(tuKhoa))
+                    // tìm theo mã
+                    ncc.TenNcc.ToLower().Contains(tuKhoa)  // tìm theo tên                   
                 )
                 .ToList();
 
             dtgDanhSachNCC.DataSource = ketQua;
-       
-        }
-        private bool ValidateNCC()
-        {
-            var allNCC = nhaCungCapBAL.GetAll();
 
-            // Check trùng tên
-            if (allNCC.Any(n => n.TenNcc.Trim().ToLower() == txtTenNCC.Text.Trim().ToLower()))
-            {
-                MessageBox.Show("Tên nhà cung cấp đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTenNCC.Focus();
-                return false;
-            }
 
-            // Check trùng SĐT
-            if (allNCC.Any(n => n.SoDienThoai.Trim() == txtSDT.Text.Trim()))
-            {
-                MessageBox.Show("Số điện thoại đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSDT.Focus();
-                return false;
-            }
 
-            // Check trùng Email
-            if (allNCC.Any(n => n.Email.Trim().ToLower() == txtEmail.Text.Trim().ToLower()))
-            {
-                MessageBox.Show("Email đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
-                return false;
-            }
-
-            // Check trùng Địa chỉ
-            if (allNCC.Any(n => n.DiaChi.Trim().ToLower() == txtDiaChi.Text.Trim().ToLower()))
-            {
-                MessageBox.Show("Địa chỉ đã tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDiaChi.Focus();
-                return false;
-            }
-
-            return true;
         }
 
 
