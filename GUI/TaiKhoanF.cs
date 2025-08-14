@@ -83,6 +83,11 @@ namespace DuAn1_Nhom4.GUI
                         MessageBox.Show("Mật khẩu cũ không đúng, vui lòng nhập lại.");
                         return;
                     }
+                    if (txtMKMoi.Text.Length < 6)
+                    {
+                        MessageBox.Show("Mật khẩu mới phải có ít nhất 6 ký tự.");
+                        return;
+                    }
                     tk.MatKhau = txtMKMoi.Text;
                     _tkBLL.Update(tk);
                     MessageBox.Show("Cập nhật mật khẩu thành công!");
@@ -103,6 +108,8 @@ namespace DuAn1_Nhom4.GUI
             txtMKMoi.Clear();
             txtMkCu.Clear();
             txtXacNhan.Clear();
+            txtMaXacNhan.Clear();
+            lbcapchar.Text = CapChar();
         }
         private void picEyeNew_Click(object sender, EventArgs e)
         {
