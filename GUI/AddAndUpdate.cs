@@ -21,6 +21,11 @@ namespace DuAn1_Nhom4.GUI
         {
             InitializeComponent();
             _ncc = nhaCungCap;
+            LoadNccData();
+            nhaCungCapBAL = new GenericBLL<NhaCungCap>();
+        }
+        private void LoadNccData()
+        {
             if (_ncc != null)
             {
                 txtMaNCC.Text = _ncc.MaNcc.ToString();
@@ -28,57 +33,49 @@ namespace DuAn1_Nhom4.GUI
                 txtDiaChi.Text = _ncc.DiaChi;
                 txtEmail.Text = _ncc.Email;
                 txtSDT.Text = _ncc.SoDienThoai;
-
             }
             else
             {
-                txtMaNCC.Clear();
-                txtTenNCC.Clear();
-                txtDiaChi.Clear();
-                txtEmail.Clear();
-                txtSDT.Clear();
+               ClearForm();
             }
-            nhaCungCapBAL = new GenericBLL<NhaCungCap>();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            ValidateInput();
-           
-            if (_ncc == null)
+            try
             {
-                _ncc = new NhaCungCap
+                    if (!ValidateInput())  return;
+                if (_ncc == null)
                 {
-                    TenNcc = txtTenNCC.Text,
-                    DiaChi = txtDiaChi.Text,
-                    Email = txtEmail.Text,
-                    SoDienThoai = txtSDT.Text
-                };
+                    _ncc = new NhaCungCap
+                    {
+                        TenNcc = txtTenNCC.Text,
+                        DiaChi = txtDiaChi.Text,
+                        Email = txtEmail.Text,
+                        SoDienThoai = txtSDT.Text
+                    };
+                    // Add logic to save the new NhaCungCap to the database
+                    nhaCungCapBAL.Add(_ncc);
+                    MessageBox.Show("Thêm nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    _ncc.TenNcc = txtTenNCC.Text;
+                    _ncc.DiaChi = txtDiaChi.Text;
+                    _ncc.Email = txtEmail.Text;
+                    _ncc.SoDienThoai = txtSDT.Text;
 
-                // Add logic to save the new NhaCungCap to the database
-                nhaCungCapBAL.Add(_ncc);
-                MessageBox.Show("Thêm nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Add logic to update the existing NhaCungCap in the database
+                    nhaCungCapBAL.Update(_ncc);
+                    MessageBox.Show("Cập nhật nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                _ncc.TenNcc = txtTenNCC.Text;
-                _ncc.DiaChi = txtDiaChi.Text;
-                _ncc.Email = txtEmail.Text;
-                _ncc.SoDienThoai = txtSDT.Text;
-
-
-                // Add logic to update the existing NhaCungCap in the database
-                nhaCungCapBAL.Update(_ncc);
-                MessageBox.Show("Cập nhật nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            ClearForm();
-        }
-        
-        private void AddAndUpdate_Load(object sender, EventArgs e)
-        {
-
         }
         private void ClearForm()
         {
@@ -100,26 +97,47 @@ namespace DuAn1_Nhom4.GUI
             return Regex.IsMatch(phone, @"^0\d{9}$");
         }
 
-        private void ValidateInput()
+        private bool ValidateInput()
         {
+            // Check trống trước
             if (string.IsNullOrWhiteSpace(txtTenNCC.Text))
             {
                 MessageBox.Show("Vui lòng nhập tên nhà cung cấp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtSDT.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Vui lòng nhập email.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(txtDiaChi.Text))
+            {
+                MessageBox.Show("Vui lòng nhập địa chỉ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Nếu đã nhập đủ → mới check định dạng
+
+            if (!IsValidPhone(txtSDT.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             if (!IsValidEmail(txtEmail.Text))
             {
                 MessageBox.Show("Vui lòng nhập email hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
-            if (!IsValidPhone(txtSDT.Text))
-            {
-                MessageBox.Show("Vui lòng nhập số điện thoại hợp lệ (10 số, bắt đầu bằng 0).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+
+            return true;
         }
-
-
-
     }
 }

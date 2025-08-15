@@ -182,7 +182,7 @@
             Name = "AddAndUpdate";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddAndUpdate";
-            Load += AddAndUpdate_Load;
+          
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

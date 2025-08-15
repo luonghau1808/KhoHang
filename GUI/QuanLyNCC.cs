@@ -31,12 +31,12 @@ namespace DuAn1_Nhom4.GUI
             dtgDanhSachNCC.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
             dtgDanhSachNCC.Columns["DiaChi"].HeaderText = "Địa chỉ";
             dtgDanhSachNCC.Columns["Email"].HeaderText = "Email";
-          
-
-
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
+            var result = MessageBox.Show( "Bạn có chắc chắn muốn thêm nhà cung cấp mới không?","Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+            if (result != DialogResult.Yes) return;
             AddAndUpdate form = new AddAndUpdate(null);
             form.ShowDialog();
             LoadNCC();
@@ -66,14 +66,15 @@ namespace DuAn1_Nhom4.GUI
                 MessageBox.Show("Nhà cung cấp không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            var result = MessageBox.Show("Bạn có chắc chắn muốn cập nhật nhà cung cấp không?","Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+            if (result != DialogResult.Yes) return;
             // Mở form cập nhật
             AddAndUpdate form = new AddAndUpdate(ncc);
             form.ShowDialog();
             LoadNCC();
             ClearForm();
         }
-        
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
@@ -92,7 +93,6 @@ namespace DuAn1_Nhom4.GUI
             txtEmail.Text = row.Cells["Email"].Value.ToString();
 
         }
-
         private void QuanLyNCC_Load(object sender, EventArgs e)
         {
             LoadNCC();
@@ -112,17 +112,13 @@ namespace DuAn1_Nhom4.GUI
 
             var ketQua = nhaCungCapBAL.GetAll()
                .Where(ncc =>
-                    // tìm theo mã
                     ncc.TenNcc.ToLower().Contains(tuKhoa)  // tìm theo tên                   
                 )
                 .ToList();
 
             dtgDanhSachNCC.DataSource = ketQua;
 
-
-
         }
-
 
 
     }
