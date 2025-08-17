@@ -35,6 +35,9 @@
             label8 = new Label();
             txtTim = new TextBox();
             groupBox1 = new GroupBox();
+            btnLuuEditSP = new Button();
+            btnHuyLuu = new Button();
+            btnLuuAddSP = new Button();
             cbNcc = new ComboBox();
             label11 = new Label();
             label10 = new Label();
@@ -166,6 +169,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnLuuEditSP);
+            groupBox1.Controls.Add(btnHuyLuu);
+            groupBox1.Controls.Add(btnLuuAddSP);
             groupBox1.Controls.Add(cbNcc);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label10);
@@ -191,12 +197,57 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = SystemColors.ControlText;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1596, 642);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Quản lý sản phẩm";
+            // 
+            // btnLuuEditSP
+            // 
+            btnLuuEditSP.BackColor = Color.Khaki;
+            btnLuuEditSP.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLuuEditSP.Image = Properties.Resources.icons8_edit_302;
+            btnLuuEditSP.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuuEditSP.Location = new Point(591, 490);
+            btnLuuEditSP.Name = "btnLuuEditSP";
+            btnLuuEditSP.Size = new Size(200, 48);
+            btnLuuEditSP.TabIndex = 36;
+            btnLuuEditSP.Text = "Lưu";
+            btnLuuEditSP.UseVisualStyleBackColor = false;
+            btnLuuEditSP.Click += btnLuuEditSP_Click;
+            // 
+            // btnHuyLuu
+            // 
+            btnHuyLuu.BackColor = Color.LightCoral;
+            btnHuyLuu.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHuyLuu.ForeColor = SystemColors.ButtonHighlight;
+            btnHuyLuu.Image = Properties.Resources.icons8_delete_303;
+            btnHuyLuu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuyLuu.Location = new Point(885, 490);
+            btnHuyLuu.Name = "btnHuyLuu";
+            btnHuyLuu.Size = new Size(200, 48);
+            btnHuyLuu.TabIndex = 35;
+            btnHuyLuu.Text = "Hủy";
+            btnHuyLuu.UseVisualStyleBackColor = false;
+            btnHuyLuu.Click += btnHuyLuu_Click;
+            // 
+            // btnLuuAddSP
+            // 
+            btnLuuAddSP.BackColor = Color.LimeGreen;
+            btnLuuAddSP.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLuuAddSP.ForeColor = SystemColors.ButtonHighlight;
+            btnLuuAddSP.Image = Properties.Resources.icons8_add_30;
+            btnLuuAddSP.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuuAddSP.Location = new Point(591, 490);
+            btnLuuAddSP.Name = "btnLuuAddSP";
+            btnLuuAddSP.Size = new Size(200, 48);
+            btnLuuAddSP.TabIndex = 34;
+            btnLuuAddSP.Text = "Lưu";
+            btnLuuAddSP.UseVisualStyleBackColor = false;
+            btnLuuAddSP.Click += btnLuuAddSP_Click;
             // 
             // cbNcc
             // 
@@ -251,54 +302,60 @@
             // 
             // btnLamMoi
             // 
+            btnLamMoi.BackColor = Color.PaleTurquoise;
             btnLamMoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLamMoi.Image = Properties.Resources.icons8_clean_30;
             btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLamMoi.Location = new Point(1304, 544);
+            btnLamMoi.Location = new Point(703, 544);
             btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(263, 48);
+            btnLamMoi.Size = new Size(200, 48);
             btnLamMoi.TabIndex = 28;
             btnLamMoi.Text = "Làm mới ";
-            btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.UseVisualStyleBackColor = false;
             btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
+            btnXoa.BackColor = Color.LightCoral;
             btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXoa.ForeColor = SystemColors.ButtonHighlight;
             btnXoa.Image = Properties.Resources.icons8_delete_303;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(881, 544);
+            btnXoa.Location = new Point(482, 544);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(263, 48);
+            btnXoa.Size = new Size(200, 48);
             btnXoa.TabIndex = 27;
             btnXoa.Text = "Xóa sản phẩm";
-            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
+            btnSua.BackColor = Color.Khaki;
             btnSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSua.Image = Properties.Resources.icons8_edit_302;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSua.Location = new Point(465, 544);
+            btnSua.Location = new Point(264, 544);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(263, 48);
+            btnSua.Size = new Size(200, 48);
             btnSua.TabIndex = 26;
             btnSua.Text = "Sửa sản phẩm ";
-            btnSua.UseVisualStyleBackColor = true;
+            btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
+            btnThem.BackColor = Color.LimeGreen;
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThem.ForeColor = SystemColors.ButtonHighlight;
             btnThem.Image = Properties.Resources.icons8_add_30;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
             btnThem.Location = new Point(49, 544);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(263, 48);
+            btnThem.Size = new Size(200, 48);
             btnThem.TabIndex = 25;
             btnThem.Text = "Thêm sản phẩm";
-            btnThem.UseVisualStyleBackColor = true;
+            btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
             // cbKichThuoc
@@ -364,6 +421,7 @@
             txtSoLuong.Font = new Font("Segoe UI", 10.2F);
             txtSoLuong.Location = new Point(247, 358);
             txtSoLuong.Name = "txtSoLuong";
+            txtSoLuong.ReadOnly = true;
             txtSoLuong.Size = new Size(423, 30);
             txtSoLuong.TabIndex = 7;
             // 
@@ -383,6 +441,7 @@
             txtDonGia.Font = new Font("Segoe UI", 10.2F);
             txtDonGia.Location = new Point(247, 264);
             txtDonGia.Name = "txtDonGia";
+            txtDonGia.ReadOnly = true;
             txtDonGia.Size = new Size(423, 30);
             txtDonGia.TabIndex = 5;
             // 
@@ -402,6 +461,7 @@
             txtTen.Font = new Font("Segoe UI", 10.2F);
             txtTen.Location = new Point(247, 178);
             txtTen.Name = "txtTen";
+            txtTen.ReadOnly = true;
             txtTen.Size = new Size(423, 30);
             txtTen.TabIndex = 3;
             // 
@@ -503,7 +563,7 @@
             // 
             btnDeleteMs.Image = Properties.Resources.icons8_delete_302;
             btnDeleteMs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDeleteMs.Location = new Point(341, 162);
+            btnDeleteMs.Location = new Point(391, 162);
             btnDeleteMs.Name = "btnDeleteMs";
             btnDeleteMs.Size = new Size(142, 35);
             btnDeleteMs.TabIndex = 3;
@@ -515,7 +575,7 @@
             // 
             btnEditMs.Image = Properties.Resources.icons8_edit_302;
             btnEditMs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditMs.Location = new Point(184, 162);
+            btnEditMs.Location = new Point(234, 162);
             btnEditMs.Name = "btnEditMs";
             btnEditMs.Size = new Size(142, 35);
             btnEditMs.TabIndex = 2;
@@ -527,7 +587,7 @@
             // 
             btnAddMs.Image = Properties.Resources.icons8_add_303;
             btnAddMs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAddMs.Location = new Point(27, 162);
+            btnAddMs.Location = new Point(75, 162);
             btnAddMs.Name = "btnAddMs";
             btnAddMs.Size = new Size(142, 35);
             btnAddMs.TabIndex = 1;
@@ -716,5 +776,8 @@
         private TextBox txbKt;
         private Button button1;
         private Button button2;
+        private Button btnLuuEditSP;
+        private Button btnHuyLuu;
+        private Button btnLuuAddSP;
     }
 }

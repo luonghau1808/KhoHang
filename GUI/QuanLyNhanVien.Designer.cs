@@ -35,14 +35,14 @@
             label6 = new Label();
             dataGridView1 = new DataGridView();
             groupBox4 = new GroupBox();
+            btnLuuThem = new Button();
+            btnHuyLuu = new Button();
+            btnLuu = new Button();
             cbVaiTro = new ComboBox();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            label5 = new Label();
             label7 = new Label();
             txbEmail = new TextBox();
             label10 = new Label();
@@ -58,6 +58,9 @@
             label9 = new Label();
             dtgDanhSach = new DataGridView();
             groupBox1 = new GroupBox();
+            btnLuuAddTK = new Button();
+            btnHuyTK = new Button();
+            btnLuuEditTK = new Button();
             btnLamMoi = new Button();
             btnXoa = new Button();
             btnSua = new Button();
@@ -162,14 +165,14 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(btnLuuThem);
+            groupBox4.Controls.Add(btnHuyLuu);
+            groupBox4.Controls.Add(btnLuu);
             groupBox4.Controls.Add(cbVaiTro);
             groupBox4.Controls.Add(button1);
             groupBox4.Controls.Add(button2);
             groupBox4.Controls.Add(button3);
             groupBox4.Controls.Add(button4);
-            groupBox4.Controls.Add(radioButton1);
-            groupBox4.Controls.Add(radioButton2);
-            groupBox4.Controls.Add(label5);
             groupBox4.Controls.Add(label7);
             groupBox4.Controls.Add(txbEmail);
             groupBox4.Controls.Add(label10);
@@ -186,6 +189,39 @@
             groupBox4.Size = new Size(1488, 508);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
+            // 
+            // btnLuuThem
+            // 
+            btnLuuThem.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLuuThem.Location = new Point(468, 335);
+            btnLuuThem.Name = "btnLuuThem";
+            btnLuuThem.Size = new Size(257, 48);
+            btnLuuThem.TabIndex = 24;
+            btnLuuThem.Text = "Lưu";
+            btnLuuThem.UseVisualStyleBackColor = true;
+            btnLuuThem.Click += btnLuuThem_Click;
+            // 
+            // btnHuyLuu
+            // 
+            btnHuyLuu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnHuyLuu.Location = new Point(845, 335);
+            btnHuyLuu.Name = "btnHuyLuu";
+            btnHuyLuu.Size = new Size(257, 48);
+            btnHuyLuu.TabIndex = 23;
+            btnHuyLuu.Text = "Hủy lưu";
+            btnHuyLuu.UseVisualStyleBackColor = true;
+            btnHuyLuu.Click += btnHuyLuu_Click;
+            // 
+            // btnLuu
+            // 
+            btnLuu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLuu.Location = new Point(468, 335);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(257, 48);
+            btnLuu.TabIndex = 22;
+            btnLuu.Text = "Lưu";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // cbVaiTro
             // 
@@ -248,40 +284,6 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            radioButton1.Location = new Point(1323, 254);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(55, 27);
-            radioButton1.TabIndex = 16;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Nữ";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            radioButton2.Location = new Point(1022, 259);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(68, 27);
-            radioButton2.TabIndex = 15;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Nam";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label5.Location = new Point(827, 259);
-            label5.Name = "label5";
-            label5.Size = new Size(80, 23);
-            label5.TabIndex = 14;
-            label5.Text = "Giới tính ";
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -298,6 +300,7 @@
             txbEmail.Font = new Font("Segoe UI", 10.2F);
             txbEmail.Location = new Point(1022, 96);
             txbEmail.Name = "txbEmail";
+            txbEmail.ReadOnly = true;
             txbEmail.Size = new Size(405, 30);
             txbEmail.TabIndex = 7;
             // 
@@ -317,6 +320,7 @@
             txbSDT.Font = new Font("Segoe UI", 10.2F);
             txbSDT.Location = new Point(252, 256);
             txbSDT.Name = "txbSDT";
+            txbSDT.ReadOnly = true;
             txbSDT.Size = new Size(405, 30);
             txbSDT.TabIndex = 5;
             // 
@@ -336,6 +340,7 @@
             txbHoTen.Font = new Font("Segoe UI", 10.2F);
             txbHoTen.Location = new Point(252, 176);
             txbHoTen.Name = "txbHoTen";
+            txbHoTen.ReadOnly = true;
             txbHoTen.Size = new Size(405, 30);
             txbHoTen.TabIndex = 3;
             // 
@@ -433,6 +438,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnLuuAddTK);
+            groupBox1.Controls.Add(btnHuyTK);
+            groupBox1.Controls.Add(btnLuuEditTK);
             groupBox1.Controls.Add(btnLamMoi);
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
@@ -455,6 +463,45 @@
             groupBox1.Size = new Size(1488, 507);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
+            // 
+            // btnLuuAddTK
+            // 
+            btnLuuAddTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnLuuAddTK.Image = Properties.Resources.icons8_change_24;
+            btnLuuAddTK.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuuAddTK.Location = new Point(479, 348);
+            btnLuuAddTK.Name = "btnLuuAddTK";
+            btnLuuAddTK.Size = new Size(257, 48);
+            btnLuuAddTK.TabIndex = 23;
+            btnLuuAddTK.Text = "Lưu";
+            btnLuuAddTK.UseVisualStyleBackColor = true;
+            btnLuuAddTK.Click += btnLuuAddTK_Click;
+            // 
+            // btnHuyTK
+            // 
+            btnHuyTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnHuyTK.Image = Properties.Resources.icons8_change_24;
+            btnHuyTK.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuyTK.Location = new Point(856, 348);
+            btnHuyTK.Name = "btnHuyTK";
+            btnHuyTK.Size = new Size(257, 48);
+            btnHuyTK.TabIndex = 22;
+            btnHuyTK.Text = "Hủy";
+            btnHuyTK.UseVisualStyleBackColor = true;
+            btnHuyTK.Click += btnHuyTK_Click;
+            // 
+            // btnLuuEditTK
+            // 
+            btnLuuEditTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnLuuEditTK.Image = Properties.Resources.icons8_change_24;
+            btnLuuEditTK.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuuEditTK.Location = new Point(479, 348);
+            btnLuuEditTK.Name = "btnLuuEditTK";
+            btnLuuEditTK.Size = new Size(257, 48);
+            btnLuuEditTK.TabIndex = 21;
+            btnLuuEditTK.Text = "Lưu";
+            btnLuuEditTK.UseVisualStyleBackColor = true;
+            btnLuuEditTK.Click += btnLuuEditTK_Click;
             // 
             // btnLamMoi
             // 
@@ -548,6 +595,7 @@
             txbMk1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txbMk1.Location = new Point(1022, 185);
             txbMk1.Name = "txbMk1";
+            txbMk1.ReadOnly = true;
             txbMk1.Size = new Size(405, 30);
             txbMk1.TabIndex = 7;
             // 
@@ -555,7 +603,7 @@
             // 
             txbMk.AutoSize = true;
             txbMk.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            txbMk.Location = new Point(829, 189);
+            txbMk.Location = new Point(829, 195);
             txbMk.Name = "txbMk";
             txbMk.Size = new Size(84, 23);
             txbMk.TabIndex = 6;
@@ -567,6 +615,7 @@
             txbTenDangNhap.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txbTenDangNhap.Location = new Point(1022, 96);
             txbTenDangNhap.Name = "txbTenDangNhap";
+            txbTenDangNhap.ReadOnly = true;
             txbTenDangNhap.Size = new Size(405, 30);
             txbTenDangNhap.TabIndex = 5;
             // 
@@ -586,6 +635,7 @@
             txbTenNv.Font = new Font("Segoe UI", 10.2F);
             txbTenNv.Location = new Point(252, 188);
             txbTenNv.Name = "txbTenNv";
+            txbTenNv.ReadOnly = true;
             txbTenNv.Size = new Size(435, 30);
             txbTenNv.TabIndex = 3;
             // 
@@ -681,9 +731,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private Label label5;
         private Label label7;
         private TextBox txbEmail;
         private Label label10;
@@ -693,5 +740,11 @@
         private Label label12;
         private TextBox txbMa;
         private Label label13;
+        private Button btnLuu;
+        private Button btnHuyLuu;
+        private Button btnLuuThem;
+        private Button btnLuuAddTK;
+        private Button btnHuyTK;
+        private Button btnLuuEditTK;
     }
 }
