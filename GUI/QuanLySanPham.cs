@@ -116,7 +116,14 @@ namespace DuAn1_Nhom4
                     if (value < 0)
                     {
                         MessageBox.Show("Không được nhập số âm!");
-                        txtSoLuong.Text = "0";
+                        return;
+                    }
+                }
+                if (int.TryParse(txtSoLuong.Text, out int ok))
+                {
+                    if (ok < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
                         return;
                     }
                 }
@@ -216,7 +223,14 @@ namespace DuAn1_Nhom4
                     if (value < 0)
                     {
                         MessageBox.Show("Không được nhập số âm!");
-                        txtSoLuong.Text = "0";
+                        return;
+                    }
+                }
+                if (int.TryParse(txtSoLuong.Text, out int ok))
+                {
+                    if (ok < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
                         return;
                     }
                 }
@@ -318,18 +332,6 @@ namespace DuAn1_Nhom4
         private void btnLuuAddSP_Click(object sender, EventArgs e)
         {
             addSp();
-            txtTen.ReadOnly = true;
-            txtDonGia.ReadOnly = true;
-            txtSoLuong.ReadOnly = true;
-
-            btnHuyLuu.Visible = false;
-            btnLuuEditSP.Visible = false;
-            btnLuuAddSP.Visible = false;
-
-            btnThem.Visible = true;
-            btnSua.Visible = true;
-            btnXoa.Visible = true;
-            btnLamMoi.Visible = true;
         }
         private void btnXoa_Click(object sender, EventArgs e)
         {
