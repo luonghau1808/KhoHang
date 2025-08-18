@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,9 @@ namespace DuAn1_Nhom4
             LoadMs();
             LoadNcc();
             rbConHang.Checked = true;
+            btnLuuAddSP.Visible = false;
+            btnLuuEditSP.Visible = false;
+            btnHuyLuu.Visible = false;
         }
         #region Tab Thông Tin Sản Phẩm
         private void LoadDSSP()
@@ -95,38 +99,54 @@ namespace DuAn1_Nhom4
         }
         private void addSp()
         {
-            ChiTietSanPham ctsp = new ChiTietSanPham();
-            ctsp.MaSpNavigation = new SanPham();
-            // Kiểm tra dữ liệu đầu vào
-            if (string.IsNullOrWhiteSpace(txtTen.Text) ||
-                !decimal.TryParse(txtDonGia.Text, out decimal donGiaNhap) ||
-                !int.TryParse(txtSoLuong.Text, out int soLuong))
+            try
             {
-                MessageBox.Show("Vui lòng nhập đúng và đầy đủ thông tin!");
-                return;
-            }
+                ChiTietSanPham ctsp = new ChiTietSanPham();
+                ctsp.MaSpNavigation = new SanPham();
+                // Kiểm tra dữ liệu đầu vào
+                if (string.IsNullOrWhiteSpace(txtTen.Text) ||
+                    !decimal.TryParse(txtDonGia.Text, out decimal donGiaNhap) ||
+                    !int.TryParse(txtSoLuong.Text, out int soLuong))
+                {
+                    MessageBox.Show("Vui lòng nhập đúng và đầy đủ thông tin!");
+                    return;
+                }
+                if (int.TryParse(txtSoLuong.Text, out int value))
+                {
+                    if (value < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
+                        return;
+                    }
+                }
+                if (int.TryParse(txtSoLuong.Text, out int ok))
+                {
+                    if (ok < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
+                        return;
+                    }
+                }
 
-            // Kiểm tra trùng tên
-            if (ctspBll.Exists(x => x.MaSpNavigation.TenSp.ToLower() == txtTen.Text.ToLower()))
+                ctsp.MaSpNavigation.TenSp = txtTen.Text.Trim();
+                ctsp.DonGiaNhap = donGiaNhap;
+                ctsp.SoLuong = soLuong;
+                ctsp.MaSpNavigation.MaNcc = Convert.ToInt32(cbNcc.SelectedValue);
+                ctsp.MaKichThuoc = Convert.ToInt32(cbKichThuoc.SelectedValue);
+                ctsp.MaSpNavigation.MaThuongHieu = Convert.ToInt32(cbTH.SelectedValue);
+                ctsp.MaMau = Convert.ToInt32(cbMau.SelectedValue);
+                ctsp.MaSpNavigation.TrangThai = rbConHang.Checked ? "Còn hàng" : "Ngừng kinh doanh";
+
+                ctspBll.Add(ctsp);
+
+                LoadDSSP();
+                Clear();
+                MessageBox.Show($"Thêm thành công!");
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show($"Tên này đã tồn tại!");
-                return;
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
             }
-
-            ctsp.MaSpNavigation.TenSp = txtTen.Text.Trim();
-            ctsp.DonGiaNhap = donGiaNhap;
-            ctsp.SoLuong = soLuong;
-            ctsp.MaSpNavigation.MaNcc = Convert.ToInt32(cbNcc.SelectedValue);
-            ctsp.MaKichThuoc = Convert.ToInt32(cbKichThuoc.SelectedValue);
-            ctsp.MaSpNavigation.MaThuongHieu = Convert.ToInt32(cbTH.SelectedValue);
-            ctsp.MaMau = Convert.ToInt32(cbMau.SelectedValue);
-            ctsp.MaSpNavigation.TrangThai = rbConHang.Checked ? "Còn hàng" : "Ngừng kinh doanh";
-
-            ctspBll.Add(ctsp);
-
-            LoadDSSP();
-            Clear();
-            MessageBox.Show($"Thêm thành công!");
         }
         private void deleteSp()
         {
@@ -198,12 +218,21 @@ namespace DuAn1_Nhom4
                     MessageBox.Show("Vui lòng nhập đúng và đầy đủ thông tin!");
                     return;
                 }
-
-                // Kiểm tra tên đã tồn tại (loại trừ chính mình)
-                if (ctspBll.Exists(x => x.MaSpNavigation.TenSp.ToLower() == txtTen.Text.ToLower()))
+                if (int.TryParse(txtSoLuong.Text, out int value))
                 {
-                    MessageBox.Show("Tên này đã tồn tại!");
-                    return;
+                    if (value < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
+                        return;
+                    }
+                }
+                if (int.TryParse(txtSoLuong.Text, out int ok))
+                {
+                    if (ok < 0)
+                    {
+                        MessageBox.Show("Không được nhập số âm!");
+                        return;
+                    }
                 }
 
                 // Cập nhật dữ liệu
@@ -230,7 +259,6 @@ namespace DuAn1_Nhom4
             }
         }
 
-
         private void findSp()
         {
             string keyword = txtTim.Text.Trim().ToLower();
@@ -250,7 +278,7 @@ namespace DuAn1_Nhom4
                 x.MaKichThuocNavigation?.TenKichThuoc,
                 x.MaSpNavigation.MaThuongHieuNavigation?.TenThuongHieu,
                 x.MaMauNavigation?.TenMau,
-                x.MaSpNavigation.MaNccNavigation.TenNcc,
+                x.MaSpNavigation.MaNccNavigation?.TenNcc,
                 x.MaSpNavigation.TrangThai
             }).ToList();
 
@@ -271,21 +299,71 @@ namespace DuAn1_Nhom4
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            addSp();
+            txtTen.ReadOnly = false;
+            txtDonGia.ReadOnly = false;
+            txtSoLuong.ReadOnly = false;
+
+            btnHuyLuu.Visible = true;
+            btnLuuAddSP.Visible = true;
+
+            btnThem.Visible = false;
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
+            btnLamMoi.Visible = false;
+
+            allowCellClick = false;
+            Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            editSp();
-        }
+            txtTen.ReadOnly = false;
+            txtDonGia.ReadOnly = false;
+            txtSoLuong.ReadOnly = false;
 
+            btnHuyLuu.Visible = true;
+            btnLuuEditSP.Visible = true;
+
+            btnThem.Visible = false;
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
+            btnLamMoi.Visible = false;
+        }
+        private void btnLuuAddSP_Click(object sender, EventArgs e)
+        {
+            addSp();
+        }
         private void btnXoa_Click(object sender, EventArgs e)
         {
             deleteSp();
         }
+        private void btnLuuEditSP_Click(object sender, EventArgs e)
+        {
+            editSp();
+        }
+        private void btnHuyLuu_Click(object sender, EventArgs e)
+        {
+
+            txtTen.ReadOnly = true;
+            txtDonGia.ReadOnly = true;
+            txtSoLuong.ReadOnly = true;
+
+            btnHuyLuu.Visible = false;
+            btnLuuEditSP.Visible = false;
+            btnLuuAddSP.Visible = false;
+
+            btnThem.Visible = true;
+            btnSua.Visible = true;
+            btnXoa.Visible = true;
+            btnLamMoi.Visible = true;
+
+            allowCellClick = true;
+        }
+        private bool allowCellClick = true;
 
         private void dtgThongTinSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (!allowCellClick) return;
             try
             {
                 if (e.RowIndex >= 0)
@@ -362,120 +440,169 @@ namespace DuAn1_Nhom4
 
         private void AddKt()
         {
-            KichThuoc kt = new KichThuoc();
-            kt.TenKichThuoc = txbKt.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(txbKt.Text))
+            try
             {
-                MessageBox.Show($"Vui lòng nhập đầy đủ thông tin!");
-                return;
+                KichThuoc kt = new KichThuoc();
+                kt.TenKichThuoc = txbKt.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(txbKt.Text))
+                {
+                    MessageBox.Show($"Vui lòng nhập đầy đủ thông tin!");
+                    return;
+                }
+                if (ktBll.Exists(x => x.TenKichThuoc == txbKt.Text.Trim().ToLower()))
+                {
+                    MessageBox.Show($"Tên này đã tồn tại!");
+                    return;
+                }
+
+                ktBll.Add(kt);
+                LoadKt();
+                Clear2();
+                MessageBox.Show($"Thêm thành công!");
             }
-            if (ktBll.Exists(x => x.TenKichThuoc == txbKt.Text.Trim().ToLower()))
+            catch (Exception ex)
             {
-                MessageBox.Show($"Tên này đã tồn tại!");
-                return;
+                MessageBox.Show(ex.Message);
             }
 
-            ktBll.Add(kt);
-            LoadKt();
-            Clear2();
-            MessageBox.Show($"Thêm thành công!");
         }
 
         private void AddMs()
         {
-            Models.MauSac ms = new Models.MauSac();
-            ms.TenMau = txbMs.Text.Trim();
-            if (string.IsNullOrWhiteSpace(txbMs.Text))
+            try
             {
-                MessageBox.Show($"Vui lòng nhập đầy đủ thông tin!");
-                return;
+                Models.MauSac ms = new Models.MauSac();
+                ms.TenMau = txbMs.Text.Trim();
+                if (string.IsNullOrWhiteSpace(txbMs.Text))
+                {
+                    MessageBox.Show($"Vui lòng nhập đầy đủ thông tin!");
+                    return;
+                }
+                if (msBll.Exists(x => x.TenMau == txbMs.Text.Trim().ToLower()))
+                {
+                    MessageBox.Show($"Tên này đã tồn tại!");
+                    return;
+                }
+                msBll.Add(ms);
+                LoadMs();
+                Clear2();
+                MessageBox.Show($"Thêm thành công!");
             }
-            if (msBll.Exists(x => x.TenMau == txbMs.Text.Trim().ToLower()))
+            catch (Exception ex)
             {
-                MessageBox.Show($"Tên này đã tồn tại!");
-                return;
+                MessageBox.Show(ex.Message);
             }
-            msBll.Add(ms);
-            LoadMs();
-            Clear2();
-            MessageBox.Show($"Thêm thành công!");
+
         }
 
         private void editKt()
         {
-            if (dgvKt.Rows.Count == 0)
+            try
             {
-                MessageBox.Show($"Vui lòng chọn dòng cần sửa!");
-                return;
+                if (dgvKt.Rows.Count == 0)
+                {
+                    MessageBox.Show($"Vui lòng chọn dòng cần sửa!");
+                    return;
+                }
+
+                var duLieu = int.Parse(dgvKt.CurrentRow.Cells["MaKichThuoc"].Value.ToString());
+                var timDuLieu = ktBll.GetById(duLieu);
+
+                timDuLieu.TenKichThuoc = txbKt.Text.Trim();
+
+                ktBll.Update(timDuLieu);
+                LoadDsKt();
+                Clear2();
+                MessageBox.Show($"Sửa thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            var duLieu = int.Parse(dgvKt.CurrentRow.Cells["MaKichThuoc"].Value.ToString());
-            var timDuLieu = ktBll.GetById(duLieu);
-
-            timDuLieu.TenKichThuoc = txbKt.Text.Trim();
-
-            ktBll.Update(timDuLieu);
-            LoadDsKt();
-            Clear2();
-            MessageBox.Show($"Sửa thành công!");
         }
 
         private void editMs()
         {
-            if (dgvMs.Rows.Count == 0)
+            try
             {
-                MessageBox.Show($"Vui lòng chọn dòng cần sửa!");
-                return;
+                if (dgvMs.Rows.Count == 0)
+                {
+                    MessageBox.Show($"Vui lòng chọn dòng cần sửa!");
+                    return;
+                }
+
+                var duLieu = int.Parse(dgvMs.CurrentRow.Cells["MaMau"].Value.ToString());
+                var timDuLieu = msBll.GetById(duLieu);
+
+                timDuLieu.TenMau = txbKt.Text.Trim();
+
+                msBll.Update(timDuLieu);
+                LoadDsKt();
+                Clear2();
+                MessageBox.Show($"Sửa thành công!");
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show($"Lỗi xảy ra:" + Ex.Message);
+
             }
 
-            var duLieu = int.Parse(dgvMs.CurrentRow.Cells["MaMau"].Value.ToString());
-            var timDuLieu = msBll.GetById(duLieu);
-
-            timDuLieu.TenMau = txbKt.Text.Trim();
-
-            msBll.Update(timDuLieu);
-            LoadDsKt();
-            Clear2();
-            MessageBox.Show($"Sửa thành công!");
         }
 
         private void deleteKt()
         {
-            if (dgvKt.RowCount == 0)
+            try
             {
-                MessageBox.Show($"Vui lòng chọn dòng cần xóa!");
-                return;
+                if (dgvKt.RowCount == 0)
+                {
+                    MessageBox.Show($"Vui lòng chọn dòng cần xóa!");
+                    return;
+                }
+                int maKichThuoc = int.Parse(dgvKt.CurrentRow.Cells["MaKichThuoc"].Value.ToString());
+                var timMa = ktBll.GetById(maKichThuoc);
+
+                var confirm = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirm == DialogResult.No) return;
+
+                ktBll.Delete(maKichThuoc);
+                LoadDsKt();
+
+                MessageBox.Show($"Xóa thành công!");
             }
-            int maKichThuoc = int.Parse(dgvKt.CurrentRow.Cells["MaKichThuoc"].Value.ToString());
-            var timMa = ktBll.GetById(maKichThuoc);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi xảy ra: " + ex.Message);
+            }
 
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm == DialogResult.No) return;
-
-            ktBll.Delete(maKichThuoc);
-            LoadDsKt();
-
-            MessageBox.Show($"Xóa thành công!");
         }
 
         private void deleteMs()
         {
-            if (dgvMs.RowCount == 0)
+            try
             {
-                MessageBox.Show($"Vui lòng chọn dòng cần xóa!");
-                return;
+                if (dgvMs.RowCount == 0)
+                {
+                    MessageBox.Show($"Vui lòng chọn dòng cần xóa!");
+                    return;
+                }
+                int ma = int.Parse(dgvMs.CurrentRow.Cells["MaMau"].Value.ToString());
+                var timMa = ktBll.GetById(ma);
+
+                var confirm = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirm == DialogResult.No) return;
+
+                msBll.Delete(ma);
+                LoadDsMs();
+
+                MessageBox.Show($"Xóa thành công!");
             }
-            int ma = int.Parse(dgvMs.CurrentRow.Cells["MaMau"].Value.ToString());
-            var timMa = ktBll.GetById(ma);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi xảy ra: " + ex.Message);
+            }
 
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm == DialogResult.No) return;
-
-            msBll.Delete(ma);
-            LoadDsMs();
-
-            MessageBox.Show($"Xóa thành công!");
         }
 
 
@@ -536,7 +663,8 @@ namespace DuAn1_Nhom4
 
         private void dgvMs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) {
+            if (e.RowIndex >= 0)
+            {
                 txbMs.Text = dgvMs.Rows[e.RowIndex].Cells["TenMau"].Value.ToString();
             }
         }
