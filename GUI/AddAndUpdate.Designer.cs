@@ -181,8 +181,7 @@
             Controls.Add(groupBox1);
             Name = "AddAndUpdate";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddAndUpdate";
-          
+            Text = "Thêm/Sửa nhà cung cấp";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

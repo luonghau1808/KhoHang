@@ -147,19 +147,25 @@ namespace DuAn1_Nhom4.GUI
             lbTongtienhd.Text = "Tổng tiền: " + TinhTongTien().ToString("N0") + "VNĐ"; // Cập nhật tổng tiền của hóa đơn
 
 
-            dtgGioHang.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["MaCT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["DonGia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dtgGioHang.Columns["ThanhTien"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["STT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["MaCT"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["TenSP"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["MauSac"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["KichThuoc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["DonGia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dtgGioHang.Columns["ThanhTien"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dtgGioHang.Columns["SoLuong"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["ThanhTien"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["STT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgGioHang.Columns["MaCT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            foreach (DataGridViewColumn column in dtgGioHang.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Căn giữa tiêu đề cột
+
+            }
 
             dtgGioHang.Columns["MaCT"].HeaderText = "Mã chi tiết";
             dtgGioHang.Columns["TenSP"].HeaderText = "Tên sản phẩm";

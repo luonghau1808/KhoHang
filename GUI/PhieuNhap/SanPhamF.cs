@@ -67,7 +67,13 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             dgvSP.Columns["NhaCungCap"].HeaderText = "Nhà cung cấp";
 
             dgvSP.Columns["TenSP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-           
+
+            foreach (DataGridViewColumn column in dgvSP.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Căn giữa tiêu đề cột
+
+            }
+
         }
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {

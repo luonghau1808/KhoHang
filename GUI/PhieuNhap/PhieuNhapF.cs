@@ -70,6 +70,13 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
          
                 LoadCTPN(maPN);
             }
+
+
+            foreach (DataGridViewColumn column in dgvDanhSachPhieuNhap.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Căn giữa tiêu đề cột
+
+            }
         }
 
         private void dgvGioHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -161,6 +168,10 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             dgvGioHang.Columns["DonGia"].HeaderText = "Đơn giá";
             dgvGioHang.Columns["ThanhTien"].HeaderText = "Thành tiền";
 
+            foreach (DataGridViewColumn column in dgvGioHang.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Căn giữa tiêu đề cột
+            }
         }
 
 

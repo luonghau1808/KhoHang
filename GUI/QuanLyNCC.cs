@@ -31,6 +31,12 @@ namespace DuAn1_Nhom4.GUI
             dtgDanhSachNCC.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
             dtgDanhSachNCC.Columns["DiaChi"].HeaderText = "Địa chỉ";
             dtgDanhSachNCC.Columns["Email"].HeaderText = "Email";
+
+            foreach (DataGridViewColumn column in dtgDanhSachNCC.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Căn giữa tiêu đề cột
+
+            }
         }
         private void btnThem_Click(object sender, EventArgs e)
         {

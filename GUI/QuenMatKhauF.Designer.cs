@@ -223,7 +223,7 @@
             Controls.Add(lbQuenMatKhau);
             Name = "QuenMatKhauF";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "QuenMatKhauF";
+            Text = "Quên mật khẩu";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

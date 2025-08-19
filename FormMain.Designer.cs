@@ -267,7 +267,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormMain";
+            Text = "Phần mềm Quản lý Kho Hàng";
             WindowState = FormWindowState.Maximized;
             Load += FormMain_Load;
             panelSidebar.ResumeLayout(false);

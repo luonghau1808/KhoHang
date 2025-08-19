@@ -264,7 +264,7 @@
             Controls.Add(tabControl1);
             Name = "KhachHangF";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = " ";
+            Text = " Khách hàng";
             Load += KhachHangF_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
