@@ -202,8 +202,8 @@ namespace DuAn1_Nhom4.GUI
                     MessageBox.Show($"Vui lòng chọn dòng cần xóa!");
                 }
 
-                var dangSuDung = nvBll.GetById(int.Parse(txbMa.Text));
-                if (dangSuDung != null)
+                var nvDaCoTK = tkBll.GetById(int.Parse(txbMa.Text));
+                if (nvDaCoTK != null)
                 {
                     MessageBox.Show($"Nhân viên này hiện đang có tài khoản!");
                     return;
