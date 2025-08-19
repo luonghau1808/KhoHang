@@ -57,6 +57,17 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             {
                 MessageBox.Show("Lỗi khi load sản phẩm: " + ex.Message);
             }
+
+            dgvSP.Columns["MaSP"].HeaderText = "Mã sản phẩm";
+            dgvSP.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dgvSP.Columns["MauSac"].HeaderText = "Màu sắc";
+            dgvSP.Columns["DonGia"].HeaderText = "Đơn giá";
+            dgvSP.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dgvSP.Columns["ThuongHieu"].HeaderText = "Thương hiệu";
+            dgvSP.Columns["NhaCungCap"].HeaderText = "Nhà cung cấp";
+
+            dgvSP.Columns["TenSP"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+           
         }
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {

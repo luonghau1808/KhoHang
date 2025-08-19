@@ -34,7 +34,6 @@
             tabControl1 = new TabControl();
             tabHoaDon = new TabPage();
             panel3 = new Panel();
-            btnLammoi = new Button();
             btnHuy = new Button();
             btnTao = new Button();
             btnThanhToan = new Button();
@@ -48,7 +47,6 @@
             panel4 = new Panel();
             txtsdt = new TextBox();
             label2 = new Label();
-            btnThemkh = new Button();
             txtTen = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
@@ -119,7 +117,6 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(btnLammoi);
             panel3.Controls.Add(btnHuy);
             panel3.Controls.Add(btnTao);
             panel3.Controls.Add(btnThanhToan);
@@ -129,22 +126,8 @@
             panel3.Size = new Size(495, 363);
             panel3.TabIndex = 11;
             // 
-            // btnLammoi
-            // 
-            btnLammoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLammoi.Image = Properties.Resources.icons8_replace_301;
-            btnLammoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLammoi.Location = new Point(41, 263);
-            btnLammoi.Name = "btnLammoi";
-            btnLammoi.Size = new Size(419, 61);
-            btnLammoi.TabIndex = 3;
-            btnLammoi.Text = "Làm mới";
-            btnLammoi.UseVisualStyleBackColor = true;
-            btnLammoi.Click += btnLammoi_Click;
-            // 
             // btnHuy
             // 
-            btnHuy.Enabled = false;
             btnHuy.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHuy.Image = Properties.Resources.icons8_delete_document_30;
             btnHuy.ImageAlign = ContentAlignment.MiddleLeft;
@@ -173,7 +156,6 @@
             // 
             // btnThanhToan
             // 
-            btnThanhToan.Enabled = false;
             btnThanhToan.Font = new Font("Segoe UI Semibold", 13.2F, FontStyle.Bold);
             btnThanhToan.Image = Properties.Resources.icons8_money_601;
             btnThanhToan.ImageAlign = ContentAlignment.MiddleLeft;
@@ -262,7 +244,6 @@
             // 
             panel4.Controls.Add(txtsdt);
             panel4.Controls.Add(label2);
-            panel4.Controls.Add(btnThemkh);
             panel4.Controls.Add(txtTen);
             panel4.Controls.Add(label1);
             panel4.Dock = DockStyle.Top;
@@ -289,20 +270,6 @@
             label2.Size = new Size(122, 25);
             label2.TabIndex = 4;
             label2.Text = "Số điện thoại";
-            // 
-            // btnThemkh
-            // 
-            btnThemkh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThemkh.Image = Properties.Resources.icons8_find_user_male_30;
-            btnThemkh.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThemkh.Location = new Point(280, 139);
-            btnThemkh.Name = "btnThemkh";
-            btnThemkh.Size = new Size(189, 43);
-            btnThemkh.TabIndex = 3;
-            btnThemkh.Text = "Chọn khách hàng";
-            btnThemkh.TextAlign = ContentAlignment.MiddleRight;
-            btnThemkh.UseVisualStyleBackColor = true;
-            btnThemkh.Click += btnThemkh_Click;
             // 
             // txtTen
             // 
@@ -362,7 +329,6 @@
             btnSua.TabIndex = 33;
             btnSua.Text = "Sửa số lượng";
             btnSua.UseVisualStyleBackColor = true;
-            btnSua.Visible = false;
             btnSua.Click += btnSua_Click;
             // 
             // label4
@@ -390,13 +356,12 @@
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnThem.Image = Properties.Resources.icons8_add_to_shopping_basket_301;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(314, 355);
+            btnThem.Location = new Point(27, 355);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(240, 48);
             btnThem.TabIndex = 30;
             btnThem.Text = "Thêm vào giỏ hàng";
             btnThem.UseVisualStyleBackColor = true;
-            btnThem.Visible = false;
             btnThem.Click += btnThem_Click;
             // 
             // btnXoa
@@ -404,13 +369,12 @@
             btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnXoa.Image = Properties.Resources.icons8_delete_302;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(3, 355);
+            btnXoa.Location = new Point(315, 355);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(254, 48);
             btnXoa.TabIndex = 24;
             btnXoa.Text = "Xóa sản phẩm";
             btnXoa.UseVisualStyleBackColor = true;
-            btnXoa.Visible = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // dtgGioHang
@@ -541,7 +505,6 @@
         private TabControl tabControl1;
         private TabPage tabHoaDon;
         private Panel panel3;
-        private Button btnLammoi;
         private Button btnHuy;
         private Button btnTao;
         private Button btnThanhToan;
@@ -555,7 +518,6 @@
         private Panel panel4;
         private TextBox txtsdt;
         private Label label2;
-        private Button btnThemkh;
         private TextBox txtTen;
         private Label label1;
     }

@@ -153,13 +153,13 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 179);
+            dataGridView1.Location = new Point(3, 144);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1482, 242);
+            dataGridView1.Size = new Size(1482, 277);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -192,35 +192,38 @@
             // 
             // btnLuuThem
             // 
+            btnLuuThem.BackColor = Color.LimeGreen;
             btnLuuThem.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuuThem.Location = new Point(468, 335);
             btnLuuThem.Name = "btnLuuThem";
-            btnLuuThem.Size = new Size(257, 48);
+            btnLuuThem.Size = new Size(200, 48);
             btnLuuThem.TabIndex = 24;
             btnLuuThem.Text = "Lưu";
-            btnLuuThem.UseVisualStyleBackColor = true;
+            btnLuuThem.UseVisualStyleBackColor = false;
             btnLuuThem.Click += btnLuuThem_Click;
             // 
             // btnHuyLuu
             // 
+            btnHuyLuu.BackColor = Color.LightCoral;
             btnHuyLuu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnHuyLuu.Location = new Point(845, 335);
             btnHuyLuu.Name = "btnHuyLuu";
-            btnHuyLuu.Size = new Size(257, 48);
+            btnHuyLuu.Size = new Size(200, 48);
             btnHuyLuu.TabIndex = 23;
             btnHuyLuu.Text = "Hủy lưu";
-            btnHuyLuu.UseVisualStyleBackColor = true;
+            btnHuyLuu.UseVisualStyleBackColor = false;
             btnHuyLuu.Click += btnHuyLuu_Click;
             // 
             // btnLuu
             // 
+            btnLuu.BackColor = Color.Khaki;
             btnLuu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuu.Location = new Point(468, 335);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(257, 48);
+            btnLuu.Size = new Size(200, 48);
             btnLuu.TabIndex = 22;
             btnLuu.Text = "Lưu";
-            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.UseVisualStyleBackColor = false;
             btnLuu.Click += btnLuu_Click;
             // 
             // cbVaiTro
@@ -234,54 +237,60 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.PaleTurquoise;
             button1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             button1.Image = Properties.Resources.icons8_clean_30;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(1223, 392);
+            button1.Location = new Point(805, 392);
             button1.Name = "button1";
-            button1.Size = new Size(257, 48);
+            button1.Size = new Size(200, 48);
             button1.TabIndex = 20;
             button1.Text = "Làm mới ";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.LightCoral;
             button2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            button2.ForeColor = SystemColors.ButtonHighlight;
             button2.Image = Properties.Resources.icons8_delete_302;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(845, 392);
+            button2.Location = new Point(568, 392);
             button2.Name = "button2";
-            button2.Size = new Size(257, 48);
+            button2.Size = new Size(200, 48);
             button2.TabIndex = 19;
             button2.Text = "Xóa nhân viên ";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
+            button3.BackColor = Color.Khaki;
             button3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             button3.Image = Properties.Resources.icons8_edit_302;
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(468, 392);
+            button3.Location = new Point(335, 392);
             button3.Name = "button3";
-            button3.Size = new Size(257, 48);
+            button3.Size = new Size(200, 48);
             button3.TabIndex = 18;
             button3.Text = "Sửa nhân viên ";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
             // 
+            button4.BackColor = Color.LimeGreen;
             button4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.ForeColor = SystemColors.ButtonHighlight;
             button4.Image = Properties.Resources.icons8_add_30;
             button4.ImageAlign = ContentAlignment.MiddleLeft;
             button4.Location = new Point(102, 392);
             button4.Name = "button4";
-            button4.Size = new Size(257, 48);
+            button4.Size = new Size(200, 48);
             button4.TabIndex = 17;
             button4.Text = "Thêm nhân viên";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
             // label7
@@ -426,13 +435,13 @@
             dtgDanhSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgDanhSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgDanhSach.Dock = DockStyle.Bottom;
-            dtgDanhSach.Location = new Point(3, 112);
+            dtgDanhSach.Location = new Point(3, 155);
             dtgDanhSach.MultiSelect = false;
             dtgDanhSach.Name = "dtgDanhSach";
             dtgDanhSach.ReadOnly = true;
             dtgDanhSach.RowHeadersWidth = 51;
             dtgDanhSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgDanhSach.Size = new Size(1482, 310);
+            dtgDanhSach.Size = new Size(1482, 267);
             dtgDanhSach.TabIndex = 0;
             dtgDanhSach.CellClick += dtgDanhSach_CellClick;
             // 
@@ -466,93 +475,102 @@
             // 
             // btnLuuAddTK
             // 
+            btnLuuAddTK.BackColor = Color.LimeGreen;
             btnLuuAddTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnLuuAddTK.Image = Properties.Resources.icons8_change_24;
             btnLuuAddTK.ImageAlign = ContentAlignment.MiddleLeft;
             btnLuuAddTK.Location = new Point(479, 348);
             btnLuuAddTK.Name = "btnLuuAddTK";
-            btnLuuAddTK.Size = new Size(257, 48);
+            btnLuuAddTK.Size = new Size(200, 48);
             btnLuuAddTK.TabIndex = 23;
             btnLuuAddTK.Text = "Lưu";
-            btnLuuAddTK.UseVisualStyleBackColor = true;
+            btnLuuAddTK.UseVisualStyleBackColor = false;
             btnLuuAddTK.Click += btnLuuAddTK_Click;
             // 
             // btnHuyTK
             // 
+            btnHuyTK.BackColor = Color.LightCoral;
             btnHuyTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnHuyTK.Image = Properties.Resources.icons8_change_24;
             btnHuyTK.ImageAlign = ContentAlignment.MiddleLeft;
             btnHuyTK.Location = new Point(856, 348);
             btnHuyTK.Name = "btnHuyTK";
-            btnHuyTK.Size = new Size(257, 48);
+            btnHuyTK.Size = new Size(200, 48);
             btnHuyTK.TabIndex = 22;
             btnHuyTK.Text = "Hủy";
-            btnHuyTK.UseVisualStyleBackColor = true;
+            btnHuyTK.UseVisualStyleBackColor = false;
             btnHuyTK.Click += btnHuyTK_Click;
             // 
             // btnLuuEditTK
             // 
+            btnLuuEditTK.BackColor = Color.Khaki;
             btnLuuEditTK.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnLuuEditTK.Image = Properties.Resources.icons8_change_24;
             btnLuuEditTK.ImageAlign = ContentAlignment.MiddleLeft;
             btnLuuEditTK.Location = new Point(479, 348);
             btnLuuEditTK.Name = "btnLuuEditTK";
-            btnLuuEditTK.Size = new Size(257, 48);
+            btnLuuEditTK.Size = new Size(200, 48);
             btnLuuEditTK.TabIndex = 21;
             btnLuuEditTK.Text = "Lưu";
-            btnLuuEditTK.UseVisualStyleBackColor = true;
+            btnLuuEditTK.UseVisualStyleBackColor = false;
             btnLuuEditTK.Click += btnLuuEditTK_Click;
             // 
             // btnLamMoi
             // 
+            btnLamMoi.BackColor = Color.PaleTurquoise;
             btnLamMoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnLamMoi.Image = Properties.Resources.icons8_clean_30;
             btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLamMoi.Location = new Point(1234, 402);
+            btnLamMoi.Location = new Point(856, 402);
             btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(257, 48);
+            btnLamMoi.Size = new Size(200, 48);
             btnLamMoi.TabIndex = 20;
             btnLamMoi.Text = "Làm mới ";
-            btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.UseVisualStyleBackColor = false;
             btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXoa
             // 
+            btnXoa.BackColor = Color.LightCoral;
             btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnXoa.ForeColor = SystemColors.ButtonHighlight;
             btnXoa.Image = Properties.Resources.icons8_delete_30;
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(856, 402);
+            btnXoa.Location = new Point(613, 402);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(257, 48);
+            btnXoa.Size = new Size(200, 48);
             btnXoa.TabIndex = 19;
             btnXoa.Text = "Xóa tài khoản";
-            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
+            btnSua.BackColor = Color.Khaki;
             btnSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             btnSua.Image = Properties.Resources.icons8_change_24;
             btnSua.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSua.Location = new Point(479, 402);
+            btnSua.Location = new Point(363, 402);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(257, 48);
+            btnSua.Size = new Size(200, 48);
             btnSua.TabIndex = 18;
             btnSua.Text = "Sửa tài khoản";
-            btnSua.UseVisualStyleBackColor = true;
+            btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
+            btnThem.BackColor = Color.LimeGreen;
             btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnThem.ForeColor = SystemColors.ButtonHighlight;
             btnThem.Image = Properties.Resources.icons8_add_30;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(113, 402);
+            btnThem.Location = new Point(108, 402);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(257, 48);
+            btnThem.Size = new Size(200, 48);
             btnThem.TabIndex = 17;
             btnThem.Text = "Thêm tài khoản";
-            btnThem.UseVisualStyleBackColor = true;
+            btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
             // rbNgung

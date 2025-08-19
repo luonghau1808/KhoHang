@@ -548,6 +548,7 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.PaleTurquoise;
             button1.Image = Properties.Resources.icons8_clean_30;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
             button1.Location = new Point(479, 54);
@@ -556,11 +557,12 @@
             button1.TabIndex = 4;
             button1.Text = "Làm mới";
             button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // btnDeleteMs
             // 
+            btnDeleteMs.BackColor = Color.LightCoral;
             btnDeleteMs.Image = Properties.Resources.icons8_delete_302;
             btnDeleteMs.ImageAlign = ContentAlignment.MiddleLeft;
             btnDeleteMs.Location = new Point(391, 162);
@@ -568,11 +570,12 @@
             btnDeleteMs.Size = new Size(142, 35);
             btnDeleteMs.TabIndex = 3;
             btnDeleteMs.Text = "Xóa";
-            btnDeleteMs.UseVisualStyleBackColor = true;
+            btnDeleteMs.UseVisualStyleBackColor = false;
             btnDeleteMs.Click += btnDeleteMs_Click;
             // 
             // btnEditMs
             // 
+            btnEditMs.BackColor = Color.Khaki;
             btnEditMs.Image = Properties.Resources.icons8_edit_302;
             btnEditMs.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditMs.Location = new Point(234, 162);
@@ -580,11 +583,13 @@
             btnEditMs.Size = new Size(142, 35);
             btnEditMs.TabIndex = 2;
             btnEditMs.Text = "Sửa";
-            btnEditMs.UseVisualStyleBackColor = true;
+            btnEditMs.UseVisualStyleBackColor = false;
             btnEditMs.Click += btnEditMs_Click;
             // 
             // btnAddMs
             // 
+            btnAddMs.BackColor = Color.LimeGreen;
+            btnAddMs.ForeColor = SystemColors.ButtonHighlight;
             btnAddMs.Image = Properties.Resources.icons8_add_303;
             btnAddMs.ImageAlign = ContentAlignment.MiddleLeft;
             btnAddMs.Location = new Point(75, 162);
@@ -592,7 +597,7 @@
             btnAddMs.Size = new Size(142, 35);
             btnAddMs.TabIndex = 1;
             btnAddMs.Text = "Thêm";
-            btnAddMs.UseVisualStyleBackColor = true;
+            btnAddMs.UseVisualStyleBackColor = false;
             btnAddMs.Click += btnAddMs_Click;
             // 
             // txbMs
@@ -644,6 +649,7 @@
             // 
             // button2
             // 
+            button2.BackColor = Color.PaleTurquoise;
             button2.Image = Properties.Resources.icons8_clean_30;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(477, 58);
@@ -652,11 +658,12 @@
             button2.TabIndex = 5;
             button2.Text = "Làm mới";
             button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // btnDeleteKt
             // 
+            btnDeleteKt.BackColor = Color.LightCoral;
             btnDeleteKt.Image = Properties.Resources.icons8_delete_303;
             btnDeleteKt.ImageAlign = ContentAlignment.MiddleLeft;
             btnDeleteKt.Location = new Point(383, 166);
@@ -664,11 +671,12 @@
             btnDeleteKt.Size = new Size(142, 35);
             btnDeleteKt.TabIndex = 3;
             btnDeleteKt.Text = "Xóa";
-            btnDeleteKt.UseVisualStyleBackColor = true;
+            btnDeleteKt.UseVisualStyleBackColor = false;
             btnDeleteKt.Click += btnDeleteKt_Click;
             // 
             // btnEditKt
             // 
+            btnEditKt.BackColor = Color.Khaki;
             btnEditKt.Image = Properties.Resources.icons8_edit_301;
             btnEditKt.ImageAlign = ContentAlignment.MiddleLeft;
             btnEditKt.Location = new Point(226, 166);
@@ -676,11 +684,13 @@
             btnEditKt.Size = new Size(142, 35);
             btnEditKt.TabIndex = 2;
             btnEditKt.Text = "Sửa ";
-            btnEditKt.UseVisualStyleBackColor = true;
+            btnEditKt.UseVisualStyleBackColor = false;
             btnEditKt.Click += btnEditKt_Click;
             // 
             // btnAddKt
             // 
+            btnAddKt.BackColor = Color.LimeGreen;
+            btnAddKt.ForeColor = SystemColors.ButtonHighlight;
             btnAddKt.Image = Properties.Resources.icons8_add_302;
             btnAddKt.ImageAlign = ContentAlignment.MiddleLeft;
             btnAddKt.Location = new Point(69, 166);
@@ -688,7 +698,7 @@
             btnAddKt.Size = new Size(142, 35);
             btnAddKt.TabIndex = 1;
             btnAddKt.Text = "Thêm";
-            btnAddKt.UseVisualStyleBackColor = true;
+            btnAddKt.UseVisualStyleBackColor = false;
             btnAddKt.Click += btnAddKt_Click;
             // 
             // txbKt

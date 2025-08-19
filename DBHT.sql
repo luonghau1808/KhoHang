@@ -1,4 +1,5 @@
-﻿-- Tạo database
+﻿
+-- Tạo database
 CREATE DATABASE QuanLyKhoHangQuanAo;
 GO
 

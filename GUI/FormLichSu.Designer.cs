@@ -30,12 +30,14 @@
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox1 = new GroupBox();
+            label5 = new Label();
+            cbNgayloc = new ComboBox();
             label4 = new Label();
             cbTrangthai = new ComboBox();
             btnTk = new Button();
             dgvPhieu = new DataGridView();
-            label3 = new Label();
-            label2 = new Label();
+            lbDenngay = new Label();
+            lbTungay = new Label();
             label1 = new Label();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
@@ -59,12 +61,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(cbNgayloc);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(cbTrangthai);
             groupBox1.Controls.Add(btnTk);
             groupBox1.Controls.Add(dgvPhieu);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(lbDenngay);
+            groupBox1.Controls.Add(lbTungay);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(dateTimePicker2);
             groupBox1.Controls.Add(dateTimePicker1);
@@ -73,15 +77,33 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1120, 582);
+            groupBox1.Size = new Size(1124, 582);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Lịch sử hoạt động";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(35, 154);
+            label5.Name = "label5";
+            label5.Size = new Size(78, 23);
+            label5.TabIndex = 11;
+            label5.Text = "Ngày lọc";
+            // 
+            // cbNgayloc
+            // 
+            cbNgayloc.FormattingEnabled = true;
+            cbNgayloc.Location = new Point(131, 151);
+            cbNgayloc.Name = "cbNgayloc";
+            cbNgayloc.Size = new Size(180, 31);
+            cbNgayloc.TabIndex = 10;
+            cbNgayloc.SelectedIndexChanged += cbNgayloc_SelectedIndexChanged;
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 129);
+            label4.Location = new Point(348, 80);
             label4.Name = "label4";
             label4.Size = new Size(87, 23);
             label4.TabIndex = 9;
@@ -91,7 +113,7 @@
             // 
             cbTrangthai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTrangthai.FormattingEnabled = true;
-            cbTrangthai.Location = new Point(131, 127);
+            cbTrangthai.Location = new Point(444, 78);
             cbTrangthai.Name = "cbTrangthai";
             cbTrangthai.Size = new Size(180, 31);
             cbTrangthai.TabIndex = 8;
@@ -101,7 +123,7 @@
             // 
             btnTk.Image = Properties.Resources.icons8_view_30;
             btnTk.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTk.Location = new Point(947, 139);
+            btnTk.Location = new Point(958, 139);
             btnTk.Name = "btnTk";
             btnTk.Size = new Size(143, 43);
             btnTk.TabIndex = 7;
@@ -123,27 +145,27 @@
             dgvPhieu.ReadOnly = true;
             dgvPhieu.RowHeadersWidth = 51;
             dgvPhieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPhieu.Size = new Size(1114, 351);
+            dgvPhieu.Size = new Size(1118, 351);
             dgvPhieu.TabIndex = 6;
             dgvPhieu.CellClick += dgvPhieu_CellClick;
             // 
-            // label3
+            // lbDenngay
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(790, 78);
-            label3.Name = "label3";
-            label3.Size = new Size(84, 23);
-            label3.TabIndex = 5;
-            label3.Text = "Đến ngày";
+            lbDenngay.AutoSize = true;
+            lbDenngay.Location = new Point(641, 148);
+            lbDenngay.Name = "lbDenngay";
+            lbDenngay.Size = new Size(84, 23);
+            lbDenngay.TabIndex = 5;
+            lbDenngay.Text = "Đến ngày";
             // 
-            // label2
+            // lbTungay
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(418, 78);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 23);
-            label2.TabIndex = 4;
-            label2.Text = "Từ ngày";
+            lbTungay.AutoSize = true;
+            lbTungay.Location = new Point(347, 153);
+            lbTungay.Name = "lbTungay";
+            lbTungay.Size = new Size(73, 23);
+            lbTungay.TabIndex = 4;
+            lbTungay.Text = "Từ ngày";
             // 
             // label1
             // 
@@ -157,7 +179,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(910, 78);
+            dateTimePicker2.Location = new Point(761, 148);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(180, 30);
             dateTimePicker2.TabIndex = 2;
@@ -165,7 +187,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(515, 73);
+            dateTimePicker1.Location = new Point(444, 148);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(180, 30);
             dateTimePicker1.TabIndex = 1;
@@ -187,7 +209,7 @@
             groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(0, 582);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1120, 330);
+            groupBox2.Size = new Size(1124, 330);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách sản phẩm";
@@ -205,7 +227,7 @@
             dgvCt.ReadOnly = true;
             dgvCt.RowHeadersWidth = 51;
             dgvCt.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCt.Size = new Size(1114, 301);
+            dgvCt.Size = new Size(1118, 301);
             dgvCt.TabIndex = 7;
             // 
             // sqlCommand1
@@ -276,16 +298,16 @@
             panel1.Controls.Add(labelTenNV);
             panel1.Controls.Add(labelMaNV);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1120, 0);
+            panel1.Location = new Point(1124, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(399, 912);
+            panel1.Size = new Size(439, 912);
             panel1.TabIndex = 0;
             // 
             // FormLichSu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1519, 912);
+            ClientSize = new Size(1563, 912);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
@@ -307,8 +329,8 @@
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private DataGridView dgvPhieu;
-        private Label label3;
-        private Label label2;
+        private Label lbDenngay;
+        private Label lbTungay;
         private Label label1;
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
@@ -325,5 +347,7 @@
         private Panel panel1;
         private Label label4;
         private ComboBox cbTrangthai;
+        private Label label5;
+        private ComboBox cbNgayloc;
     }
 }

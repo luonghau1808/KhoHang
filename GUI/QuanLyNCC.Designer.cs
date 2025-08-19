@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
-            txtTim = new TextBox();
             label9 = new Label();
-            dtgDanhSachNCC = new DataGridView();
-            groupBoxTTNCC = new GroupBox();
             btnLamMoi = new Button();
-            btnXoa = new Button();
+            dtgDanhSachNCC = new DataGridView();
             btnSua = new Button();
             btnThem = new Button();
+            pictureBox1 = new PictureBox();
+            txtTim = new TextBox();
+            groupBoxTTNCC = new GroupBox();
             txtDiaChi = new TextBox();
             label5 = new Label();
             txtEmail = new TextBox();
@@ -49,33 +49,25 @@
             label1 = new Label();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDanhSachNCC).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBoxTTNCC.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtTim);
             groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(btnLamMoi);
             groupBox2.Controls.Add(dtgDanhSachNCC);
+            groupBox2.Controls.Add(btnSua);
+            groupBox2.Controls.Add(btnThem);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(0, 520);
+            groupBox2.Location = new Point(0, 396);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1649, 402);
+            groupBox2.Size = new Size(1649, 558);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách nhà cung cấp";
-            // 
-            // txtTim
-            // 
-            txtTim.BorderStyle = BorderStyle.FixedSingle;
-            txtTim.Font = new Font("Segoe UI", 12F);
-            txtTim.Location = new Point(813, 40);
-            txtTim.Name = "txtTim";
-            txtTim.PlaceholderText = "Nhập thông tin tìm kiếm";
-            txtTim.Size = new Size(319, 34);
-            txtTim.TabIndex = 9;
-            txtTim.TextChanged += txtTim_TextChanged;
             // 
             // label9
             // 
@@ -83,31 +75,87 @@
             label9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.Location = new Point(678, 47);
             label9.Name = "label9";
-            label9.Size = new Size(85, 23);
+            label9.Size = new Size(0, 23);
             label9.TabIndex = 8;
-            label9.Text = "Tìm kiếm ";
+            // 
+            // btnLamMoi
+            // 
+            btnLamMoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnLamMoi.Image = Properties.Resources.icons8_clean_30;
+            btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLamMoi.Location = new Point(991, 491);
+            btnLamMoi.Name = "btnLamMoi";
+            btnLamMoi.Size = new Size(319, 55);
+            btnLamMoi.TabIndex = 24;
+            btnLamMoi.Text = "Làm mới ";
+            btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // dtgDanhSachNCC
             // 
             dtgDanhSachNCC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgDanhSachNCC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgDanhSachNCC.Dock = DockStyle.Bottom;
-            dtgDanhSachNCC.Location = new Point(3, 109);
+            dtgDanhSachNCC.Dock = DockStyle.Top;
+            dtgDanhSachNCC.Location = new Point(3, 26);
             dtgDanhSachNCC.MultiSelect = false;
             dtgDanhSachNCC.Name = "dtgDanhSachNCC";
             dtgDanhSachNCC.ReadOnly = true;
             dtgDanhSachNCC.RowHeadersWidth = 51;
             dtgDanhSachNCC.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgDanhSachNCC.Size = new Size(1643, 290);
+            dtgDanhSachNCC.Size = new Size(1643, 434);
             dtgDanhSachNCC.TabIndex = 0;
             dtgDanhSachNCC.CellClick += dtgDanhSachNCC_CellClick;
             // 
+            // btnSua
+            // 
+            btnSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnSua.Image = Properties.Resources.icons8_edit_302;
+            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSua.Location = new Point(609, 491);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(319, 55);
+            btnSua.TabIndex = 22;
+            btnSua.Text = "Sửa nhà cung cấp";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnThem
+            // 
+            btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            btnThem.Image = Properties.Resources.icons8_add_30;
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.Location = new Point(226, 491);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(319, 55);
+            btnThem.TabIndex = 21;
+            btnThem.Text = "Thêm nhà cung cấp";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.icons8_search_30;
+            pictureBox1.Location = new Point(1008, 346);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(34, 36);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // txtTim
+            // 
+            txtTim.BorderStyle = BorderStyle.FixedSingle;
+            txtTim.Font = new Font("Segoe UI", 12F);
+            txtTim.Location = new Point(1048, 346);
+            txtTim.Name = "txtTim";
+            txtTim.PlaceholderText = "Tìm kiếm nhà cung cấp theo tên";
+            txtTim.Size = new Size(469, 34);
+            txtTim.TabIndex = 9;
+            txtTim.TextChanged += txtTim_TextChanged;
+            // 
             // groupBoxTTNCC
             // 
-            groupBoxTTNCC.Controls.Add(btnLamMoi);
-            groupBoxTTNCC.Controls.Add(btnXoa);
-            groupBoxTTNCC.Controls.Add(btnSua);
-            groupBoxTTNCC.Controls.Add(btnThem);
+            groupBoxTTNCC.Controls.Add(pictureBox1);
+            groupBoxTTNCC.Controls.Add(txtTim);
             groupBoxTTNCC.Controls.Add(txtDiaChi);
             groupBoxTTNCC.Controls.Add(label5);
             groupBoxTTNCC.Controls.Add(txtEmail);
@@ -122,62 +170,10 @@
             groupBoxTTNCC.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBoxTTNCC.Location = new Point(0, 0);
             groupBoxTTNCC.Name = "groupBoxTTNCC";
-            groupBoxTTNCC.Size = new Size(1649, 520);
+            groupBoxTTNCC.Size = new Size(1649, 396);
             groupBoxTTNCC.TabIndex = 2;
             groupBoxTTNCC.TabStop = false;
             groupBoxTTNCC.Text = "Thông tin nhà cung cấp";
-            // 
-            // btnLamMoi
-            // 
-            btnLamMoi.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnLamMoi.Image = Properties.Resources.icons8_clean_30;
-            btnLamMoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLamMoi.Location = new Point(1270, 407);
-            btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(257, 48);
-            btnLamMoi.TabIndex = 24;
-            btnLamMoi.Text = "Làm mới ";
-            btnLamMoi.UseVisualStyleBackColor = true;
-            btnLamMoi.Click += btnLamMoi_Click;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnXoa.Image = Properties.Resources.icons8_delete_303;
-            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(915, 407);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(254, 48);
-            btnXoa.TabIndex = 23;
-            btnXoa.Text = "Xóa nhà cung cấp";
-            btnXoa.UseVisualStyleBackColor = true;
-            btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
-            btnSua.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnSua.Image = Properties.Resources.icons8_edit_302;
-            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSua.Location = new Point(524, 407);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(254, 48);
-            btnSua.TabIndex = 22;
-            btnSua.Text = "Sửa nhà cung cấp";
-            btnSua.UseVisualStyleBackColor = true;
-            btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
-            btnThem.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            btnThem.Image = Properties.Resources.icons8_add_30;
-            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(134, 407);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(254, 48);
-            btnThem.TabIndex = 21;
-            btnThem.Text = "Thêm nhà cung cấp";
-            btnThem.UseVisualStyleBackColor = true;
-            btnThem.Click += btnThem_Click;
             // 
             // txtDiaChi
             // 
@@ -185,6 +181,7 @@
             txtDiaChi.Font = new Font("Segoe UI", 10.2F);
             txtDiaChi.Location = new Point(295, 259);
             txtDiaChi.Name = "txtDiaChi";
+            txtDiaChi.ReadOnly = true;
             txtDiaChi.Size = new Size(421, 30);
             txtDiaChi.TabIndex = 9;
             // 
@@ -204,6 +201,7 @@
             txtEmail.Font = new Font("Segoe UI", 10.2F);
             txtEmail.Location = new Point(1092, 80);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(425, 30);
             txtEmail.TabIndex = 7;
             // 
@@ -223,6 +221,7 @@
             txtSDT.Font = new Font("Segoe UI", 10.2F);
             txtSDT.Location = new Point(1092, 162);
             txtSDT.Name = "txtSDT";
+            txtSDT.ReadOnly = true;
             txtSDT.Size = new Size(425, 30);
             txtSDT.TabIndex = 5;
             // 
@@ -242,6 +241,7 @@
             txtTenNCC.Font = new Font("Segoe UI", 10.2F);
             txtTenNCC.Location = new Point(295, 159);
             txtTenNCC.Name = "txtTenNCC";
+            txtTenNCC.ReadOnly = true;
             txtTenNCC.Size = new Size(421, 30);
             txtTenNCC.TabIndex = 3;
             // 
@@ -279,7 +279,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1649, 922);
+            ClientSize = new Size(1649, 954);
             Controls.Add(groupBox2);
             Controls.Add(groupBoxTTNCC);
             Name = "QuanLyNCC";
@@ -288,6 +288,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDanhSachNCC).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBoxTTNCC.ResumeLayout(false);
             groupBoxTTNCC.PerformLayout();
             ResumeLayout(false);
@@ -311,8 +312,8 @@
         private TextBox txtMaNCC;
         private Label label1;
         private Button btnLamMoi;
-        private Button btnXoa;
-        private Button btnSua;
         private Button btnThem;
+        private PictureBox pictureBox1;
+        private Button btnSua;
     }
 }

@@ -12,6 +12,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
         private GenericBLL<PhieuNhap> phieuNhapBLL;
         decimal _tongTien = 0;
         private int maPN = 0;
+        private int maCT = 0; // thêm biến toàn cục để lưu mã chi tiết sản phẩm
         private string trangThaiThanhToan = "Chưa thanh toán";
         private NhanVien _nhanVien;
         public PhieuNhapF(NhanVien nhanVien)
@@ -42,14 +43,13 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
         {
             var list = phieuNhapBLL.GetAll(x => x.MaNvNavigation);
 
-            // Nếu không chọn "Tất cả" thì mới lọc theo trạng thái
+
             if (trangThaiThanhToan != "Tất cả")
             {
                 list = list.Where(x => x.TrangThaiThanhToan == trangThaiThanhToan);
             }
 
             dgvDanhSachPhieuNhap.Columns.Clear();
-
 
             dgvDanhSachPhieuNhap.DataSource = list.Select((px, index) => new
             {
@@ -59,14 +59,11 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 NgayNhap = px.NgayNhap.ToString("dd/MM/yyyy"),
                 TrangThai = px.TrangThaiThanhToan
             }).ToList();
+            dgvDanhSachPhieuNhap.Columns["MaPN"].HeaderText = "Mã phiếu nhập";
+            dgvDanhSachPhieuNhap.Columns["TenNV"].HeaderText = "Tên nhân viên";
+            dgvDanhSachPhieuNhap.Columns["NgayNhap"].HeaderText = "Ngày nhập";
+            dgvDanhSachPhieuNhap.Columns["TrangThai"].HeaderText = "Trạng thái";
 
-            // 5. Add Delete button
-            DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
-            deleteBtn.HeaderText = "Hủy phiếu";
-            deleteBtn.Text = "Hủy";
-            deleteBtn.UseColumnTextForButtonValue = true;
-            deleteBtn.Name = "btnDelete";
-            dgvDanhSachPhieuNhap.Columns.Add(deleteBtn);
 
         }
 
@@ -79,24 +76,13 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             try
             {
                 columnName = dgvGioHang.Columns[e.ColumnIndex].Name;
-
             }
             catch (Exception)
             {
 
-
             }
             // Get the ID of the selected row (e.g., MaCT is the key)
-            int maCT = Convert.ToInt32(dgvGioHang.Rows[e.RowIndex].Cells["MaCT"].Value);
-
-            if (columnName == "btnEdit")
-            {
-                EditSoLuong(maCT);
-            }
-            else if (columnName == "btnDelete")
-            {
-                DeletePhieuNhapCT(maCT);
-            }
+            maCT = Convert.ToInt32(dgvGioHang.Rows[e.RowIndex].Cells["MaCT"].Value);
         }
 
         private void dgvDanhSachPhieuNhap_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -107,6 +93,11 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             var ma = row.Cells["MaPN"].Value.ToString() ?? "0";
             maPN = int.Parse(ma);
             var phieuNhap = phieuNhapBLL.GetById(maPN);
+            btnHuyPhieu.Enabled = !(phieuNhap.TrangThaiThanhToan == "Đã hủy" || phieuNhap.TrangThaiThanhToan == "Đã thanh toán");
+            btnThayDoiSoLuong.Enabled = !(phieuNhap.TrangThaiThanhToan == "Đã hủy" || phieuNhap.TrangThaiThanhToan == "Đã thanh toán");
+            btnXoaSanPham.Enabled = !(phieuNhap.TrangThaiThanhToan == "Đã hủy" || phieuNhap.TrangThaiThanhToan == "Đã thanh toán");
+            btnThem.Enabled = !(phieuNhap.TrangThaiThanhToan == "Đã hủy" || phieuNhap.TrangThaiThanhToan == "Đã thanh toán");
+            btnThanhToan.Enabled = !(phieuNhap.TrangThaiThanhToan == "Đã hủy" || phieuNhap.TrangThaiThanhToan == "Đã thanh toán");
             if (phieuNhap == null)
             {
                 MessageBox.Show("Không tìm thấy phiếu nhập.");
@@ -122,45 +113,9 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             catch (Exception)
             {
 
-
-            }
-            if (columnName == "btnDelete")
-            {
-                if (phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
-                {
-                    MessageBox.Show("Phiếu đã thanh toán hoặc đã hủy, không được hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                HuyPhieuNhap(maPN);
-                return;
             }
 
             LoadCTPN(maPN);
-        }
-        public void HuyPhieuNhap(int maPN)
-        {
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc muốn hủy phiếu nhập này hay không?",
-                "Xác nhận hủy",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-
-                var phieuNhap = phieuNhapBLL.GetById(maPN);
-
-                phieuNhap!.TrangThaiThanhToan = "Đã hủy";
-                phieuNhapBLL.Update(phieuNhap);
-
-                MessageBox.Show("Hủy thành công.");
-                LoadPhieuNhap();
-
-                dgvGioHang.DataSource = null;
-                dgvGioHang.Columns.Clear();
-            }
-
         }
         private void LoadCTPN(int maPX)
         {
@@ -190,83 +145,18 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 ThanhTien = (ct.SoLuong * (ct.MaCtspNavigation?.DonGiaNhap ?? 0)).ToString("N0") + "đ"
             }).ToList();
 
-
-            if (list.Count > 0)
-            {
-
-                // 4. Add Edit button
-                DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
-                editBtn.HeaderText = "Sửa";
-                editBtn.Text = "Sửa";
-                editBtn.UseColumnTextForButtonValue = true;
-                editBtn.Name = "btnEdit";
-                dgvGioHang.Columns.Add(editBtn);
-
-                // 5. Add Delete button
-                DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
-                deleteBtn.HeaderText = "Xóa";
-                deleteBtn.Text = "Xóa";
-                deleteBtn.UseColumnTextForButtonValue = true;
-                deleteBtn.Name = "btnDelete";
-                dgvGioHang.Columns.Add(deleteBtn);
-            }
-
             // 6. Tổng tiền
             _tongTien = list.Sum(x => x.SoLuong * (x.MaCtspNavigation?.DonGiaNhap ?? 1));
             lbTongTien.Text = "Tổng tiền: " + _tongTien.ToString("N0") + " VNĐ";
-        }
 
-        private void EditSoLuong(int maCT)
-        {
+            dgvGioHang.Columns["MaCT"].HeaderText = "Mã chi tiết";
+            dgvGioHang.Columns["TenSP"].HeaderText = "Tên sản phẩm";
+            dgvGioHang.Columns["MauSac"].HeaderText = "Màu sắc";
+            dgvGioHang.Columns["KichThuoc"].HeaderText = "Kích thước";
+            dgvGioHang.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvGioHang.Columns["DonGia"].HeaderText = "Đơn giá";
+            dgvGioHang.Columns["ThanhTien"].HeaderText = "Thành tiền";
 
-            if (dgvGioHang.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn một dòng để chỉnh sửa số lượng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var ct = phieuNhapCtBLL.GetById(maCT);
-            if (ct == null) return;
-
-            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap); // Giả sử ct có MaPn
-            if (phieuNhap == null || phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
-            {
-                MessageBox.Show("Không thể chỉnh sửa vì phiếu nhập đã thanh toán hoặc đã hủy!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            PhieuNhapSoLuong frm = new PhieuNhapSoLuong(ct.SoLuong);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                ct.SoLuong = frm.SoLuongMoi;
-                phieuNhapCtBLL.Update(ct);
-                MessageBox.Show("Cập nhật thành công.");
-                LoadCTPN(maPN);
-            }
-        }
-
-        private void DeletePhieuNhapCT(int maCT)
-        {
-            var ct = phieuNhapCtBLL.GetById(maCT);
-            if (ct == null) return;
-            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap);
-            if (phieuNhap == null || phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
-            {
-                MessageBox.Show("Không thể xóa vì phiếu nhập đã thanh toán hoặc đã hủy!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc muốn xóa mặt hàng này?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                phieuNhapCtBLL.Delete(maCT);
-                MessageBox.Show("Xóa thành công.");
-                LoadCTPN(maPN);
-            }
         }
 
 
@@ -286,14 +176,6 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 MessageBox.Show("Không tìm thấy phiếu nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // Kiểm tra trạng thái phiếu nhập
-            if (phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
-            {
-                MessageBox.Show("Phiếu nhập đã thanh toán hoặc đã hủy. Không thể thêm sản phẩm!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             // Nếu hợp lệ thì mở form thêm sản phẩm
             SanPhamF formSpham = new SanPhamF(this);
             var result = formSpham.ShowDialog();
@@ -318,13 +200,6 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             if (phieuNhap == null)
             {
                 MessageBox.Show("Không tìm thấy phiếu nhập.");
-                return;
-            }
-
-            // Kiểm tra trạng thái
-            if (phieuNhap.TrangThaiThanhToan == "Đã thanh toán" || phieuNhap.TrangThaiThanhToan == "Đã hủy")
-            {
-                MessageBox.Show("Phiếu nhập đã được thanh toán hoặc đã bị hủy, không thể thanh toán lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             DialogResult result = MessageBox.Show(
@@ -354,7 +229,6 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             }
         }
 
-
         private void btnThemPhieuNhap_Click(object sender, EventArgs e)
         {
 
@@ -367,10 +241,17 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             phieuNhapBLL.Add(phieuMoi);
             MessageBox.Show("Thêm phiếu nhập thành công.");
 
+            trangThaiThanhToan = "Chưa thanh toán";
+            cbTrangThai.SelectedItem = "Chưa thanh toán";
+
             LoadPhieuNhap();
 
-            // Cập nhật lại maPN hiện tại
-            var danhSach = phieuNhapBLL.GetAll();
+            // Lấy mã phiếu vừa thêm (lớn nhất trong danh sách chưa thanh toán)
+            var danhSach = phieuNhapBLL
+                .GetAll()
+                .Where(x => x.TrangThaiThanhToan == "Chưa thanh toán")
+                .ToList();
+
             maPN = danhSach.Max(x => x.MaPhieuNhap);
         }
 
@@ -384,6 +265,80 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
             dgvGioHang.Columns.Clear();
 
             //btnThem.Enabled = (trangThaiThanhToan == "Chưa thanh toán");
+        }
+        private void btnThayDoiSoLuong_Click(object sender, EventArgs e)
+        {
+            if (maCT == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần chỉnh sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dgvGioHang.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để chỉnh sửa số lượng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var ct = phieuNhapCtBLL.GetById(maCT);
+            if (ct == null) return;
+
+            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap); // Giả sử ct có MaPn
+
+            PhieuNhapSoLuong frm = new PhieuNhapSoLuong(ct.SoLuong);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                ct.SoLuong = frm.SoLuongMoi;
+                phieuNhapCtBLL.Update(ct);
+                MessageBox.Show("Cập nhật thành công.");
+                LoadCTPN(maPN);
+            }
+        }
+        private void btnXoaSanPham_Click(object sender, EventArgs e)
+        {
+            if (maCT == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var ct = phieuNhapCtBLL.GetById(maCT);
+            if (ct == null) return;
+            var phieuNhap = phieuNhapBLL.GetById(ct.MaPhieuNhap);
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn xóa mặt hàng này?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                phieuNhapCtBLL.Delete(maCT);
+                MessageBox.Show("Xóa thành công.");
+                LoadCTPN(maPN);
+                maCT = 0; // reset sau khi xóa
+            }
+        }
+
+        private void btnHuyPhieu_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn hủy phiếu nhập này hay không?",
+                "Xác nhận hủy",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                var phieuNhap = phieuNhapBLL.GetById(maPN);
+
+                phieuNhap!.TrangThaiThanhToan = "Đã hủy";
+                phieuNhapBLL.Update(phieuNhap);
+
+                MessageBox.Show("Hủy thành công.");
+                LoadPhieuNhap();
+
+                dgvGioHang.DataSource = null;
+                dgvGioHang.Columns.Clear();
+            }
         }
     }
 }
