@@ -86,6 +86,18 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
         {
             try
             {
+                if (maSp == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn sản phẩm trước khi thêm vào giỏ hàng!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+             if (string.IsNullOrWhiteSpace(txtSoluongNhap.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập số lượng!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSoluongNhap.Focus(); // Đưa con trỏ về lại ô nhập
+                    return;
+                }
+
                 if (!int.TryParse(txtSoluongNhap.Text.Trim(), out int soLuong))
                 {
                     MessageBox.Show("Vui lòng chỉ nhập số nguyên!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -98,7 +110,7 @@ namespace DuAn1_Nhom4.GUI.Nhập_hàng
                 {
                     MessageBox.Show("Số lượng phải lớn hơn 0!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSoluongNhap.Clear(); // Xoá số lượng <= 0
-                    txtSoluongNhap.Focus();
+                    txtSoluongNhap.Focus(); // Đưa con trỏ về lại ô nhập
                     return;
                 }
 

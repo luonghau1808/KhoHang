@@ -34,7 +34,6 @@
             dtgDanhSachNCC = new DataGridView();
             btnSua = new Button();
             btnThem = new Button();
-            pictureBox1 = new PictureBox();
             txtTim = new TextBox();
             groupBoxTTNCC = new GroupBox();
             txtDiaChi = new TextBox();
@@ -47,9 +46,9 @@
             label2 = new Label();
             txtMaNCC = new TextBox();
             label1 = new Label();
+            label6 = new Label();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDanhSachNCC).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBoxTTNCC.SuspendLayout();
             SuspendLayout();
             // 
@@ -132,15 +131,6 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.icons8_search_30;
-            pictureBox1.Location = new Point(1008, 346);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(34, 36);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
-            // 
             // txtTim
             // 
             txtTim.BorderStyle = BorderStyle.FixedSingle;
@@ -154,7 +144,7 @@
             // 
             // groupBoxTTNCC
             // 
-            groupBoxTTNCC.Controls.Add(pictureBox1);
+            groupBoxTTNCC.Controls.Add(label6);
             groupBoxTTNCC.Controls.Add(txtTim);
             groupBoxTTNCC.Controls.Add(txtDiaChi);
             groupBoxTTNCC.Controls.Add(label5);
@@ -275,6 +265,16 @@
             label1.TabIndex = 0;
             label1.Text = "Mã nhà cung cấp";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label6.Location = new Point(892, 353);
+            label6.Name = "label6";
+            label6.Size = new Size(150, 23);
+            label6.TabIndex = 10;
+            label6.Text = "Tên nhà cung cấp ";
+            // 
             // QuanLyNCC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -288,7 +288,6 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDanhSachNCC).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBoxTTNCC.ResumeLayout(false);
             groupBoxTTNCC.PerformLayout();
             ResumeLayout(false);
@@ -315,5 +314,6 @@
         private Button btnThem;
         private PictureBox pictureBox1;
         private Button btnSua;
+        private Label label6;
     }
 }

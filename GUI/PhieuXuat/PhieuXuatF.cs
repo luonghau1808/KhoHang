@@ -115,8 +115,8 @@ namespace DuAn1_Nhom4.GUI
                 int maPX = Convert.ToInt32(dtgDanhSachHD.Rows[0].Cells["MaPX"].Value);
                 var px = _phieuXuatBLL.GetById(maPX);
                 LoadKhachHang(_phieuXuatBLL.GetById(maPX).MaKhNavigation); // Cập nhật thông tin khách hàng
-                lbNV.Text = "Nhân viên: " + px.MaNvNavigation.HoTen;
-                LoadCTPX(maPX);
+                lbNV.Text = "Nhân viên: " + px.MaNvNavigation.HoTen; 
+                LoadCTPX(maPX); 
             }
 
         }
@@ -268,7 +268,6 @@ namespace DuAn1_Nhom4.GUI
         {
             LoadSanPham();
             LoadPhieuXuat();
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -628,7 +627,7 @@ namespace DuAn1_Nhom4.GUI
 
                 // Tạo file PDF trong thư mục HoaDon
                 string filePath = Path.Combine(folderPath, $"HoaDon_{phieuXuat.MaPhieuXuat}.pdf");
-                XuatHoaDonPDF(filePath, phieuXuat.MaPhieuXuat.ToString(), phieuXuat.MaKhNavigation.Ten, phieuXuat.NgayXuat.ToDateTime(new TimeOnly()), tongTien, list);
+                XuatHoaDonPDF(filePath, phieuXuat.MaPhieuXuat.ToString(), phieuXuat.MaKhNavigation.Ten, phieuXuat.NgayXuat.ToDateTime(new TimeOnly()), tongTien, tienKhach, list);
             }
 
             MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -640,8 +639,9 @@ namespace DuAn1_Nhom4.GUI
 
 
 
-        public static void XuatHoaDonPDF(string filePath, string maHoaDon, string tenKhach, DateTime ngayLap, decimal tongTien, List<PhieuXuatChiTiet> chiTiet)
+        public static void XuatHoaDonPDF(string filePath, string maHoaDon, string tenKhach, DateTime ngayLap, decimal tongTien, decimal tienKhach, List<PhieuXuatChiTiet> chiTiet)
         {
+
             // Tạo document PDF
             Document document = new Document(PageSize.A4, 25, 25, 30, 30);
             try
@@ -728,12 +728,25 @@ namespace DuAn1_Nhom4.GUI
                 }
 
                 document.Add(table);
+               
 
                 // Tổng tiền
                 document.Add(new Paragraph("\n"));
                 Paragraph total = new Paragraph($"Tổng cộng: {tongTien:N0} VND", titleFont);
                 total.Alignment = Element.ALIGN_RIGHT;
                 document.Add(total);
+
+                document.Add(new Paragraph("\n"));
+                Paragraph tienKhachTra = new Paragraph($"Tiền khách trả: {tienKhach:N0} VND", titleFont);
+                tienKhachTra.Alignment = Element.ALIGN_RIGHT;
+                document.Add(tienKhachTra);
+
+                document.Add(new Paragraph("\n"));
+                Paragraph tienThua = new Paragraph($"Tiền trả lại: {tienKhach - tongTien :N0} VND", titleFont);
+                tienThua.Alignment = Element.ALIGN_RIGHT;
+                document.Add(tienThua);
+
+
 
                 document.Add(new Paragraph("\nCảm ơn quý khách!", normalFont));
             }
